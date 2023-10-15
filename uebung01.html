@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 01</title>
+</head>
+<body>
+<a href="index.html">[Zurück]</a>
+<h1>Übung 1: HTTP, URI und HTML</h1>
+<h2>1.1 World Wide Web</h2>
+<ol>
+    <li>
+        Mit welchen fachlichen Argumenten wurde das WWW-Proposal von Tim Burners Lee abgelehnt?
+        <ul>
+            <li>Man war damals der Meinung, dass das WWW ein veraltetes Konzept ist und die Wissenschaft eigentlich
+                schon viel weiter fortgeschritten war. Ein Hauptgrund dafür war, dass "Broken Links" möglich waren,
+                sprich Links, die ins Leere führen.
+            </li>
+        </ul>
+    </li>
+    <li>
+        Was sind die fachlichen Argumente, warum das WWW dennoch ein Erfolg wurde?
+        <ul>
+            <li>Die evolvierbarkeit des WWW, sprich das sich das WWW und die einzelnen Komponenten / Technologien (z.B.
+                HTML, HTTP, ...) unabhängig voneinander weiterentwickeln können.
+            </li>
+        </ul>
+    </li>
+    <li>
+        Was wäre der Preis für die garantierte Verhinderung von "broken links"?
+        <ul>
+            <li>Durch die referentielle Integrität ist es aufwendiger, Links zu pflegen. Wenn z.B. eine Seite gelöscht
+                wird, müssen auch alle Links entfernt werden, die auf diese Seite geführt haben, wenn eine Seite an eine
+                andere Adresse verschoben wird, müssen alle draufzeigenden Links angepasst werden etc. Man bräuchte
+                quasi eine zentralle Kontrolle.
+            </li>
+        </ul>
+    </li>
+</ol>
+<h2>1.2 HTTP</h2>
+<ol>
+    <li>
+        Sie bekommen im Browser den HTTP Status Code 200. Was bedeutet das?
+        <ul>
+            <li>Die Anfrage wurde erfolgreich bearbeitet</li>
+        </ul>
+    </li>
+    <li>
+        Sie bekommen im Browser den HTTP Status Code 301. Was hat das zu bedeuten?
+        <ul>
+            <li>Die angeforderte Ressource wurde permanent an eine neue URL verschoben</li>
+        </ul>
+    </li>
+    <li>
+        Sie bekommen im Browser den HTTP Status Code 400. Was hat das zu bedeuten? Was können Sie dagegen tun?
+        <ul>
+            <li>Die Anfrage ist fehlerhaft (z.B. ungültige Parameter, ungültige Syntax, ...). Als Lösung kann man
+                prüfen, ob die URL richtig ist und die Parameter korrekt sind (eventuell sogar Browser-Cache leeren).
+            </li>
+        </ul>
+    </li>
+    <li>
+        Sie bekommen im Browser den HTTP Status Code 403. Was hat das zu bedeuten? Was können Sie dagegen tun?
+        <ul>
+            <li>Keine Zugriffsberechtigung auf die angeforderte Ressource. Als Lösung könnte man wieder prüfen, ob die
+                URL korrekt ist und ob die erforderlichen Berechtigungen vorhanden sind.
+            </li>
+        </ul>
+    </li>
+    <li>
+        In einer Webanwendung benötigen Sie eine OPTIONS-Anfrage, die die Optionen des Servers vor dem eigentlichen
+        Zugriff erfragen soll. Aus Performancegründen soll die Abfrage aber cacheable sein. Wie könnten Sie dafür eine
+        Lösung angehen?
+        <ul>
+            <li>Man kann den "Cache-Control-Header" zur Website hinzufügen, welcher dann dafür sorgen kann, bestimmte
+                Daten im Cache zu speichern und auszulesen.
+            </li>
+        </ul>
+    </li>
+</ol>
+<h2>1.3 Quiz zu HTML</h2>
+<h3>Was ist HTML?</h3>
+<p>eine Auszeichnungssprache</p>
+<h3>Wofür steht HTML?</h3>
+<p>Hypertext Markup Language</p>
+<h3>Wofür wird HTML eingesetzt?</h3>
+<p>für die Strukturierung digitaler Dokumente</p>
+<h3>Wer hat HTML erfunden?</h3>
+<p>Tim Berners-Lee</p>
+<h3>Zu welchem ursprünglichen Zweck wurde HTML erfunden?</h3>
+<p>für den Austausch wissenschaftlicher Publikationen</p>
+<h3>Wer arbeitet alles an der Weiterentwicklung von HTML?</h3>
+<pre>
+    das World Wide Web Consortium (W3C)
+    die Web Hypertext Application Technology Working Group (WHATWG)
+</pre>
+<h2>1.4 Quiz zu HTML-Tags</h2>
+<h3>Was ist ein HTML-Tag?</h3>
+<p>ein Auszeichnungselement</p>
+<h3>Wofür nutzt man einen HTML-Tag?</h3>
+<pre>
+    Zur Einbettung weiterer Inhalte, die über Text hinausgehen
+    Zur Strukturierung von Webseiteninhalten
+</pre>
+<h3>Woraus besteht ein HTML-Tag und wie setzt man ihn ein?</h3>
+<pre>
+    Hallo Welt!&lt;br&gt;Willkommen.
+    &lt;p&gt;Paragraph&lt;/p&gt;
+    &lt;h2&gt;Überschrift&lt;/h2&gt;
+</pre>
+<h3>Was ist ein HTML-Attribut?</h3>
+<p>eine Eigenschaft</p>
+<h3>Wofür nutzt man ein HTML-Attribut?</h3>
+<p>zur Beschreibung zusätzlicher Eigenschaften von HTML-Tags</p>
+<h3>Wie schreibt man einen Kommentar in HTML?</h3>
+<pre>
+    &lt;!-- Kommentar --&gt;
+</pre>
+<h2>1.5 Lückentext zu HTML</h2>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Titel der Webseite&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Anwendung von HTML-Tags&lt;/h1&gt;
+        &lt;h2&gt;Motivation&lt;/h2&gt;
+        &lt;p&gt;Dieser Lückentext unterstützt Sie dabei selbst einzuschätzen, ob Sie in der Lage sind das HTML-Grundgerüst und die HTML-Tags zum Markieren von Überschriften, Paragraphen und HTML-Kommentaren einzusetzen.&lt;/p&gt;
+        &lt;!--
+             &lt;h2&gt;Auskommentierung von HTML-Code&lt;/h2&gt;
+             &lt;p&gt;Dieser Abschnitt wurde auskommentiert.&lt;/p&gt;
+        --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h2>1.6 HTML-Literatur lesen und Fragen beantworten</h2>
+
+
+<h3>Was ist HTML?</h3>
+<p>HTML (Hyper Text Markup Language) ist die Standard-Sprache, um Websiten zu erstellen. Es beschreibt die Struktur
+    einer Website und besteht aus vielen Elementen, die dem Internet Browser zeigen, wie der Inhalt der Seite
+    dargestellt werden soll.</p>
+<h3>Wie kann man eine geschachtelte geordnete Liste der Tiefe 3 erzeugen?</h3>
+<ul>
+    <li>&lt;ol&gt;: Startet eine geordnete Liste</li>
+    <li>&lt;li&gt;: Ein Element der Liste</li>
+</ul>
+<pre>
+Geordnete Liste der Tiefe 3:
+
+&lt;ol&gt;
+    &lt;li&gt;Ebene 1
+      &lt;ol&gt;
+        &lt;li&gt;Ebene 2
+          &lt;ol&gt;
+            &lt;li&gt;Ebene 3&lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+</pre>
+<h3>Wie ist eine HTML-Tabelle aufgebaut?</h3>
+<ul>
+    <li>&lt;table&gt;: Zeigt, dass es eine Tabelle ist</li>
+    <li>&lt;tr&gt;: Erstellt eine Zeile</li>
+    <li>&lt;th&gt;: Erstellt eine Titel-Zelle</li>
+    <li>&lt;td&gt;: Erstellt eine Zelle</li>
+</ul>
+<pre>
+Beispieltabelle:
+
+&lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Spalte 1&lt;/th&gt;
+      &lt;th&gt;Spalte 2&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Zeile 1.1&lt;/td&gt;
+      &lt;td&gt;Zeile 1.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Zeile 2.1&lt;/td&gt;
+      &lt;td&gt;Zeile 2.2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+</pre>
+<h3>Welche Konventionen sollte man bei Pfaden und Dateinamen beachten?</h3>
+<p>Man sollte am besten relative Pfade verwenden. Wenn man lokal oder über die Domain auf die Website zugreift, sollten
+    in beiden Fällen die Dateien korrekt geladen werden. Selbst bei einem Wechsel der Domain sollte es keine Probleme
+    geben. Zusätzlich gilt:</p>
+<ul>
+    <li>
+        Dateibenennung
+        <ul>
+            <li>klare Namen</li>
+            <li>keine Leerzeichen</li>
+            <li>in Kleinbuchstaben</li>
+            <li>keine Sonderzeichen</li>
+        </ul>
+    </li>
+    <li>
+        Ordnerstruktur
+        <ul>
+            <li>Alle generellen Seiten werden im root-Ordner erstellt</li>
+            <li>Unterseiten eventuell in eigenen Ordnern (z.B. Seiten zu den einzelnen Produkten im Ordner "Produkte")
+            </li>
+            <li>eigener Ordner für Ressourcen (z.B. Bilder)</li>
+            <li>eigener Ordner für CSS-Stylesheets</li>
+        </ul>
+    </li>
+</ul>
+<h3>Wie baut man in HTML ein Menü?</h3>
+<p>Man nutzt einfach eine ungeordnete Liste und passt sie mithilfe CSS-Attributen so an, sodass sie horizontal angezeigt
+    wird und das Aufzählungszeichen entfernt wird. Dann kann man bei jedem Listenelement einen Link hinterlegen und
+    schon hat man ein klassisches Webseitenmenü.</p>
+<p>Beispiel:</p>
+<pre>
+CSS:
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    padding: 16px;
+}
+
+HTML:
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="/index.html"&gt;Startseite&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/products.html"&gt;Produkte&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/contact.html"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<h3>Welche Attribute sollte man bei Bildern wie verwenden?</h3>
+<ul>
+    <li>src: Pfad/URL zum Bild</li>
+    <li>alt: Alternative textuelle Beschreibung des Bildes</li>
+    <li>width: Breite des Bildes</li>
+    <li>height: Höhe des Bildes</li>
+</ul>
+<h2>1.7 HTML-Wireframe</h2>
+<a href="uebung01_07.html" target="_blank">[In neuem Tab öffnen]</a>
+<br>
+<iframe src="uebung01_07.html" width="700px" height="700px"></iframe>
+<p>Source Code:</p>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Ü1.2&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Übung 1.2: Inventors of the Web&lt;/h1&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;
+        &lt;ins&gt;
+            &lt;mark&gt;Tim-Berners-Lee:&lt;/mark&gt;
+        &lt;/ins&gt;
+    &lt;/strong&gt; WWW, HTTP, HTML, URI
+    &lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Hakom Lie and Bert Bos:&lt;/strong&gt; CSS&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Brendan Eich:&lt;/strong&gt; JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;br&gt;
+&lt;h2&gt;Inventors of the WWW&lt;/h2&gt;
+&lt;table border="10"&gt;
+    &lt;tr&gt;
+        &lt;th colspan="4"&gt;Inventors of the WWW&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;WWW&lt;/th&gt;
+        &lt;th&gt;HTML&lt;/th&gt;
+        &lt;th&gt;CSS&lt;/th&gt;
+        &lt;th&gt;JavaScript&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;mark&gt;Tim Berners-Lee&lt;/mark&gt;
+        &lt;/td&gt;
+        &lt;td&gt;
+            &lt;mark&gt;Tim Berners-Lee&lt;/mark&gt;
+        &lt;/td&gt;
+        &lt;td&gt;Hakom Lie and Bert Bos&lt;/td&gt;
+        &lt;td&gt;Brendan Eich&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;table&gt;
+    &lt;caption&gt;&lt;b&gt;Inventors of the WWW&lt;/b&gt;&lt;/caption&gt;
+    &lt;caption&gt;_____________________________&lt;/caption&gt;
+    &lt;tr&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th&gt;HTML&lt;/th&gt;
+        &lt;th&gt;|&lt;/th&gt;
+        &lt;th&gt;JavaScript&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;img src="https://kaul.inf.h-brs.de/ccm/we/ws23/resources/assets/tbl.jpg" width="110"&gt;
+        &lt;/td&gt;
+        &lt;td&gt;|&lt;/td&gt;
+        &lt;td&gt;
+            &lt;img src="https://kaul.inf.h-brs.de/ccm/we/ws23/resources/assets/eich.jpg" width="110"&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;
+            &lt;mark&gt;Tim Berners-Lee&lt;/mark&gt;
+        &lt;/td&gt;
+        &lt;td&gt;|&lt;/td&gt;
+        &lt;td&gt;Brendan Eich&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<br>
+<a href="index.html">[Zurück]</a>
+</body>
+</html>
