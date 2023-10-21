@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Roboto,serif;
+            background: #a9d7d1;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            background: snow;
+            margin: 10px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .labels {
+            text-align: right;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <h1>Survey Form</h1>
+<div>
+    <table>
+        <caption>Let us know how we can improve freeCodeCamp</caption>
+        <tr>
+            <td class="labels">*Name:</td>
+            <td>
+                <label>
+                    <input type="text" placeholder="Enter your name">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="labels">*Email:</td>
+            <td>
+                <label>
+                    <input type="text" placeholder="Enter your Email">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="labels">*Age:</td>
+            <td>
+                <label>
+                    <input type="number" placeholder="Age">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="labels">Which option best describes your current role?</td>
+            <td>
+                <label>
+                    <select>
+                        <option>Student</option>
+                    </select>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="labels">How likely is that you would recommend<br>freeCodeCamp to a friend?</td>
+            <td>
+                <label>
+                    <input name="recommendation" type="radio" value="Definitely">
+                    Definitely
+                </label><br>
+                <label>
+                    <input name="recommendation" type="radio" value="Maybe">
+                    Maybe
+                </label><br>
+                <label>
+                    <input name="recommendation" type="radio" value="Not sure" checked>
+                    Not sure
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="labels">What do you like most in FCC?</td>
+            <td>
+                <label>
+                    <select>
+                        <option>Select an option</option>
+                    </select>
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td class="labels">Things that should be improved in the future<br>(Check all that apply):</td>
+            <td>
+                <label>
+                    <input type="checkbox" checked>
+                    Front-end Projects
+                </label><br>
+                <label>
+                    <input type="checkbox" checked>
+                    Back-end Projects
+                </label><br>
+                <label>
+                    <input type="checkbox">
+                    Data Visualization
+                </label>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
