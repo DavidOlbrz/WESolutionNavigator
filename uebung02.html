@@ -1,11 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>Übung 02</title>
 </head>
 <body>
 <a href="index.html">[Zurück]</a><br>
-<iframe src="uebung02_04.html" width="700px" height="700px"></iframe>
+<h1>Übung 2: Cascading Style Sheets (CSS)</h1>
+
+<h2>2.1 Zuordnung der Homepage</h2>
+Repository des Solution Navigators auf <a href="https://github.com/xTheAgentx/WESolutionNavigator" target="_blank"
+                                          title="Öffnet das Repository in einem neuen Tab">GitHub</a>
+
+<h2>2.2 CSS-Selektoren und CSS-Farben</h2>
+<fieldset>
+    <legend>Spezifität der CSS-Selektoren</legend>
+    <table border="1">
+        <tr>
+            <th>div div div:focus .inner</th>
+            <td>023</td>
+        </tr>
+        <tr>
+            <th>h1 + div.main</th>
+            <td>012</td>
+        </tr>
+        <tr>
+            <th>div a:link[href*='h-brs']</th>
+            <td>022</td>
+        </tr>
+        <tr>
+            <th>nav > a:hover::before</th>
+            <td>013</td>
+        </tr>
+        <tr>
+            <th>ul#primary-nav li.active</th>
+            <td>112</td>
+        </tr>
+    </table>
+</fieldset>
+<fieldset>
+    <legend>Farbwerte → HSL</legend>
+    <table>
+        <tr>
+            <td style="color: #ffffff">■</td>
+            <td title="HEX">#ffffff</td>
+            <td>→</td>
+            <td style="color: hsl(0, 0%, 100%)">■</td>
+            <td>hsl(0, 0%, 100%)</td>
+        </tr>
+        <tr>
+            <td style="color: #000">■</td>
+            <td title="HEX">#000</td>
+            <td>→</td>
+            <td style="color: hsl(0, 0%, 0%)">■</td>
+            <td>hsl(0, 0%, 0%)</td>
+        </tr>
+        <tr>
+            <td style="color: #ab0978">■</td>
+            <td title="HEX">#ab0978</td>
+            <td>→</td>
+            <td style="color: hsl(319, 90%, 35%)">■</td>
+            <td>hsl(319, 90%, 35%)</td>
+        </tr>
+        <tr>
+            <td style="color: rgb(127,255,33)">■</td>
+            <td title="RGB">rgb(127,255,33)</td>
+            <td>→</td>
+            <td style="color: hsl(95, 100%, 56%)">■</td>
+            <td>hsl(95, 100%, 56%)</td>
+        </tr>
+        <tr>
+            <td style="color: rgba(255,127,33,0.8)">■</td>
+            <td title="RGBA">rgba(255,127,33,0.8)</td>
+            <td>→</td>
+            <td style="color: hsla(25, 100%, 56%, 0.8)">■</td>
+            <td>hsla(25, 100%, 56%, 0.8)</td>
+        </tr>
+    </table>
+</fieldset>
+
+<h2>2.3 CSS-Positionierung</h2>
+<p><abbr title="Work in progress">WIP</abbr></p>
+
+<h2>2.4 Wireframe mit HTML und CSS</h2>
+<a href="uebung02_04.html" target="_blank">
+    <button>In neuem Tab öffnen</button>
+</a><br><br>
+<iframe src="uebung02_04.html" width="750px" height="620px" scrolling="no" frameborder="0"></iframe>
 </body>
 </html>
