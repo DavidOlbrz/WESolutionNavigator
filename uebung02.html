@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Übung 02</title>
+    <style>
+        fieldset {
+            width: fit-content;
+        }
+    </style>
 </head>
 <body>
 <a href="index.html">[Zurück]</a><br>
@@ -15,7 +20,7 @@ Repository des Solution Navigators auf <a href="https://github.com/xTheAgentx/WE
 <h2>2.2 CSS-Selektoren und CSS-Farben</h2>
 <fieldset>
     <legend>Spezifität der CSS-Selektoren</legend>
-    <table border="1">
+    <table border="1" style="text-align: left">
         <tr>
             <th>div div div:focus .inner</th>
             <td>023</td>
@@ -80,12 +85,247 @@ Repository des Solution Navigators auf <a href="https://github.com/xTheAgentx/WE
 </fieldset>
 
 <h2>2.3 CSS-Positionierung</h2>
-<p><abbr title="Work in progress">WIP</abbr></p>
+<h3>Sticky Header</h3>
+<a href="uebung02_03_first.html" target="_blank">
+    <button>In neuem Tab öffnen</button>
+</a><br><br>
+<iframe src="uebung02_03_first.html" height="200px" width="400px"></iframe>
+<h4>Source Code</h4>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Sticky Header&lt;/title&gt;
+    &lt;style&gt;h1 {
+        border: black solid 1px;
+        padding: 10px;
+        position: sticky;
+        top: 5px;
+        background: rgba(255, 255, 255, 0.8);
+    }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Erste Überschrift&lt;/h1&gt;
+&lt;!-- Platzhalter Text --&gt;
+
+&lt;h1&gt;Zweite Überschrift&lt;/h1&gt;
+&lt;!-- Platzhalter Text --&gt;
+
+&lt;h1&gt;Dritte Überschrift&lt;/h1&gt;
+&lt;!-- Platzhalter Text --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<h3>Bild verstecken</h3>
+<a href="uebung02_03_second.html" target="_blank">
+    <button>In neuem Tab öffnen</button>
+</a><br><br>
+<iframe style="resize: horizontal" src="uebung02_03_second.html" height="500px" width="500px"></iframe>
+<h4>Source Code</h4>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Bild verstecken&lt;/title&gt;
+    &lt;style&gt;
+        div {
+            border: black solid 1px;
+            padding: 5px;
+            width: fit-content;
+            height: fit-content;
+        }
+
+        img {
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #hide:checked ~ div img {
+            opacity: 100%;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Übung 2.2&lt;/h1&gt;
+&lt;input id="hide" name="hide" type="checkbox" checked&gt;
+&lt;label for="hide"&gt;hide and show via checkbox&lt;/label&gt;
+&lt;br&gt;
+&lt;div&gt;
+    &lt;img src="https://kaul.inf.h-brs.de/ccm/we/ws23/resources/assets/h-brs.jpg"
+         alt="Hochschule Bonn-Rhein-Sieg Hauptgebäude"&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
 
 <h2>2.4 Wireframe mit HTML und CSS</h2>
 <a href="uebung02_04.html" target="_blank">
     <button>In neuem Tab öffnen</button>
 </a><br><br>
 <iframe src="uebung02_04.html" width="750px" height="620px" scrolling="no" frameborder="0"></iframe>
+<h3>Source Code</h3>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Survey Form&lt;/title&gt;
+    &lt;!-- Roboto font via Google Fonts https://fonts.google.com/specimen/Roboto --&gt;
+    &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+    &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"&gt;
+    &lt;style&gt;
+        body {
+            font-family: "Roboto Medium", serif;
+            background: #a9d7d1;
+        }
+
+        .formular_container {
+            width: 740px;
+            margin: auto;
+        }
+
+        .formular_container h1 {
+            font-family: Roboto, serif;
+            text-align: center;
+        }
+
+        .formular {
+            background: snow;
+            margin: 15px;
+            padding: 30px 0 10px 0;
+            border-radius: 20px 20px 0 0;
+            height: 100%;
+            width: 700px;
+        }
+
+        caption {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .labels {
+            text-align: right;
+            vertical-align: top;
+            padding-right: 15px;
+            width: 400px;
+        }
+
+        .input {
+            margin-bottom: 15px;
+        }
+
+        .selectors {
+            margin: 10px 0;
+        }
+
+        select {
+            font-family: "Roboto Medium", serif;
+            padding: 7px 0 7px 0;
+            font-weight: 50;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="formular_container"&gt;
+    &lt;h1&gt;Survey Form&lt;/h1&gt;
+    &lt;div class="formular"&gt;
+        &lt;table&gt;
+            &lt;caption&gt;Let us know how we can improve freeCodeCamp&lt;/caption&gt;
+            &lt;tr&gt;
+                &lt;td class="labels"&gt;* Name:&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;label&gt;
+                        &lt;input class="input" type="text" placeholder="Enter your name"&gt;
+                    &lt;/label&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="labels"&gt;* Email:&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;label&gt;
+                        &lt;input class="input" type="text" placeholder="Enter your Email"&gt;
+                    &lt;/label&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="labels"&gt;* Age:&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;label&gt;
+                        &lt;input class="input" type="number" placeholder="Age"&gt;
+                    &lt;/label&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="labels"&gt;Which option best describes your current role?&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;label&gt;
+                        &lt;select class="input"&gt;
+                            &lt;option&gt;Student&lt;/option&gt;
+                        &lt;/select&gt;
+                    &lt;/label&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="labels"&gt;How likely is that you would recommend&lt;br&gt;freeCodeCamp to a friend?&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;label&gt;
+                        &lt;input class="selectors" name="recommendation" type="radio" value="Definitely"&gt;
+                        Definitely
+                    &lt;/label&gt;&lt;br&gt;
+                    &lt;label&gt;
+                        &lt;input class="selectors" name="recommendation" type="radio" value="Maybe"&gt;
+                        Maybe
+                    &lt;/label&gt;&lt;br&gt;
+                    &lt;label&gt;
+                        &lt;input class="selectors" style="margin-bottom: 25px" name="recommendation" type="radio"
+                               value="Not sure" checked&gt;
+                        Not sure
+                    &lt;/label&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="labels"&gt;What do you like most in FCC?&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;label&gt;
+                        &lt;select class="input"&gt;
+                            &lt;option&gt;Select an option&lt;/option&gt;
+                        &lt;/select&gt;
+                    &lt;/label&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="labels"&gt;Things that should be improved in the future&lt;br&gt;(Check all that apply):&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;label&gt;
+                        &lt;input class="selectors" type="checkbox" checked&gt;
+                        Front-end Projects
+                    &lt;/label&gt;&lt;br&gt;
+                    &lt;label&gt;
+                        &lt;input class="selectors" type="checkbox" checked&gt;
+                        Back-end Projects
+                    &lt;/label&gt;&lt;br&gt;
+                    &lt;label&gt;
+                        &lt;input class="selectors" type="checkbox"&gt;
+                        Data Visualization
+                    &lt;/label&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<br>
+<a href="index.html">[Zurück]</a>
 </body>
 </html>
