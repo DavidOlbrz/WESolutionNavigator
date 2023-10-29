@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Responsiv mit Grid und Mobile-First</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 7fr 1fr;
+        }
+
+        nav, aside {
+            height: 5rem;
+        }
+
+        @media screen and (min-width: 300px) {
+            body {
+                grid-template-columns: 1fr 2fr;
+                grid-template-rows: 1fr 5fr 1fr;
+            }
+
+            nav, aside.right {
+                grid-column: 1 / 3;
+            }
+
+            aside.left {
+                height: auto;
+            }
+        }
+
+        @media screen and (min-width: 600px) {
+            body {
+                grid-template-columns: 1fr 2fr 1fr;
+                grid-template-rows: 1fr 3fr;
+            }
+
+            nav {
+                grid-column: 1 / 4;
+            }
+
+            aside, article {
+                height: auto;
+            }
+
+            aside.right {
+                grid-column: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav style="background: red"></nav>
+<aside class="left" style="background: green"></aside>
+<article style="background: blue"></article>
+<aside class="right" style="background: magenta"></aside>
+</body>
+</html>
