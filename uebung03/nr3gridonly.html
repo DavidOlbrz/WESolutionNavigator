@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Wireframe responsive mit Grid</title>
+    <!-- Roboto font via Google Fonts https://fonts.google.com/specimen/Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 3rem 5rem 1fr 12rem;
+            grid-template-areas:
+                    'nav nav'
+                    'h1 h1'
+                    'img description'
+                    'footer footer';
+            background: #ebeae6;
+            font-family: Roboto, serif;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        header {
+            grid-area: nav;
+            background: #363636;
+        }
+
+        nav {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: center;
+            background: #363636;
+            color: white;
+            text-align: center;
+            height: 100%;
+            width: 60%;
+            margin-left: 20%;
+        }
+
+        nav > a {
+            margin: 0 2vw 0 2vw;
+        }
+
+        h1 {
+            grid-area: h1;
+            text-align: center;
+            height: 100%;
+        }
+
+        .image_container {
+            grid-area: img;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image_container img {
+            border: #363636 solid 1px;
+            border-radius: 10px;
+            max-width: 60%;
+            height: auto;
+            margin: 0 20% 0 20%;
+        }
+
+        .description_container {
+            grid-area: description;
+            text-align: center;
+            padding-top: 2rem;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        button {
+            font-family: "Roboto SemiBold", serif;
+            font-size: 20px;
+            color: white;
+            background: #f88e37;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 50px;
+        }
+
+        footer {
+            grid-area: footer;
+            align-items: baseline;
+            background: #011826;
+            color: white;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        footer > p {
+            margin-top: 3rem;
+        }
+
+        footer > button {
+            margin-bottom: 1rem;
+            padding: 10px 100px;
+        }
+
+        @media screen and (max-width: 700px) {
+            body {
+                grid-template-columns: 1fr;
+                grid-template-rows: 12rem 5rem 1fr 1fr 12rem;
+                grid-template-areas:
+                    'nav'
+                    'h1'
+                    'img'
+                    'description'
+                    'footer';
+            }
+
+            nav {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 1fr);
+            }
+
+            nav > a {
+                margin: 15px 0 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a>The book series</a>
+        <a>Testimonials</a>
+        <a>The Author</a>
+        <a>Free resources</a>
+    </nav>
+</header>
+<h1>You don't know JavaScript</h1>
+<div class="image_container">
+    <img src="landing-img.png" alt="You dont know JavaScript Book Cover">
+</div>
+<div class="description_container">
+    <p>Don't just drift through Javascript.</p>
+    <br>
+    <p>Understand how Javascript works</p>
+    <br>
+    <p>Start your journey through the bumpy side of Javascript</p>
+    <br>
+    <button>ORDER YOUR COPY NOW</button>
+</div>
+<footer>
+    <p>The first ebook in the book series is absolutely free.</p>
+    <button>FIND OUT MORE ABOUT THIS OFFER</button>
+</footer>
+</body>
+</html>
