@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 4</title>
+    <link href="../css/uebung.css" rel="stylesheet">
+    <!-- highlight.js for syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script>
+        // task 1
+
+        function identity(arg) {
+            return arg;
+        }
+
+        function identity_function(arg) {
+            return identity(arg);
+        }
+
+        function add(opA, opB) {
+            return opA + opB;
+        }
+
+        function mul(opA, opB) {
+            return opA * opB;
+        }
+
+        function addf(x) {
+            return function (y) {
+                return x + y;
+            }
+        }
+
+        function applyf(func) {
+            return function (x) {
+                return function (y) {
+                    return func(x, y);
+                }
+            }
+        }
+
+        // task 2
+
+        function Person(name) {
+            this.name = name;
+            this.cars = []
+        }
+
+        function Car(brand, owner) {
+            this.brand = brand;
+            this.owner = owner;
+        }
+
+        Person.prototype.addCar = function (car) {
+            this.cars.push(car);
+        };
+
+        Car.prototype.conflict = function () {
+            const owners = this.owner ? [this.owner] : [];
+            for (let i = 0; i < this.owner.cars.length; i++) {
+                if (this.owner.cars[i] !== this && this.owner.cars[i].brand === this.brand) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        // task 3
+
+        function fibonacci(n) {
+            if (n === 0) {
+                return [];
+            } else if (n === 1) {
+                return [0n];
+            } else {
+                let fib = [0n, 1n];
+                for (let i = 2; i < n; i++) {
+                    fib.push(fib[i - 1] + fib[i - 2]);
+                }
+                return fib;
+            }
+        }
+
+        function runFibonacci() {
+            console.log(fibonacci(2000));
+        }
+
+        // task 4
+
+        function topsort(dependencies) {
+            const nodes = new Set(dependencies.flat());
+            const edges = new Map(Array.from(nodes, node => [node, []]));
+            for (const [from, to] of dependencies) {
+                edges.get(from).push(to);
+            }
+            const visited = new Set();
+            const sorted = [];
+            const visit = node => {
+                if (visited.has(node)) return;
+                visited.add(node);
+                for (const neighbor of edges.get(node)) {
+                    visit(neighbor);
+                }
+                sorted.unshift(node);
+            };
+            for (const node of nodes) {
+                visit(node);
+            }
+            return sorted;
+        }
+
+        function testTopSort() {
+            console.assert(topsort([["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "prüfen"]]).toString() === "schlafen,essen,studieren,prüfen");
+        }
+    </script>
+</head>
+<body>
+<a href="..">[Zurück]</a><br>
+<h1 id="top">Übung 4: JavaScript (JS)</h1>
+
+<div class="aufgaben_nav">
+    <h2>Aufgaben</h2>
+    <nav><a href="#task1">4.1 Funktionen</a></nav>
+    <nav><a href="#task2">4.2 Objekte</a></nav>
+    <nav><a href="#task3">4.3 Fibonacci</a></nav>
+    <nav><a href="#task4">4.4 TopSort</a></nav>
+</div>
+
+<h2 id="task1">4.1 Funktionen</h2>
+
+<p>1. Eine Funktion <code>identity()</code>, die ein Argument als Parameter entgegennimmt und dieses als Ergebnis
+    zurückgibt.</p>
+<label for="input_1_1">Input</label>
+<input id="input_1_1" type="text">
+<button onclick="document.getElementById('result_1_1').value = identity(document.getElementById('input_1_1').value)">
+    ► Ausführen
+</button>
+<br>
+<label for="result_1_1">Output</label>
+<input id="result_1_1" type="text" placeholder="Ergebnis erscheint hier" disabled>
+<p>Source Code</p>
+<pre>
+    <code>
+function identity(arg) {
+    return arg;
+}
+    </code>
+</pre>
+
+<p>2. Eine Funktion <code>identity_function()</code>, die ein Argument als Parameter entgegennimmt und eine Funktion
+    zurückgibt, die
+    dieses Argument zurückgibt.</p>
+<label for="input_1_2">Input</label>
+<input id="input_1_2" type="text">
+<button onclick="document.getElementById('result_1_2').value = identity_function(document.getElementById('input_1_2').value)">
+    ► Ausführen
+</button>
+<br>
+<label for="result_1_2">Output</label>
+<input id="result_1_2" type="text" placeholder="Ergebnis erscheint hier" disabled>
+<p>Source Code</p>
+<pre>
+    <code>
+function identity_function(arg) {
+    return identity(arg);
+}
+    </code>
+</pre>
+
+<p>3. Zwei binäre Funktionen <code>add</code> und <code>mul</code>, die Summe und Produkt berechnen.</p>
+<label for="input_1_3a">Operand A</label>
+<input id="input_1_3a" type="number">
+<label for="input_1_3b">Operand B</label>
+<input id="input_1_3b" type="number">
+<button onclick="document.getElementById('result_1_3add').value = add(parseInt(document.getElementById('input_1_3a').value), parseInt(document.getElementById('input_1_3b').value));document.getElementById('result_1_3mul').value = mul(parseInt(document.getElementById('input_1_3a').value), parseInt(document.getElementById('input_1_3b').value));">
+    ► Ausführen
+</button>
+<br>
+<label for="result_1_3add">Output <code>add</code></label>
+<input id="result_1_3add" type="number" disabled>
+<label for="result_1_3mul">Output <code>mul</code></label>
+<input id="result_1_3mul" type="number" disabled>
+<p>Source Code</p>
+<pre>
+    <code>
+function add(opA, opB) {
+    return opA + opB;
+}
+
+function mul(opA, opB) {
+    return opA * opB;
+}
+    </code>
+</pre>
+
+<p>4. Eine Addierer-Funktion <code>addf()</code>, so dass <code>addf(x)(y)</code> genau <code>x + y</code> zurückgibt.
+    (Es haben also zwei Funktionsaufrufe zu
+    erfolgen. <code>addf(x)</code> liefert eine Funktion, die auf <code>y</code> angewandt wird.)</p>
+<label for="input_1_4a">Operand A</label>
+<input id="input_1_4a" type="number">
+<label for="input_1_4b">Operand B</label>
+<input id="input_1_4b" type="number">
+<button onclick="document.getElementById('result_1_4').value = addf(parseInt(document.getElementById('input_1_4a').value))(parseInt(document.getElementById('input_1_4b').value))">
+    ► Ausführen
+</button>
+<br>
+<label for="result_1_4">Output</label>
+<input id="result_1_4" placeholder="Ergebnis erscheint hier">
+<p>Source Code</p>
+<pre>
+    <code>
+function addf(x) {
+    return function (y) {
+        return x + y;
+    }
+}
+    </code>
+</pre>
+
+<p>5. Eine Funktion <code>applyf()</code>, die aus einer binären Funktion wie <code>add(x,y)</code> eine Funktion <code>addf</code>
+    berechnet, die mit zwei
+    Aufrufen das gleiche Ergebnis liefert, z.B. <code>addf = applyf(add); addf(x)(y)</code> soll <code>add(x,y)</code>
+    liefern. Entsprechend
+    <code>applyf(mul)(5)(6)</code> soll <code>30</code> liefern, wenn <code>mul</code> die binäre Multiplikation ist.
+</p>
+<label for="input_1_5a">Operand A</label>
+<input id="input_1_5a" type="number">
+<label for="input_1_5b">Operand B</label>
+<input id="input_1_5b" type="number">
+<label for="input_1_5c">Operator</label>
+<select id="input_1_5c">
+    <option value="add">add</option>
+    <option value="mul">mul</option>
+</select>
+<button onclick="document.getElementById('result_1_5').value = applyf(eval(document.getElementById('input_1_5c').value))(parseInt(document.getElementById('input_1_5a').value))(parseInt(document.getElementById('input_1_5b').value))">
+    ► Ausführen
+</button>
+<br>
+<label for="result_1_5">Output</label>
+<input id="result_1_5" type="number" placeholder="Ergebnis erscheint hier">
+<p>Source Code</p>
+<pre>
+    <code>
+function applyf(func) {
+    return function (x) {
+        return function (y) {
+            return func(x, y);
+        }
+    }
+}
+    </code>
+</pre>
+
+<h2 id="task2">4.2 Objekte</h2>
+
+<p>Schreiben Sie die Prototypen <code>Person</code> und <code>Auto</code> in JavaScript, sodass jede Person weiß, welche
+    Autos sie besitzt.
+    Schreiben Sie eine Funktion <code>conflict()</code>, die feststellt, ob ein Auto von mehr als einer Person besessen
+    wird.</p>
+<pre>
+    <code>
+function Person(name) {
+    this.name = name;
+    this.cars = []
+}
+
+function Car(brand, owner) {
+    this.brand = brand;
+    this.owner = owner;
+}
+
+Person.prototype.addCar = function (car) {
+    this.cars.push(car);
+};
+
+Car.prototype.conflict = function () {
+    const owners = this.owner ? [this.owner] : [];
+    for (let i = 0; i < this.owner.cars.length; i++) {
+        if (this.owner.cars[i] !== this && this.owner.cars[i].brand === this.brand) {
+            return true;
+        }
+    }
+    return false;
+};
+    </code>
+</pre>
+
+<h2 id="task3">4.3 Fibonacci</h2>
+
+<p>Schreiben Sie im Browser die <a href="https://de.wikipedia.org/wiki/Fibonacci-Folge">Fibonacci-Funktion</a> in JS und
+    geben Sie die ersten 2000 Fibonacci-Zahlen
+    0,1,1,2,3,5,8,13,... auf der Konsole mit <code>console.log()</code> aus.</p>
+<p>Achten Sie auf Performanz: Berechnen Sie jeden Fibonacci-Wert nur einmal. Speichern Sie zu diesem Zweck jede
+    berechnete Fibonacci-Zahl in einer Tabelle.</p>
+<ol>
+    <li>Was ist die größte Fibonacci-Zahl, die sich noch als <code>Integer</code> sicher speichern lässt (<a
+            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER">Number.MAX_SAFE_INTEGER</a>)?
+        Die wievielte Zahl in der Fibonacci-Folge ist das?
+    </li>
+    <li>Was ist die größte Fibonacci-Zahl, die sich noch als <code>Number</code> speichern lässt (<a
+            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_VALUE">Number.MAX_VALUE</a>)?
+        Die wievielte Zahl in der Fibonacci-Folge ist das?
+    </li>
+    <li>Wechseln Sie zu <code>BigInt</code>, um alle 2000 Fibonacci-Zahlen korrekt anzuzeigen.</li>
+</ol>
+<p>Ergebnis:</p>
+<ol>
+    <li>5.922018541424292e+304 an der Stelle 1460</li>
+    <li>1.3069892237633987e+308 an der Stelle 1476</li>
+</ol>
+<button onclick="runFibonacci()">Run!</button>
+<pre>
+    <code>
+function fibonacci(n) {
+    if (n === 0) {
+        return [];
+    } else if (n === 1) {
+        return [0n];
+    } else {
+        let fib = [0n, 1n];
+        for (let i = 2; i < n; i++) {
+            fib.push(fib[i - 1] + fib[i - 2]);
+        }
+        return fib;
+    }
+}
+    </code>
+</pre>
+
+<h2 id="task4">4.4 TopSort</h2>
+
+<button onclick="testTopSort()">Test</button>
+
+</body>
+</html>
