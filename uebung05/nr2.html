@@ -39,7 +39,7 @@
         let speakerIndex = speakers.length - 1;
         // add speaker to the list
         let item = document.createElement('li');
-        item.innerHTML = speaker.name + '<a class="timer"> 00:00:00 </a><input class="timer-button" type="button" onclick="">';
+        item.innerHTML = speaker.name + '<a class="timer"> 00:00:00 </a><input class="timer-button" type="button">';
         document.getElementById('speaker-list').appendChild(item);
         document.getElementById('speaker-input').value = '';
         // update buttons array
@@ -71,7 +71,9 @@
         console.log('Hat funktioniert!');
         speakers[speakerNo].stopTimer();
         buttons[speakerNo].value = 'Start!';
-        buttons[speakerNo].onclick = 'function () { startTimers(' + speakerNo + ') }';
+        buttons[speakerNo].onclick = function () {
+            startTimers(speakerNo)
+        };
     }
 
     function update() {
