@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>5.2. Rednerliste mit Zeitmessung</title>
+</head>
+<body>
+<h1>Rednerliste</h1>
+
+<script>
+    onload = function () {
+        setInterval(update, 1000);
+    }
+
+    function Speaker(name) {
+        this.name = name;
+        this.time = 0;
+        this.timer = undefined;
+        this.startTimer = function () {
+            this.timer = setInterval(() => this.time++, 1000);
+        };
+        this.stopTimer = function () {
+            clearInterval(this.timer);
+        };
+    }
+
+    const speakers = [];
+    let buttons = [];
+    let currentSpeaker = undefined;
+
+    function addSpeaker(name) {
+        // if text field is empty, do not add a new speaker
+        if (name === '') {
+            return;
+        }
+        // create a new speaker
+        const speaker = new Speaker(name);
+        speakers.push(speaker);
+        let speakerIndex = speakers.length - 1;
+        // add speaker to the list
+        let item = document.createElement('li');
+        item.innerHTML = speaker.name + '<a class="timer"> 00:00:00 </a><input class="timer-button" type="button" onclick="">';
+        document.getElementById('speaker-list').appendChild(item);
+        document.getElementById('speaker-input').value = '';
+        // update buttons array
+        buttons = document.getElementsByClassName('timer-button');
+        // start the timer
+        startTimers(speakerIndex);
+    }
+
+    function startTimers(speakerNo) {
+        currentSpeaker = speakerNo;
+        for (let x in speakers) {
+            if (x == speakerNo) {
+                speakers[x].startTimer();
+                buttons[x].value = 'Stopp!';
+                buttons[x].onclick = function () {
+                    stopTimers(x);
+                };
+            } else {
+                speakers[x].stopTimer();
+                buttons[x].value = 'Start!';
+                buttons[x].onclick = function () {
+                    startTimers(x);
+                };
+            }
+        }
+    }
+
+    function stopTimers(speakerNo) {
+        console.log('Hat funktioniert!');
+        speakers[speakerNo].stopTimer();
+        buttons[speakerNo].value = 'Start!';
+        buttons[speakerNo].onclick = 'function () { startTimers(' + speakerNo + ') }';
+    }
+
+    function update() {
+        const items = document.getElementsByClassName('timer');
+        for (let x in speakers) {
+            items[x].innerHTML = timeToString(speakers[x]);
+        }
+    }
+
+    function timeToString(speaker) {
+        const time = speaker.time;
+        let hours = Math.floor(time / 3600);
+        let minutes = Math.floor((time % 3600) / 60);
+        let seconds = Math.floor((time % 3600) % 60);
+        return ' ' + toTwoDigitString(hours) + ':' + toTwoDigitString(minutes) + ':' + toTwoDigitString(seconds) + ' ';
+    }
+
+    function toTwoDigitString(number) {
+        return (number < 10) ? ('0' + number) : number;
+    }
+</script>
+
+<form method="dialog">
+    <label>
+        Neuer Redner:
+        <input id="speaker-input" type="text" placeholder="Name">
+        <input type="submit" value="Hinzufügen" onclick="addSpeaker(document.getElementById('speaker-input').value)">
+    </label>
+</form>
+<ul id="speaker-list">
+    <!-- Speakers will be added here -->
+</ul>
+</body>
+</html>

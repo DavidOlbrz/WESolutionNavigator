@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+    </script>
+</head>
+<body>
+<script>
+    function testPerformance() {
+        const testElement = document.createElement('div');
+        document.body.appendChild(testElement);
+
+        const testCases = [
+            {name: 'innerHTML', value: '<span>test</span>'},
+            {name: 'innerText', value: 'test'},
+            {name: 'textContent', value: 'test'},
+            {name: 'outerHTML', value: '<div><span>test</span></div>'},
+        ];
+
+        console.table(
+            testCases.reduce((results, {name, value}) => {
+                const start = performance.now();
+                testElement[name] = value;
+                const end = performance.now();
+                results[name] = (end - start) + ' ms';
+                return results;
+            }, {})
+        );
+
+        //document.body.removeChild(testElement);
+    }
+
+
+    testPerformance();
+</script>
+</body>
+</html>
