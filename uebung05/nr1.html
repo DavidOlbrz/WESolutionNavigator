@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5.1 Performanz-Messungen von DOM-Operationen</title>
+</head>
+<body>
+<script>
+    function testPerformance() {
+        const item = document.createElement('div');
+        document.body.appendChild(item);
+
+        const results = [];
+        let start, end;
+
+        start = performance.now();
+        item.innerHTML = 'test';
+        end = performance.now();
+        results.push({name: 'innerHTML', value: (end - start) + ' ms'});
+
+        start = performance.now();
+        item.innerText = 'test';
+        end = performance.now();
+        results.push({name: 'innerText', value: (end - start) + ' ms'});
+
+        start = performance.now();
+        item.textContent = 'test';
+        end = performance.now();
+        results.push({name: 'textContent', value: (end - start) + ' ms'});
+
+        start = performance.now();
+        item.outerHTML = 'test';
+        end = performance.now();
+        results.push({name: 'outerHTML', value: (end - start) + ' ms'});
+
+        console.table(results);
+
+        document.querySelector('body').innerHTML = '';
+    }
+
+    testPerformance();
+</script>
+</body>
+</html>
