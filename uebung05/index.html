@@ -1,40 +1,341 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script>
-
-    </script>
+    <title>Übung 05 | SolutionNavigator</title>
+    <link href="../css/uebung.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 <body>
-<script>
-    function testPerformance() {
-        const testElement = document.createElement('div');
-        document.body.appendChild(testElement);
+<a href="..">[Zurück]</a>
+<h1 id="top">Übung 5: Document Object Model (DOM)</h1>
 
-        const testCases = [
-            {name: 'innerHTML', value: '<span>test</span>'},
-            {name: 'innerText', value: 'test'},
-            {name: 'textContent', value: 'test'},
-            {name: 'outerHTML', value: '<div><span>test</span></div>'},
-        ];
+<div class="aufgaben_nav">
+    <h2>Aufgaben</h2>
+    <nav><a href="#task1">5.1. Performanz-Messungen von DOM-Operationen</a></nav>
+    <nav><a href="#task2">5.2. Rednerliste mit Zeitmessung</a></nav>
+    <nav><a href="#task3">5.3. TopSort als Web-App</a></nav>
+</div>
 
-        console.table(
-            testCases.reduce((results, {name, value}) => {
-                const start = performance.now();
-                testElement[name] = value;
-                const end = performance.now();
-                results[name] = (end - start) + ' ms';
-                return results;
-            }, {})
-        );
+<h2 id="task1">5.1. Performanz-Messungen von DOM-Operationen</h2>
 
-        //document.body.removeChild(testElement);
+<p>Implementieren Sie Performanz-Messungen zum Vergleich von</p>
+<ul>
+    <li><code>innerHTML</code>,</li>
+    <li><code>innerText</code>,</li>
+    <li><code>textContent</code> und</li>
+    <li><code>outerHTML</code></li>
+</ul>
+<p>
+    selbstständig in JavaScript durch Nutzung der <a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">DOM-API</a>.
+    Geben Sie die Messergebnisse als Tabelle aus. Verwenden Sie
+    die eingebauten Zeitmessung-Funktionen <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/now"
+                                              target="_blank"><code>performance.now()</code></a>, siehe auch
+    <a href="https://developers.google.com/web/updates/2012/08/When-milliseconds-are-not-enough-performance-now"
+       target="_blank">When-milliseconds-are-not-enough-performance-now</a>. Suchen Sie eine möglichst kurze und
+    elegante
+    Lösung.
+</p>
+<p>
+    Dabei ist zu beachten, dass Browser, um potenzielle Sicherheitsbedrohungen wie <a href="https://spectreattack.com/"
+                                                                                      target="_blank">Meltdown oder
+    Spectre</a>
+    zu minimieren,
+    den zurückgegebenen Wert normalerweise um einen bestimmten Betrag runden. Dies führt zu einer gewissen
+    Ungenauigkeit. Beispielsweise rundet Firefox die zurückgegebene Zeit in Schritten von 1 Millisekunde. Diese
+    Zwangsrundung kann man jedoch wiederum abschalten mittels der Firefox-Einstellung
+    <code>privacy.reduceTimerPrecision</code>,
+    siehe <a
+        href="https://stackoverflow.com/questions/50117537/how-to-get-microsecond-timings-in-javascript-since-spectre-and-meltdown"
+        target="_blank">How to get microsecond timings in JavaScript since Spectre and Meltdown</a>.
+</p>
+<a href="nr1.html" target="_blank">
+    <button>Seite öffnen</button>
+</a>
+<h3>Source code:</h3>
+<pre>
+    <code>
+function testPerformance() {
+    const item = document.createElement('div');
+    document.body.appendChild(item);
+
+    const results = [];
+    let start, end;
+
+    start = performance.now();
+    item.innerHTML = 'test';
+    end = performance.now();
+    results.push({name: 'innerHTML', value: (end - start) + ' ms'});
+
+    start = performance.now();
+    item.innerText = 'test';
+    end = performance.now();
+    results.push({name: 'innerText', value: (end - start) + ' ms'});
+
+    start = performance.now();
+    item.textContent = 'test';
+    end = performance.now();
+    results.push({name: 'textContent', value: (end - start) + ' ms'});
+
+    start = performance.now();
+    item.outerHTML = 'test';
+    end = performance.now();
+    results.push({name: 'outerHTML', value: (end - start) + ' ms'});
+
+    console.table(results);
+
+    document.querySelector('body').innerHTML = '';
+}
+
+testPerformance();
+    </code>
+</pre>
+
+<h2 id="task2">5.2. Rednerliste mit Zeitmessung</h2>
+
+<p>
+    Implementieren Sie die interaktive Anwendung "Rednerliste mit Zeitmessung" selbstständig in JavaScript durch Nutzung
+    der <a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">DOM-API</a> und der <a
+        href="https://www.w3schools.com/js/js_timing.asp" target="_blank">Timer-Funktionen</a>.
+    Neue
+    Redner sollen auf Knopfdruck hinzugefügt werden können. Deren Uhr wird
+    dann sofort automatisch gestartet und alle anderen Uhren angehalten. Bei jedem Redner soll die individuelle,
+    gemessene Redezeit sekundengenau angezeigt werden. Für jeden Redner soll es einen eigenen Start-/Stopp-Button geben.
+    Es soll immer nur eine Uhr laufen. Angezeigt werden sollen die bisherigen Summenzeiten aller Redebeiträge der
+    betreffenden Person. Suchen Sie eine möglichst kurze und elegante Lösung. Achten Sie gleichzeitig auf gute
+    Usability: z.B. wenn die Eingabe mit einem Return beendet wird, soll der Klick auf den Button nicht mehr
+    erforderlich sein.
+</p>
+<iframe id="task2-iframe" src="nr2.html" width="400px" height="300px"></iframe>
+<br>
+<button onclick="document.getElementById('task2-iframe').contentWindow.location.reload()">Rednerliste zurücksetzen
+</button>
+<h3>Source code:</h3>
+<pre>
+    <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;5.2. Rednerliste mit Zeitmessung&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Rednerliste&lt;/h1&gt;
+
+&lt;script&gt;
+    onload = function () {
+        setInterval(update, 1000);
     }
 
+    function Speaker(name) {
+        this.name = name;
+        this.time = 0;
+        this.timer = undefined;
+        this.startTimer = function () {
+            this.timer = setInterval(() =&gt; this.time++, 1000);
+        };
+        this.stopTimer = function () {
+            clearInterval(this.timer);
+        };
+    }
 
-    testPerformance();
-</script>
+    const speakers = [];
+    let buttons = [];
+    let currentSpeaker = undefined;
+
+    function addSpeaker(name) {
+        // if text field is empty, do not add a new speaker
+        if (name === '') {
+            return;
+        }
+        // create a new speaker
+        const speaker = new Speaker(name);
+        speakers.push(speaker);
+        let speakerIndex = speakers.length - 1;
+        // add speaker to the list
+        let item = document.createElement('li');
+        item.innerHTML = speaker.name + '&lt;a class="timer"&gt; 00:00:00 &lt;/a&gt;&lt;input class="timer-button" type="button"&gt;';
+        document.getElementById('speaker-list').appendChild(item);
+        document.getElementById('speaker-input').value = '';
+        // update buttons array
+        buttons = document.getElementsByClassName('timer-button');
+        // start the timer
+        startTimers(speakerIndex);
+    }
+
+    function startTimers(speakerNo) {
+        currentSpeaker = speakerNo;
+        for (let x in speakers) {
+            if (x == speakerNo) {
+                speakers[x].startTimer();
+                buttons[x].value = 'Stopp!';
+                buttons[x].onclick = function () {
+                    stopTimers(x);
+                };
+            } else {
+                speakers[x].stopTimer();
+                buttons[x].value = 'Start!';
+                buttons[x].onclick = function () {
+                    startTimers(x);
+                };
+            }
+        }
+    }
+
+    function stopTimers(speakerNo) {
+        console.log('Hat funktioniert!');
+        speakers[speakerNo].stopTimer();
+        buttons[speakerNo].value = 'Start!';
+        buttons[speakerNo].onclick = function () {
+            startTimers(speakerNo)
+        };
+    }
+
+    function update() {
+        const items = document.getElementsByClassName('timer');
+        for (let x in speakers) {
+            items[x].innerHTML = timeToString(speakers[x]);
+        }
+    }
+
+    function timeToString(speaker) {
+        const time = speaker.time;
+        let hours = Math.floor(time / 3600);
+        let minutes = Math.floor((time % 3600) / 60);
+        let seconds = Math.floor((time % 3600) % 60);
+        return ' ' + toTwoDigitString(hours) + ':' + toTwoDigitString(minutes) + ':' + toTwoDigitString(seconds) + ' ';
+    }
+
+    function toTwoDigitString(number) {
+        return (number &lt; 10) ? ('0' + number) : number;
+    }
+&lt;/script&gt;
+
+&lt;form method="dialog"&gt;
+    &lt;label&gt;
+        Neuer Redner:
+        &lt;input id="speaker-input" type="text" placeholder="Name"&gt;
+        &lt;input type="submit" value="Hinzufügen" onclick="addSpeaker(document.getElementById('speaker-input').value)"&gt;
+    &lt;/label&gt;
+&lt;/form&gt;
+&lt;ul id="speaker-list"&gt;
+    &lt;!-- Speakers will be added here --&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </code>
+</pre>
+
+<h2 id="task3">5.3. TopSort als Web-App</h2>
+
+<p>
+    Schreiben Sie eine Weboberfläche, in der man beliebige Beziehungen (Vorrang-Relationen) eingeben kann, für die dann
+    die topologische Sortierung per Knopfdruck auf der Webseite ausgegeben wird.
+</p>
+<p>
+    Für die Eingabe können Sie HTML5-Eingabefelder oder das HTML-Attribut <code>contenteditable</code> verwenden.
+</p>
+<iframe id="task3-iframe" src="nr3.html" width="600px" height="500px"></iframe>
+<br>
+<button onclick="document.getElementById('task3-iframe').contentWindow.location.reload()">Zurücksetzen</button>
+<h3>Source code:</h3>
+<pre>
+    <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;5.3 TopSort als Web-App&lt;/title&gt;
+    &lt;script&gt;
+        let inputArray = [];
+
+        function compare(a, b) {
+            if (a[0] === b[1]) {
+                return 1;
+            } else if (a[1] === b[0]) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+
+        function topSort(input) {
+            let array = input;
+            array.sort(compare);
+            const sorted = new Set;
+            for (let x in array) {
+                sorted.add(array[x][0]);
+                if (x == array.length - 1) {
+                    sorted.add(array[x][1]);
+                }
+            }
+            return sorted;
+        }
+
+        function testTopSort() {
+            const array = [["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "prüfen"]];
+            const sorted = topSort(array);
+            console.assert(Array.from(sorted).toString() === "schlafen,essen,studieren,prüfen");
+        }
+
+        function addTask(a, b) {
+            inputArray.push([a, b]);
+            let item = document.createElement('li');
+            item.innerHTML = a + ", " + b;
+            document.getElementById('inputs').appendChild(item);
+            document.getElementById('input-a').value = "";
+            document.getElementById('input-b').value = "";
+        }
+
+        function generateResults() {
+            document.querySelector('#sorted-result').innerHTML = '';
+            if (inputArray.length === 0) {
+                const item = document.createElement("li");
+                item.innerHTML = "Sie haben noch keine Eingaben gemacht!"
+                document.getElementById('sorted-result').appendChild(item);
+            } else {
+                const result = Array.from(topSort(inputArray));
+                console.log(result);
+                for (let x in result) {
+                    const item = document.createElement("li");
+                    item.innerHTML = result[x];
+                    console.log(x + ': Task ' + result[x]);
+                    document.getElementById('sorted-result').appendChild(item);
+                }
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;TopSort&lt;/h1&gt;
+&lt;form method="dialog"
+      onsubmit="addTask(document.getElementById('input-a').value, document.getElementById('input-b').value)"&gt;
+    &lt;label&gt;
+        Voraussetzung
+        &lt;input id="input-a" type="text" required&gt;
+    &lt;/label&gt;
+    &lt;label&gt;
+        Aufgabe
+        &lt;input id="input-b" type="text" required&gt;
+    &lt;/label&gt;
+    &lt;input type="submit" value="Fertig"&gt;
+&lt;/form&gt;
+&lt;hr&gt;
+&lt;h2&gt;Eingaben&lt;/h2&gt;
+&lt;ul id="inputs"&gt;
+    &lt;!-- Inputs will appear in the list --&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Ergebnis&lt;/h2&gt;
+&lt;button onclick="generateResults()"&gt;Ergebnis anzeigen&lt;/button&gt;
+&lt;ol id="sorted-result"&gt;
+    &lt;!-- result will appear here --&gt;
+&lt;/ol&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </code>
+</pre>
 </body>
 </html>
