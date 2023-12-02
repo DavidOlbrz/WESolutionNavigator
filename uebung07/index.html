@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 07</title>
+    <link href="../css/uebung.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+<a href="..">[Zurück]</a>
+<h1>Übung 7: Funktionale Programmierung</h1>
+
+<div class="aufgaben_nav">
+    <h2>Aufgaben</h2>
+    <nav><a href="#task1">7.1 Funktionen in JavaScript</a></nav>
+    <nav><a href="#task2">7.2 Textanalyse mit filter-map-reduce</a></nav>
+</div>
+
+<h2 id="task1">7.1 Funktionen in JavaScript</h2>
+
+<h3>Funktion 01</h3>
+<p>
+    Schreiben Sie eine Funktion <code>curry</code> (von Currying), die eine binäre Funktion und ein Argument nimmt,
+    um daraus
+    eine Funktion zu erzeugen, die ein zweites Argument entgegennimmt. Beispiele: <code>add3 = curry(add, 3);
+    add3(4)</code> ergibt <code>7</code> und <code>curry(mul, 5)(6)</code> ergibt <code>30</code>.
+</p>
+<script>
+    function curry(func, arg1) {
+        return function (arg2) {
+            return func(arg1, arg2);
+        };
+    }
+</script>
+<h4>Source Code</h4>
+<pre>
+    <code>
+function curry(func, arg1) {
+    return function (arg2) {
+        return func(arg1, arg2);
+    };
+}
+    </code>
+</pre>
+<h3>Funktion 02</h3>
+<p>
+    Erzeugen Sie die <code>inc</code>-Funktion mithilfe von <code>addf</code> oder <code>applyf</code> (aus Aufgabe
+    4.1) und <code>curry</code>, ohne die Funktion <code>inc</code>
+    selbst zu implementieren. <code>inc(x)</code> soll immer <code>x + 1</code> zurückgeben und lässt sich natürlich
+    auch direkt
+    implementieren. Das ist aber hier nicht die Aufgabe. Vielleicht schaffen Sie es, drei Varianten der
+    inc-Implementierung zu schreiben?
+</p>
+<script>
+    // taken from task 4
+    function add(opA, opB) {
+        return opA + opB;
+    }
+
+    // taken from task 4
+    function addf(x) {
+        return function (y) {
+            return x + y;
+        };
+    }
+
+    // taken from task 4
+    function applyf(func) {
+        return function (x) {
+            return function (y) {
+                return func(x, y);
+            };
+        };
+    }
+
+    const incAddf = addf(1);
+    const incApplyf = applyf(add)(1);
+    const incCurry = curry(add, 1);
+
+    function runF02() {
+        console.log('Inkrementieren mit addf(5): ' + incAddf(5));
+        console.log('Inkrementieren mit applyf(5): ' + incApplyf(5));
+        console.log('Inkrementieren mit curry(5): ' + incCurry(5));
+    }
+</script>
+<button onclick="runF02()">Skript ausführen</button>
+(Output in der Konsole)
+<h4>Source Code</h4>
+<pre>
+    <code>
+// taken from task 4
+function add(opA, opB) {
+    return opA + opB;
+}
+
+// taken from task 4
+function addf(x) {
+    return function (y) {
+        return x + y;
+    };
+}
+
+// taken from task 4
+function applyf(func) {
+    return function (x) {
+        return function (y) {
+            return func(x, y);
+        };
+    };
+}
+
+const incAddf = addf(1);
+const incApplyf = applyf(add)(1);
+const incCurry = curry(add, 1);
+
+console.log('Inkrementieren mit addf(5): ' + incAddf(5));
+console.log('Inkrementieren mit applyf(5): ' + incApplyf(5));
+console.log('Inkrementieren mit curry(5): ' + incCurry(5));
+    </code>
+</pre>
+<h3>Funktion 03</h3>
+<p>
+    Schreiben Sie eine Funktion <code>methodize</code>, die eine binäre Funktion (z.B. <code>add</code> oder
+    <code>mul</code>) in eine unäre Methode
+    verwandelt. Nach <code>Number.prototype.add = methodize(add)</code> soll <code>(3).add(4)</code> genau
+    <code>7</code> ergeben.
+</p>
+<script>
+    function methodize() {
+        return function (func) {
+            return this + func;
+        };
+    }
+
+    Number.prototype.add = methodize(add);
+
+    function runF03() {
+        console.log('Unäre Funktion add (10 + 5): ' + (10).add(5));
+    }
+</script>
+<button onclick="runF03()">Skript ausführen</button>
+(Output in der Konsole)
+<h4>Source Code</h4>
+<pre>
+    <code>
+function methodize() {
+    return function (func) {
+        return this + func;
+    };
+}
+
+Number.prototype.add = methodize(add);
+
+console.log('Unäre Funktion add (10 + 5): ' + (10).add(5));
+    </code>
+</pre>
+<h3>Funktion 04</h3>
+<p>
+    Schreiben Sie eine Funktion <code>demethodize</code>, die eine unäre Methode (z.B. <code>add</code> oder
+    <code>mul</code>) in eine binäre Funktion
+    umwandelt. <code>demethodize(Number.prototype.add)(5, 6)</code> soll <code>11</code> ergeben.
+</p>
+<script>
+    function demethodize(func) {
+        return function (x, y) {
+            return func.bind(Number(x))(y);
+        };
+    }
+
+    function runF04() {
+        console.log('Wieder-Binäre Funktion add (10 + 5): ' + demethodize(Number.prototype.add)(10, 5));
+    }
+</script>
+<button onclick="runF04()">Skript ausführen</button>
+(Output in der Konsole)
+<h4>Source Code</h4>
+<pre>
+    <code>
+function demethodize(func) {
+    return function (x, y) {
+        return func.bind(Number(x))(y);
+    };
+}
+
+console.log('Wieder-Binäre Funktion add (10 + 5): ' + demethodize(Number.prototype.add)(10, 5));
+    </code>
+</pre>
+<h3>Funktion 05</h3>
+<p>
+    Schreiben Sie eine Funktion <code>twice</code>, die eine binäre Funktion in eine unäre Funktion umwandelt, die den
+    einen
+    Parameter zweimal weiter reicht. Also z.B. <code>var double = twice(add); double(11)</code> soll <code>22</code>
+    ergeben und <code>var square =
+    twice(mul); square(11)</code> soll <code>mul(11,11) === 121</code> ergeben.
+</p>
+<script>
+    function twice(func) {
+        return function (x) {
+            return func(x, x);
+        };
+    }
+
+    // taken from task 4
+    function mul(opA, opB) {
+        return opA * opB;
+    }
+
+    const double = twice(add);
+    const square = twice(mul);
+
+    function runF05() {
+        console.log('twice-Funktion mit 5 und add: ' + double(5));
+        console.log('twice-Funktion mit 5 und mul: ' + square(5));
+    }
+</script>
+<button onclick="runF05()">Skript ausführen</button>
+(Output in der Konsole)
+<h4>Source Code</h4>
+<pre>
+    <code>
+function twice(func) {
+    return function (x) {
+        return func(x, x);
+    };
+}
+
+// taken from task 4
+function mul(opA, opB) {
+    return opA * opB;
+}
+
+const double = twice(add);
+const square = twice(mul);
+
+console.log('twice-Funktion mit 5 und add: ' + double(5));
+console.log('twice-Funktion mit 5 und mul: ' + square(5));
+    </code>
+</pre>
+<h3>Funktion 06</h3>
+<p>
+    Schreiben Sie eine Funktion <code>composeu</code>, die zwei unäre Funktionen in eine einzelne unäre Funktion
+    transformiert, die
+    beide nacheinander aufruft. Also z.B. soll <code>composeu(double, square)(3)</code> genau <code>36</code> ergeben.
+</p>
+<script>
+    function composeu(func1, func2) {
+        return function (x) {
+            return func2(func1(x));
+        };
+    }
+
+    function runF06() {
+        console.log('Einzelne unäre Funktion aus double & square mit 5: ' + composeu(double, square)(5));
+    }
+</script>
+<button onclick="runF06()">Skript ausführen</button>
+(Output in der Konsole)
+<h4>Source Code</h4>
+<pre>
+    <code>
+function composeu(func1, func2) {
+    return function (x) {
+        return func2(func1(x));
+    };
+}
+
+console.log('Einzelne unäre Funktion aus double & square mit 5: ' + composeu(double, square)(5));
+    </code>
+</pre>
+<h3>Funktion 07</h3>
+<p>
+    Schreiben Sie eine Funktion <code>composeb</code>, die zwei binäre Funktionen in eine einzelne Funktion
+    transformiert, die beide
+    nacheinander aufruft. Also z.B. <code>composeb(add, mul)(2, 3, 5)</code> soll <code>25</code> ergeben.
+</p>
+<script>
+    function composeb(func1, func2) {
+        return function (a, b, c) {
+            return func2(func1(a, b), c);
+        };
+    }
+
+    function runF07() {
+        console.log('Einzelne Funktion mit add und mul nacheinander (mit 3, 7, 10): ' + composeb(add, mul)(3, 7, 10));
+    }
+</script>
+<button onclick="runF07()">Skript ausführen</button>
+(Output in der Konsole)
+<h4>Source Code:</h4>
+<pre>
+    <code>
+function composeb(func1, func2) {
+    return function (a, b, c) {
+        return func2(func1(a, b), c);
+    };
+}
+
+console.log('Einzelne Funktion mit add und mul nacheinander (mit 3, 7, 10): ' + composeb(add, mul)(3, 7, 10));
+    </code>
+</pre>
+<h3>Funktion 08</h3>
+<p>
+    Schreiben Sie eine Funktion <code>once</code>, die einer anderen Funktion nur einmal erlaubt, aufgerufen zu werden.
+    Also z.B.
+    <code>add_once = once(add); add_once(3, 4)</code> soll beim ersten Mal <code>7</code> ergeben, beim zweiten Mal soll
+    jedoch <code>add_once(3, 4)</code>
+    einen Fehlerabbruch bewirken.
+</p>
+<script>
+    function once(func) {
+        let already_ran = false;
+
+        return function (x, y) {
+            if (already_ran) {
+                console.error("Die Funktion wurde bereits einmal ausgeführt!");
+            } else {
+                already_ran = true;
+                return func(x, y);
+            }
+        };
+    }
+
+    const onceFunction = once(add);
+
+    function runF08() {
+        console.log('Diese Funktion kann add mit 10 und 5 nur einmal ausführen: ' + onceFunction(10, 5));
+    }
+</script>
+<button onclick="runF08()">Skript ausführen</button>
+(Output in der Konsole, nur einmal ausführbar!)
+<h4>Source Code</h4>
+<pre>
+    <code>
+function once(func) {
+    let already_ran = false;
+
+    return function (x, y) {
+        if (already_ran) {
+            console.error("Die Funktion wurde bereits einmal ausgeführt!");
+        } else {
+            already_ran = true;
+            return func(x, y);
+        }
+    };
+}
+
+const onceFunction = once(add);
+
+console.log('Diese Funktion kann add mit 10 und 5 nur einmal ausführen: ' + onceFunction(10, 5));
+// this one should throw an error:
+console.log('Diese Funktion kann add mit 10 und 5 nur einmal ausführen: ' + onceFunction(10, 5));
+    </code>
+</pre>
+<h3>Funktion 09</h3>
+<p>
+    Schreiben Sie eine Fabrik-Funktion <code>counterf</code>, die zwei Funktionen <code>inc</code> und <code>dec</code>
+    berechnet, die einen Zähler hoch- und
+    herunterzählen. Also z.B. <code>counter = counterf(10)</code>. Dann soll <code>counter.inc()</code> genau
+    <code>11</code> und <code>counter.dec()</code> wieder <code>10</code>
+    ergeben.
+</p>
+<script>
+    function counterf(x) {
+        let number = x;
+
+        return {
+            inc: function () {
+                return ++number;
+            },
+            dec: function () {
+                return --number;
+            }
+        };
+    }
+
+    function runF09() {
+        console.log('10 um 1 erhöht ist: ' + counterf(10).inc());
+        console.log('10 um 1 gesenkt ist: ' + counterf(10).dec());
+    }
+</script>
+<button onclick="runF09()">Skript ausführen</button>
+(Output in der Konsole)
+<h4>Source Code</h4>
+<pre>
+    <code>
+function counterf(x) {
+    let number = x;
+
+    return {
+        inc: function () {
+            return ++number;
+        },
+        dec: function () {
+            return --number;
+        }
+    };
+}
+
+console.log('10 um 1 erhöht ist: ' + counterf(10).inc());
+console.log('10 um 1 gesenkt ist: ' + counterf(10).dec());
+    </code>
+</pre>
+<h3>Funktion 10</h3>
+<p>
+    Schreiben Sie eine rücknehmbare Funktion <code>revocable</code>, die als Parameter eine Funktion nimmt und diese bei
+    Aufruf
+    ausführt. Sobald die Funktion aber mit <code>revoke()</code> zurückgenommen wurde, führt ein erneuter Aufruf zu
+    einem Fehler.
+    Also z.B.:<br>
+    <code>temp = revocable(alert);</code><br>
+    <code>temp.invoke(7); // führt zu alert(7);</code><br>
+    <code>temp.revoke();</code><br>
+    <code>temp.invoke(8); // Fehlerabbruch!</code><br>
+</p>
+<script>
+    function revocable(func) {
+        let revoked = false;
+
+        return {
+            invoke: function (x) {
+                if (revoked) {
+                    console.error('Funktion wurde "revoked"!')
+                    return null;
+                } else {
+                    return func(x);
+                }
+            },
+            revoke: function () {
+                revoked = true;
+            }
+        };
+    }
+
+    const temp = revocable(alert);
+
+    function runF10invoke() {
+        temp.invoke('Hallo');
+    }
+
+    function runF10revoke() {
+        temp.revoke();
+    }
+</script>
+<button onclick="runF10invoke()">Invoke</button>
+<button onclick="runF10revoke()">Revoke</button>
+(Error-Output in der Konsole)
+<h4>Source Code</h4>
+<pre>
+    <code>
+function revocable(func) {
+    let revoked = false;
+
+    return {
+        invoke: function (x) {
+            if (revoked) {
+                console.error('Funktion wurde "revoked"!')
+                return null;
+            } else {
+                return func(x);
+            }
+        },
+        revoke: function () {
+            revoked = true;
+        }
+    };
+}
+
+const temp = revocable(alert);
+
+temp.invoke(7);
+temp.revoke();
+temp.invoke(8);
+    </code>
+</pre>
+<h3>Funktion 11</h3>
+<p>
+    Schreiben Sie ein "Array Wrapper"-Objekt mit den Methoden <code>get</code>, <code>store</code> und
+    <code>append</code>, sodass ein Angreifer keinen Zugriff auf das innere, private Array hat. Also z.B.:<br>
+    <code>my_vector = vector();</code><br>
+    <code>my_vector.append(7);</code><br>
+    <code>my_vector.store(1, 8);</code><br>
+    <code>my_vector.get(0); // 7</code><br>
+    <code>my_vector.get(1); // 8</code><br>
+</p>
+<script>
+    function vectorf() {
+        const array = [];
+
+        return {
+            append: function (x) {
+                array.push(x);
+                return null;
+            },
+            store: function (pos, x) {
+                array[pos] = x;
+                return null;
+            },
+            get: function (pos) {
+                return array[pos];
+            }
+        }
+    }
+
+    const vector = vectorf();
+
+    function runF11() {
+        console.log('5 dem Array hinzufügen...');
+        vector.append(5);
+        console.log('Array-Wert an der Position 0 lesen: ' + vector.get(0));
+        console.log('10 dem Array hinzufügen...');
+        vector.append(10);
+        console.log('Array-Wert an der Position 1 lesen: ' + vector.get(1));
+        console.log('Array-Wert an der Position 1 durch 24 ersetzen...');
+        vector.store(1, 24);
+        console.log('Array-Wert an der Position 1 lesen: ' + vector.get(1));
+    }
+</script>
+<button onclick="runF11()">Skript ausführen</button>
+(Output in der Konsole)
+<h4>Source Code</h4>
+<pre>
+    <code>
+function vectorf() {
+    const array = [];
+
+    return {
+        append: function (x) {
+            array.push(x);
+            return null;
+        },
+        store: function (pos, x) {
+            array[pos] = x;
+            return null;
+        },
+        get: function (pos) {
+            return array[pos];
+        }
+    };
+}
+
+const vector = vectorf();
+
+console.log('5 dem Array hinzufügen...');
+vector.append(5);
+console.log('Array-Wert an der Position 0 lesen: ' + vector.get(0));
+console.log('10 dem Array hinzufügen...');
+vector.append(10);
+console.log('Array-Wert an der Position 1 lesen: ' + vector.get(1));
+console.log('Array-Wert an der Position 1 durch 24 ersetzen...');
+vector.store(1, 24);
+console.log('Array-Wert an der Position 1 lesen: ' + vector.get(1));
+    </code>
+</pre>
+
+<h2 id="task2">7.2 Textanalyse mit filter-map-reduce</h2>
+
+<h3>Coming Soon!</h3>
+<a href="..">[Zurück]</a>
+</body>
+</html>

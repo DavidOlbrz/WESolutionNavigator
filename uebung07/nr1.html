@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>7.1 Funktionen in JavaScript</title>
+    <script>
+        // - - subtask 1 - -
+        function curry(func, arg1) {
+            return function (arg2) {
+                return func(arg1, arg2);
+            };
+        }
+
+        // - - subtask 2 - -
+        // taken from task 4
+        function add(opA, opB) {
+            return opA + opB;
+        }
+
+        // taken from task 4
+        function addf(x) {
+            return function (y) {
+                return x + y;
+            };
+        }
+
+        // taken from task 4
+        function applyf(func) {
+            return function (x) {
+                return function (y) {
+                    return func(x, y);
+                };
+            };
+        }
+
+        const incAddf = addf(1);
+        const incApplyf = applyf(add)(1);
+        const incCurry = curry(add, 1);
+
+        console.log('Inkrementieren mit addf(5): ' + incAddf(5));
+        console.log('Inkrementieren mit applyf(5): ' + incApplyf(5));
+        console.log('Inkrementieren mit curry(5): ' + incCurry(5));
+
+        // - - subtask 3 - -
+        function methodize() {
+            return function (func) {
+                return this + func;
+            };
+        }
+
+        Number.prototype.add = methodize(add);
+
+        console.log('Unäre Funktion add (10 + 5): ' + (10).add(5));
+
+        // - - subtask 4 - -
+        function demethodize(func) {
+            return function (x, y) {
+                return func.bind(Number(x))(y);
+            };
+        }
+
+        console.log('Wieder-Binäre Funktion add (10 + 5): ' + demethodize(Number.prototype.add)(10, 5));
+
+        // - - subtask 5 - -
+        function twice(func) {
+            return function (x) {
+                return func(x, x);
+            };
+        }
+
+        // taken from task 4
+        function mul(opA, opB) {
+            return opA * opB;
+        }
+
+        const double = twice(add);
+        const square = twice(mul);
+
+        console.log('twice-Funktion mit 5 und add: ' + double(5));
+        console.log('twice-Funktion mit 5 und mul: ' + square(5));
+
+        // - - subtask 6 - -
+        function composeu(func1, func2) {
+            return function (x) {
+                return func2(func1(x));
+            };
+        }
+
+        console.log('Einzelne unäre Funktion aus double & square mit 5: ' + composeu(double, square)(5));
+
+        // - - subtask 7 - -
+        function composeb(func1, func2) {
+            return function (a, b, c) {
+                return func2(func1(a, b), c);
+            };
+        }
+
+        console.log('Einzelne Funktion mit add und mul nacheinander (mit 3, 7, 10): ' + composeb(add, mul)(3, 7, 10));
+
+        // - - subtask 8 - -
+        function once(func) {
+            let already_ran = false;
+
+            return function (x, y) {
+                if (already_ran) {
+                    console.error("Die Funktion wurde bereits einmal ausgeführt!");
+                } else {
+                    already_ran = true;
+                    return func(x, y);
+                }
+            };
+        }
+
+        const onceFunction = once(add);
+
+        console.log('Diese Funktion kann add mit 10 und 5 nur einmal ausführen: ' + onceFunction(10, 5));
+        // this one should throw an error:
+        console.log('Diese Funktion kann add mit 10 und 5 nur einmal ausführen: ' + onceFunction(10, 5));
+
+        // - - subtask 9 - -
+        function counterf(x) {
+            let number = x;
+
+            return {
+                inc: function () {
+                    return ++number;
+                },
+                dec: function () {
+                    return --number;
+                }
+            };
+        }
+
+        console.log('10 um 1 erhöht ist: ' + counterf(10).inc());
+        console.log('10 um 1 gesenkt ist: ' + counterf(10).dec());
+
+        // - - subtask 10 - -
+        function revocable(func) {
+            let revoked = false;
+
+            return {
+                invoke: function (x) {
+                    if (revoked) {
+                        console.error('Funktion wurde "revoked"!')
+                        return null;
+                    } else {
+                        return func(x);
+                    }
+                },
+                revoke: function () {
+                    revoked = true;
+                }
+            };
+        }
+
+        const temp = revocable(alert);
+
+        temp.invoke(7);
+        temp.revoke();
+        temp.invoke(8);
+
+        // - - subtask 11 - -
+        function vectorf() {
+            const array = [];
+
+            return {
+                append: function (x) {
+                    array.push(x);
+                    return null;
+                },
+                store: function (pos, x) {
+                    array[pos] = x;
+                    return null;
+                },
+                get: function (pos) {
+                    return array[pos];
+                }
+            };
+        }
+
+        const vector = vectorf();
+
+        console.log('5 dem Array hinzufügen...');
+        vector.append(5);
+        console.log('Array-Wert an der Position 0 lesen: ' + vector.get(0));
+        console.log('10 dem Array hinzufügen...');
+        vector.append(10);
+        console.log('Array-Wert an der Position 1 lesen: ' + vector.get(1));
+        console.log('Array-Wert an der Position 1 durch 24 ersetzen...');
+        vector.store(1, 24);
+        console.log('Array-Wert an der Position 1 lesen: ' + vector.get(1));
+    </script>
+</head>
+<body>
+<h1>Diese Seite wird wahrscheinlich nicht direkt in den Solution Navigator eingebunden, da ich den JavaScript-Code
+    zusätzlich auf der Übungsseite implementiert habe.</h1>
+</body>
+</html>
