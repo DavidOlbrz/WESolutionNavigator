@@ -556,7 +556,36 @@ console.log('Array-Wert an der Position 1 lesen: ' + vector.get(1));
 
 <h2 id="task2">7.2 Textanalyse mit filter-map-reduce</h2>
 
-<h3>Coming Soon!</h3>
+<p>
+    Schreiben Sie in JavaScript eine Textanalyse. Ermitteln Sie die häufigsten Begriffe im Text <a
+        href="assets/Plagiatsresolution.html" target="_blank">Plagiatsresolution</a>.
+    Filtern Sie dabei alle <a href="assets/german_stopwords_plain.txt" target="_blank">Stoppworte</a> und HTML-Tags.
+    Reduzieren Sie das Ergebnis auf die 3 häufigsten Begriffe.
+</p>
+<p>
+    Für die Implementierung wurde die <a href="https://solariz.de/de/downloads/6/german-enhanced-stopwords.htm"
+                                         target="_blank">Stoppwortliste von TCPIP</a> genutzt
+</p>
+
+<script src="nr2.js"></script>
+<script>
+    function runTask2() {
+        const top = runTextAnalysis();
+        for (let i = 0; i < top.length; i++) {
+            let item = document.createElement('li');
+            item.innerHTML = top[i];
+            document.getElementById('task2Results').appendChild(item);
+        }
+    }
+</script>
+
+<button onclick="runTask2()">Run</button>
+
+<ol id="task2Results">
+    <!-- results will appear here -->
+</ol>
+
+<br>
 <a href="..">[Zurück]</a>
 </body>
 </html>
