@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6.1 Klammerpaare</title>
+    <script>
+        const bracketsLeft = ['(', '{', '['];
+        const bracketsRight = [')', '}', ']'];
+        const bracketSets = {
+            '(': ')',
+            '{': '}',
+            '[': ']'
+        };
+
+        function checkBrackets(input) {
+            const brackets = [];
+
+            for (let i = 0; i < input.length; i++) {
+                const symbol = input[i];
+
+                if (bracketsLeft.includes(symbol)) {
+                    brackets.push(symbol);
+                } else if (bracketsRight.includes(symbol)) {
+                    const lastBracket = brackets.pop();
+
+                    if (bracketSets[lastBracket] !== symbol) {
+                        console.assert(false, markInputError(true));
+                    } else {
+                        markInputError(false);
+                    }
+                }
+            }
+
+
+            if (brackets.length !== 0) {
+                console.assert(false, markInputError(true));
+            } else {
+                markInputError(false);
+            }
+        }
+
+        function markInputError(status) {
+            let inputField = document.getElementById('input');
+            if (status) {
+                inputField.style.backgroundColor = 'rgba(255,0,0,0.5)';
+                return 'There is an error!'
+            } else {
+                inputField.style.backgroundColor = 'unset';
+            }
+        }
+    </script>
+</head>
+<body>
+<label>
+    Input
+    <input id="input" type="text" onkeyup="checkBrackets(this.value)">
+</label>
+</body>
+</html>

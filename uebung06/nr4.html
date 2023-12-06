@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5.3 TopSort als Web-App</title>
+    <script>
+        let inputArray = [];
+        let sorter = undefined;
+
+        class Vorrang {
+            constructor(edges) {
+                this.graph = {};
+                for (let [from, to] of edges) {
+                    if (!this.graph[from]) this.graph[from] = [];
+                    if (!this.graph[to]) this.graph[to] = [];
+                    this.graph[from].push(to);
+                }
+                this.count = edges.length;
+            }
+
+            addVertex(vertex) {
+                if (!this.graph[vertex]) this.graph[vertex] = [];
+            }
+
+            addEdge(vertex1, vertex2) {
+                if (!this.graph[vertex1]) this.graph[vertex1] = [];
+                if (!this.graph[vertex2]) this.graph[vertex2] = [];
+                this.graph[vertex1].push(vertex2);
+                this.count++;
+            }
+
+            topSort() {
+                const visited = new Set();
+                const stack = [];
+
+                const dfs = (vertex) => {
+                    visited.add(vertex);
+                    for (let neighbor of this.graph[vertex]) {
+                        if (!visited.has(neighbor)) {
+                            dfs(neighbor);
+                        }
+                    }
+                    stack.push(vertex);
+                };
+
+                for (let vertex in this.graph) {
+                    if (!visited.has(vertex)) {
+                        dfs(vertex);
+                    }
+                }
+
+                return stack.reverse().join(', ');
+            }
+
+            [Symbol.iterator]() {
+                let index = 0;
+                const sorted = this.topSort();
+                return {
+                    next: () => {
+                        if (index < sorted.length) {
+                            console.log(`${this.count} Vorrangrelationen übrig`);
+                            this.count--;
+                            return {value: sorted[index++], done: false};
+                        } else {
+                            return {done: true};
+                        }
+                    },
+                };
+            }
+        }
+
+
+        function addTask(a, b) {
+            inputArray.push([a, b]);
+            sorter = new Vorrang(inputArray);
+            let item = document.createElement('li');
+            item.innerHTML = a + ", " + b;
+            document.getElementById('inputs').appendChild(item);
+            document.getElementById('input-a').value = "";
+            document.getElementById('input-b').value = "";
+        }
+
+        function generateResults() {
+            document.querySelector('#sorted-result').innerHTML = '';
+            if (inputArray.length === 0) {
+                const item = document.createElement("li");
+                item.innerHTML = "Sie haben noch keine Eingaben gemacht!"
+                document.getElementById('sorted-result').appendChild(item);
+            } else {
+                const iterator = sorter.iterator;
+                let result = iterator.next();
+                if (!result.done) {
+                    const item = document.createElement("li");
+                    item.innerHTML = result.value;
+                    document.getElementById('sorted-result').appendChild(item);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>TopSort</h1>
+<form method="dialog"
+      onsubmit="addTask(document.getElementById('input-a').value, document.getElementById('input-b').value)">
+    <label>
+        Voraussetzung
+        <input id="input-a" type="text" required>
+    </label>
+    <label>
+        Aufgabe
+        <input id="input-b" type="text" required>
+    </label>
+    <input type="submit" value="Fertig">
+</form>
+<hr>
+<h2>Eingaben</h2>
+<ul id="inputs">
+    <!-- Inputs will appear in the list -->
+</ul>
+<hr>
+<h2>Ergebnis</h2>
+<button onclick="generateResults()">Ergebnis anzeigen</button>
+<ol id="sorted-result">
+    <!-- result will appear here -->
+</ol>
+</body>
+</html>
