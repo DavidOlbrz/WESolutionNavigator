@@ -1,0 +1,38 @@
+@import "default.css";
+
+#tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+}
+
+#tasks-grid div {
+    background: var(--color-surface-200);
+    border-radius: 20px;
+    height: fit-content(0);
+}
+
+#tasks-grid h2 {
+    margin: 10px 10px 5px 10px;
+}
+
+#tasks-grid span {
+    margin: 5px 10px 5px 10px;
+}
+
+#tasks-grid button {
+    margin: 5px 10px 10px 10px;
+}
+
+@media only screen and (max-width: 1050px) {
+    #tasks-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #tasks-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

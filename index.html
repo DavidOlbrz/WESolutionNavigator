@@ -3,18 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <title>Solution-Navigator</title>
+    <link href="css/landing_page.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+          integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css"
+          integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://kit.fontawesome.com/37beb9f2cd.js" crossorigin="anonymous"></script>
+    <script>
+        function notAvailable(taskNo) {
+            alert(`Übung ${taskNo} ist noch nicht verfügbar!`);
+        }
+    </script>
 </head>
 <body>
 <h1>
     <ins>Solution-Navigator von David Olbertz</ins>
 </h1>
 <h2>Übungen</h2>
-<a href="./uebung01"><h3>Übung 01</h3></a><br>
-<a href="./uebung02"><h3>Übung 02</h3></a><br>
-<a href="./uebung03"><h3>Übung 03</h3></a><br>
-<a href="./uebung04"><h3>Übung 04</h3></a><br>
-<a href="./uebung05"><h3>Übung 05</h3></a><br>
-<a href="./uebung06"><h3>Übung 06</h3></a><br>
-<a href="./uebung07"><h3>Übung 07</h3></a><br>
+
+<div id="tasks-grid">
+    <div>
+        <h2>U01</h2>
+        <span>HTTP, URI und HTML</span>
+        <br>
+        <a href="./uebung01">
+            <button><i class="fa-solid fa-arrow-right"></i>Übung 01 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U02</h2>
+        <span>Cascading Style Sheets (CSS)</span>
+        <br>
+        <a href="./uebung02">
+            <button><i class="fa-solid fa-arrow-right"></i>Übung 02 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U03</h2>
+        <span>Responsive Webdesign (RWD)</span>
+        <br>
+        <a href="./uebung03">
+            <button><i class="fa-solid fa-arrow-right"></i>Übung 03 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U04</h2>
+        <span>JavaScript (JS)</span>
+        <br>
+        <a href="./uebung04">
+            <button><i class="fa-solid fa-arrow-right"></i>Übung 04 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U05</h2>
+        <span>Document Object Model (DOM)</span>
+        <br>
+        <a href="./uebung05">
+            <button><i class="fa-solid fa-arrow-right"></i>Übung 05 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U06</h2>
+        <span>ECMAScript (ES)</span>
+        <br>
+        <a href="./uebung06">
+            <button><i class="fa-solid fa-arrow-right"></i>Übung 06 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U07</h2>
+        <span>Funktionale Programmierung</span>
+        <br>
+        <a href="./uebung07">
+            <button><i class="fa-solid fa-arrow-right"></i>Übung 07 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U08</h2>
+        <span>Asynchrones JavaScript</span>
+        <br>
+        <a href="./uebung08">
+            <button><i class="fa-solid fa-arrow-right"></i>Übung 08 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U09</h2>
+        <span>Coming Soon!</span>
+        <br>
+        <a>
+            <button onclick="notAvailable(9)"><i class="fa-solid fa-arrow-right"></i>Übung 09 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U10</h2>
+        <span>Coming Soon!</span>
+        <br>
+        <a>
+            <button onclick="notAvailable(10)"><i class="fa-solid fa-arrow-right"></i>Übung 10 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U11</h2>
+        <span>Coming Soon!</span>
+        <br>
+        <a>
+            <button onclick="notAvailable(11)"><i class="fa-solid fa-arrow-right"></i>Übung 11 öffnen</button>
+        </a>
+    </div>
+    <div>
+        <h2>U12</h2>
+        <span>Coming Soon!</span>
+        <br>
+        <a>
+            <button onclick="notAvailable(12)"><i class="fa-solid fa-arrow-right"></i>Übung 12 öffnen</button>
+        </a>
+    </div>
+</div>
 </body>
 </html>
