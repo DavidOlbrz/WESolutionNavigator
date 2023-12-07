@@ -1,0 +1,63 @@
+header {
+    background: var(--color-surface-400);
+    margin: 0;
+    height: 3rem;
+    display: flex;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    padding: 10px 1rem;
+    border: rgba(0, 0, 0, 0) solid 1px;
+    border-radius: 20px;
+}
+
+nav ul li:hover {
+    border: rgba(0, 0, 0, 1) solid 1px;
+}
+
+nav ul li.current {
+    background: gray;
+}
+
+nav ul li select option {
+    background: black;
+    color: white;
+}
+
+nav ul li select {
+    background: rgba(0, 0, 0, 0);
+    font-size: 14px;
+    border: none;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    width: 100%;
+}
+
+#logo a {
+    font-size: 2rem;;
+}

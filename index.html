@@ -20,10 +20,51 @@
     </script>
 </head>
 <body>
-<h1>
-    <ins>Solution-Navigator von David Olbertz</ins>
-</h1>
-<h2>Übungen</h2>
+<header>
+    <div id="logo">
+        <a>Solution-Navigator</a>
+    </div>
+    <nav id="nav">
+        <ul>
+            <li class="current">
+                <a href="index.html">Übersicht</a>
+            </li>
+            <li>
+                <script>
+                    function jumpToTask(taskNo) {
+                        if (taskNo !== 0) {
+                            const number = taskNo < 10 ? '0' + taskNo : '' + taskNo;
+                            location.href = 'uebung' + number + '/index.html';
+                        }
+                    }
+                </script>
+                <label for="task-select"></label>
+                <select id="task-select" onchange="jumpToTask(this.value)">
+                    <option value="0">Zu Übung springen</option>
+                    <option value="1">Übung 01</option>
+                    <option value="2">Übung 02</option>
+                    <option value="3">Übung 03</option>
+                    <option value="4">Übung 04</option>
+                    <option value="5">Übung 05</option>
+                    <option value="6">Übung 06</option>
+                    <option value="7">Übung 07</option>
+                    <option value="8">Übung 08</option>
+                    <option value="9">Übung 09</option>
+                    <option value="10">Übung 10</option>
+                    <option value="11">Übung 11</option>
+                    <option value="12">Übung 12</option>
+                </select>
+            </li>
+            <li>
+                <a href="about.html">Über mich</a>
+            </li>
+            <li>
+                <a href="credits.html">Credits</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<h1>Übungen Übersicht</h1>
 
 <div id="tasks-grid">
     <div>
@@ -31,7 +72,7 @@
         <span>HTTP, URI und HTML</span>
         <br>
         <a href="./uebung01">
-            <button><i class="fa-solid fa-arrow-right"></i>Übung 01 öffnen</button>
+            <button><i class="fa-solid fa-arrow-right"></i> Übung 01 öffnen</button>
         </a>
     </div>
     <div>
@@ -39,7 +80,7 @@
         <span>Cascading Style Sheets (CSS)</span>
         <br>
         <a href="./uebung02">
-            <button><i class="fa-solid fa-arrow-right"></i>Übung 02 öffnen</button>
+            <button><i class="fa-solid fa-arrow-right"></i> Übung 02 öffnen</button>
         </a>
     </div>
     <div>
@@ -47,7 +88,7 @@
         <span>Responsive Webdesign (RWD)</span>
         <br>
         <a href="./uebung03">
-            <button><i class="fa-solid fa-arrow-right"></i>Übung 03 öffnen</button>
+            <button><i class="fa-solid fa-arrow-right"></i> Übung 03 öffnen</button>
         </a>
     </div>
     <div>
@@ -55,7 +96,7 @@
         <span>JavaScript (JS)</span>
         <br>
         <a href="./uebung04">
-            <button><i class="fa-solid fa-arrow-right"></i>Übung 04 öffnen</button>
+            <button><i class="fa-solid fa-arrow-right"></i> Übung 04 öffnen</button>
         </a>
     </div>
     <div>
@@ -63,7 +104,7 @@
         <span>Document Object Model (DOM)</span>
         <br>
         <a href="./uebung05">
-            <button><i class="fa-solid fa-arrow-right"></i>Übung 05 öffnen</button>
+            <button><i class="fa-solid fa-arrow-right"></i> Übung 05 öffnen</button>
         </a>
     </div>
     <div>
@@ -71,7 +112,7 @@
         <span>ECMAScript (ES)</span>
         <br>
         <a href="./uebung06">
-            <button><i class="fa-solid fa-arrow-right"></i>Übung 06 öffnen</button>
+            <button><i class="fa-solid fa-arrow-right"></i> Übung 06 öffnen</button>
         </a>
     </div>
     <div>
@@ -79,7 +120,7 @@
         <span>Funktionale Programmierung</span>
         <br>
         <a href="./uebung07">
-            <button><i class="fa-solid fa-arrow-right"></i>Übung 07 öffnen</button>
+            <button><i class="fa-solid fa-arrow-right"></i> Übung 07 öffnen</button>
         </a>
     </div>
     <div>
@@ -87,7 +128,7 @@
         <span>Asynchrones JavaScript</span>
         <br>
         <a href="./uebung08">
-            <button><i class="fa-solid fa-arrow-right"></i>Übung 08 öffnen</button>
+            <button><i class="fa-solid fa-arrow-right"></i> Übung 08 öffnen</button>
         </a>
     </div>
     <div>
@@ -95,7 +136,7 @@
         <span>Coming Soon!</span>
         <br>
         <a>
-            <button onclick="notAvailable(9)"><i class="fa-solid fa-arrow-right"></i>Übung 09 öffnen</button>
+            <button onclick="notAvailable(9)"><i class="fa-solid fa-arrow-right"></i> Übung 09 öffnen</button>
         </a>
     </div>
     <div>
@@ -103,7 +144,7 @@
         <span>Coming Soon!</span>
         <br>
         <a>
-            <button onclick="notAvailable(10)"><i class="fa-solid fa-arrow-right"></i>Übung 10 öffnen</button>
+            <button onclick="notAvailable(10)"><i class="fa-solid fa-arrow-right"></i> Übung 10 öffnen</button>
         </a>
     </div>
     <div>
@@ -111,7 +152,7 @@
         <span>Coming Soon!</span>
         <br>
         <a>
-            <button onclick="notAvailable(11)"><i class="fa-solid fa-arrow-right"></i>Übung 11 öffnen</button>
+            <button onclick="notAvailable(11)"><i class="fa-solid fa-arrow-right"></i> Übung 11 öffnen</button>
         </a>
     </div>
     <div>
@@ -119,7 +160,7 @@
         <span>Coming Soon!</span>
         <br>
         <a>
-            <button onclick="notAvailable(12)"><i class="fa-solid fa-arrow-right"></i>Übung 12 öffnen</button>
+            <button onclick="notAvailable(12)"><i class="fa-solid fa-arrow-right"></i> Übung 12 öffnen</button>
         </a>
     </div>
 </div>
