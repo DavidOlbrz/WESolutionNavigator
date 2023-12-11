@@ -27,7 +27,9 @@ nav ul {
 }
 
 nav ul li {
+    width: fit-content;
     padding: 10px 1rem;
+    margin: 0 0.5rem;
     border: rgba(0, 0, 0, 0) solid 1px;
     border-radius: 20px;
 }
@@ -40,15 +42,21 @@ nav ul li.current {
     background: gray;
 }
 
-nav ul li select option {
+#menu-container hr {
+    display: none;
+    width: 100%;
+}
+
+#task-select select option {
     background: black;
     color: white;
 }
 
-nav ul li select {
+#task-select select {
     background: rgba(0, 0, 0, 0);
-    font-size: 14px;
+    font-size: 16px;
     border: none;
+    color: white;
 }
 
 #logo {
@@ -60,4 +68,31 @@ nav ul li select {
 
 #logo a {
     font-size: 2rem;;
+}
+
+#menu-button {
+    display: none;
+    margin: 0 1rem;
+    font-size: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+    nav ul {
+        display: none;
+    }
+
+    #open-menu-button {
+        display: unset;
+    }
+
+    #menu-container {
+        position: absolute;
+        top: 3rem;
+        left: 0;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        background: var(--color-surface-400);
+        opacity: 0.5;
+    }
 }

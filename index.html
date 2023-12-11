@@ -21,47 +21,53 @@
 </head>
 <body>
 <header>
+    <script src="/scripts/header.js"></script>
     <div id="logo">
         <a>Solution-Navigator</a>
     </div>
     <nav id="nav">
-        <ul>
-            <li class="current">
-                <a href="index.html">Übersicht</a>
-            </li>
-            <li>
-                <script>
-                    function jumpToTask(taskNo) {
-                        if (taskNo !== 0) {
-                            const number = taskNo < 10 ? '0' + taskNo : '' + taskNo;
-                            location.href = 'uebung' + number + '/index.html';
+        <i id="menu-button" class="fa-solid fa-bars" onclick="openMenu()"></i>
+        <div id="menu-container">
+            <hr>
+            <ul id="nav-buttons">
+                <li class="current">
+                    <a href="index.html">Übersicht</a>
+                </li>
+                <li>
+                    <script>
+                        function jumpToTask(taskNo) {
+                            if (taskNo !== '0') {
+                                const number = taskNo < 10 ? '0' + taskNo : '' + taskNo;
+                                location.href = 'uebung' + number + '/index.html';
+                            }
                         }
-                    }
-                </script>
-                <label for="task-select"></label>
-                <select id="task-select" onchange="jumpToTask(this.value)">
-                    <option value="0">Zu Übung springen</option>
-                    <option value="1">Übung 01</option>
-                    <option value="2">Übung 02</option>
-                    <option value="3">Übung 03</option>
-                    <option value="4">Übung 04</option>
-                    <option value="5">Übung 05</option>
-                    <option value="6">Übung 06</option>
-                    <option value="7">Übung 07</option>
-                    <option value="8">Übung 08</option>
-                    <option value="9">Übung 09</option>
-                    <option value="10">Übung 10</option>
-                    <option value="11">Übung 11</option>
-                    <option value="12">Übung 12</option>
-                </select>
-            </li>
-            <li>
-                <a href="about.html">Über mich</a>
-            </li>
-            <li>
-                <a href="credits.html">Credits</a>
-            </li>
-        </ul>
+                    </script>
+                    <label id="task-select">
+                        <select onchange="jumpToTask(this.value)">
+                            <option value="0" selected>Zu Übung springen</option>
+                            <option value="1">Übung 01</option>
+                            <option value="2">Übung 02</option>
+                            <option value="3">Übung 03</option>
+                            <option value="4">Übung 04</option>
+                            <option value="5">Übung 05</option>
+                            <option value="6">Übung 06</option>
+                            <option value="7">Übung 07</option>
+                            <option value="8">Übung 08</option>
+                            <option value="9">Übung 09</option>
+                            <option value="10">Übung 10</option>
+                            <option value="11">Übung 11</option>
+                            <option value="12">Übung 12</option>
+                        </select>
+                    </label>
+                </li>
+                <li>
+                    <a href="about.html">Über mich</a>
+                </li>
+                <li>
+                    <a href="credits.html">Credits</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>
 <h1>Übungen Übersicht</h1>
