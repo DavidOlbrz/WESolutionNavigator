@@ -89,8 +89,286 @@ async function runTask2() {
     jeweiligen ausgewählten Oberthema stehen. In der Mitte soll eine Dokumentation zum ausgewählten Fachbegriff
     erscheinen.
 </p>
+<p>
+    Schreiben Sie in HTML und CSS nur den responsiven Rahmen für einen solchen WWW-Navigator. Dabei können Sie auch ein
+    schöneres Layout als das hier gezeigte erstellen. Die Inhalte sollen in einer JSON-Datei extern gelagert werden. Mit
+    der fetch-API soll die JSON-Datei asynchron nicht-blockierend geladen werden, und zwar nur einmal, nicht mehrfach.
+    (d.h. Sparen Sie Internet-Bandbreite.) Sobald die Inhalte angekommen sind, sollen sie im Browser auch sofort
+    angezeigt werden.
+</p>
+<p>
+    Fügen Sie selbst in die JSON-Datei zusätzliche Inhalte zu Themen der Vorlesung als Strings beispielhaft ein. Wenn
+    Sie Inhalte aus fremden Quellen kopieren, so schreiben Sie bitte stets die Quelle als externe Ressource hinzu. Diese
+    soll dann auf der rechten Seite im WWW-Navigator erscheinen.
+</p>
+<a href="nr3.html" target="_blank">
+    <button>In neuem Tab öffnen</button>
+</a>
+<h3>Source Code</h3>
+<pre>
+    <code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;8.3 WWW-Navigator&lt;/title&gt;
+    &lt;meta name="viewport" content="width=device-width"&gt;
+    &lt;link href="/css/default.css" rel="stylesheet"&gt;
+    &lt;style&gt;
+        body {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 5rem auto 3rem;
+            grid-template-areas:
+                'header header header header'
+                'left center center right'
+                'footer footer footer footer';
+            margin: 0;
+            height: 100vh;
+            background: var(--color-surface-400);
+        }
 
-<p>Coming Soon!</p>
+        header {
+            grid-area: header;
+            background: var(--color-surface-300);
+        }
 
+        header h1 {
+            color: white;
+            text-align: center;
+            margin: 0 0 0.5rem;
+        }
+
+        header div {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        header div a {
+            background: var(--color-surface-400);
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 5px;
+            margin: 0 1rem;
+        }
+
+        header div a:hover {
+            background: var(--color-surface-500);
+        }
+
+        #left-sidebar {
+            grid-area: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #left-sidebar a {
+            padding: 1rem 0 1rem 1rem;
+            font-size: 20px;
+        }
+
+        #left-sidebar a:hover {
+            background: var(--color-surface-500);
+        }
+
+        .current {
+            background: var(--color-primary-500);
+            color: black;
+        }
+
+        .current:hover {
+            background: var(--color-primary-500);
+        }
+
+        main {
+            grid-area: center;
+            background: var(--color-surface-100);
+            border-radius: 10px;
+            padding: 1rem;
+            font-size: 20px;
+        }
+
+        #right-sidebar {
+            grid-area: right;
+        }
+
+        #right-sidebar ul li a {
+            color: white;
+            padding-right: 0.5rem;
+        }
+
+        footer {
+            grid-area: footer;
+            background: var(--color-surface-300);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer a {
+            color: white;
+            text-align: center;
+            text-decoration: underline;
+            margin: 0 1rem;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            body {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: 5rem auto fit-content(0%) 3rem;
+                grid-template-areas:
+                'header header header'
+                'left center center'
+                'right right right'
+                'footer footer footer';
+            }
+
+        }
+
+        @media only screen and (max-width: 800px) {
+            body {
+                grid-template-columns: 1fr;
+                grid-template-rows: 10rem  10rem auto 5rem 2rem;
+                grid-template-areas:
+                'header'
+                'left'
+                'center'
+                'right'
+                'footer';
+            }
+
+            header div {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            header div a {
+                width: 50%;
+                margin: 0.1rem 0;
+            }
+
+
+        }
+    &lt;/style&gt;
+    &lt;script&gt;
+        let information;
+        let categories;
+        let chapters;
+        let currentCategory;
+        let currentChapter;
+
+        onload = function () {
+            fetch('assets/www_info.json')
+                .then(response =&gt; response.json())
+                .then(json =&gt; information = json)
+                .then(() =&gt; buildHeaderNav());
+        }
+
+        function buildHeaderNav() {
+            // get all categories
+            categories = Object.keys(information);
+            // create navigation buttons
+            categories.forEach(function (x) {
+                let item = document.createElement('a');
+                item.innerHTML = x.toUpperCase();
+                item.addEventListener('click', () =&gt; switchCategory(x));
+                document.getElementById('category-nav').appendChild(item);
+            });
+            // set the first category as the first one
+            document.getElementById('category-nav').children.item(0).className = 'current';
+            currentCategory = categories[0];
+            // get chapters of category and set variable to the first one
+            chapters = Object.keys(information[currentCategory]);
+            currentChapter = chapters[0];
+            // build sidebar navigation and display the content of the first chapter
+            buildSidebarNav();
+            switchChapter(currentChapter);
+        }
+
+        function switchCategory(category) {
+            console.log(`Switching to Category ${category}`);
+            // remove "current" class from category button
+            const categoryNav = document.getElementById('category-nav').children;
+            categoryNav.item(categories.indexOf(currentCategory)).className = '';
+            // set variable to new category
+            currentCategory = category;
+            // get chapters of category and set variable to the first one
+            chapters = Object.keys(information[currentCategory]);
+            currentChapter = chapters[0];
+            // add "current" class to current category button
+            categoryNav.item(categories.indexOf(category)).className = 'current';
+            // build sidebar navigation and display the content of the first chapter
+            buildSidebarNav();
+            switchChapter(currentChapter);
+        }
+
+        function buildSidebarNav() {
+            // remove previous navigation
+            document.querySelector('#left-sidebar').innerHTML = '';
+            // create new navigation buttons
+            chapters.forEach(function (x) {
+                let item = document.createElement('a');
+                item.innerHTML = x;
+                item.addEventListener('click', () =&gt; switchChapter(x));
+                document.getElementById('left-sidebar').appendChild(item);
+            })
+            // add "current" class to the current button
+            document.getElementById('left-sidebar').children.item(0).className = 'current';
+        }
+
+        function switchChapter(chapter) {
+            // remove "current" class from chapter button
+            const chapterNav = document.getElementById('left-sidebar').children;
+            chapterNav.item(chapters.indexOf(currentChapter)).className = '';
+            // set variable to new chapter
+            currentChapter = chapter;
+            // add "current" class to current chapter button
+            chapterNav.item(chapters.indexOf(chapter)).className = 'current';
+            // build content
+            buildContent();
+        }
+
+        function buildContent() {
+            // replace previous content with new content
+            document.getElementsByTagName('main').item(0).innerHTML = information[currentCategory][currentChapter]['content'];
+            // build references list
+            const references = information[currentCategory][currentChapter]['references'];
+            let refItems = '&lt;ul&gt;';
+            references.forEach(x =&gt; refItems += '&lt;li&gt;&lt;a href=' + x + ' target=_blank&gt;' + x + '&lt;/li&gt;&lt;/a&gt;');
+            document.getElementById('right-sidebar-content').innerHTML = refItems + '&lt;/ul&gt;';
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;
+    &lt;h1&gt;WWW-Navigator&lt;/h1&gt;
+    &lt;div id="category-nav"&gt;
+        &lt;!-- Items will be generated based on the json file --&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+&lt;aside id="left-sidebar"&gt;
+    &lt;!-- Items will be generated based on the json file --&gt;
+&lt;/aside&gt;
+&lt;main&gt;
+    &lt;!-- Content will be generated based on the json file --&gt;
+&lt;/main&gt;
+&lt;aside id="right-sidebar"&gt;
+    &lt;h3 style="text-align: center"&gt;Zusätzliche Informationen:&lt;/h3&gt;
+    &lt;div id="right-sidebar-content"&gt;
+        &lt;!-- Content will be generated based on the json file --&gt;
+    &lt;/div&gt;
+&lt;/aside&gt;
+&lt;footer&gt;
+    &lt;a&gt;Sitemap&lt;/a&gt;
+    &lt;a&gt;Home&lt;/a&gt;
+    &lt;a&gt;News&lt;/a&gt;
+    &lt;a&gt;Contact&lt;/a&gt;
+    &lt;a&gt;About&lt;/a&gt;
+&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </code>
+</pre>
 </body>
 </html>
