@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9.3 Interaktive SVG Grafik</title>
+    <link href="/css/default.css" rel="stylesheet">
+    <style>
+        body {
+            background: var(--color-surface-200);
+        }
+
+        div {
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        #tic-tac-toe-field {
+            transform: scale(5, 5);
+            transform-origin: top center;
+        }
+    </style>
+    <script>
+        let movesLeft = 9;
+        let currentPlayer = 0;
+        const fields = [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]];
+
+        function clicked(posY, posX) {
+            if (fields[posY][posX] === -1) {
+                fields[posY][posX] = currentPlayer;
+                if (currentPlayer === 0) {
+                    let lineA = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    lineA.setAttribute('x1', posX * 25 + 5 + '');
+                    lineA.setAttribute('y1', posY * 25 + 5 + '');
+                    lineA.setAttribute('x2', posX * 25 + 20 + '');
+                    lineA.setAttribute('y2', posY * 25 + 20 + '');
+                    lineA.setAttribute('stroke', 'blue');
+                    lineA.setAttribute('stroke-width', '3');
+                    lineA.setAttribute('stroke-linecap', 'round');
+
+                    let lineB = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    lineB.setAttribute('x1', posX * 25 + 20 + '');
+                    lineB.setAttribute('y1', posY * 25 + 5 + '');
+                    lineB.setAttribute('x2', posX * 25 + 5 + '');
+                    lineB.setAttribute('y2', posY * 25 + 20 + '');
+                    lineB.setAttribute('stroke', 'blue');
+                    lineB.setAttribute('stroke-width', '3');
+                    lineB.setAttribute('stroke-linecap', 'round');
+
+                    document.getElementById(posY + '-' + posX).appendChild(lineA);
+                    document.getElementById(posY + '-' + posX).appendChild(lineB);
+
+                    movesLeft--;
+                    checkWinner(1);
+                } else if (currentPlayer === 1) {
+                    let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    circle.setAttribute('cx', posX * 25 + 13 + '');
+                    circle.setAttribute('cy', posY * 25 + 13 + '');
+                    circle.setAttribute('r', "8.5");
+                    circle.setAttribute('stroke', 'red');
+                    circle.setAttribute('stroke-width', '3');
+                    circle.setAttribute('fill', 'transparent');
+
+                    document.getElementById(posY + '-' + posX).appendChild(circle);
+
+                    movesLeft--;
+                    checkWinner(0);
+                }
+            }
+        }
+
+        function checkWinner(nextPlayer) {
+            for (let i = 0; i < 3; i++) {
+                if (fields[i][0] === fields[i][1] && fields[i][1] === fields[i][2] && fields[i][0] !== -1 && fields[i][1] !== -1 && fields[i][2] !== -1) {
+                    declareWinner(fields[i][0]);
+                    return null;
+                }
+                if (fields[0][i] === fields[1][i] && fields[1][i] === fields[2][i] && fields[0][i] !== -1 && fields[1][i] !== -1 && fields[2][i] !== -1) {
+                    declareWinner(fields[0][i]);
+                    return null;
+                }
+            }
+
+            if (fields[0][0] === fields[1][1] && fields[1][1] === fields[2][2] && fields[0][0] !== -1 && fields[1][1] !== -1 && fields[2][2] !== -1) {
+                declareWinner(fields[0][0]);
+                return null;
+            }
+            if (fields[0][2] === fields[1][1] && fields[1][1] === fields[2][0] && fields[0][2] !== -1 && fields[1][1] !== -1 && fields[2][0] !== -1) {
+                declareWinner(fields[0][2]);
+                return null;
+            }
+
+            if (movesLeft === 0) {
+                document.getElementById('game-status').innerHTML = 'Es ist unentschieden!';
+                currentPlayer = -1;
+                return null;
+            }
+
+            currentPlayer = nextPlayer;
+            let next = nextPlayer === 0 ? 'x' : '○';
+            document.getElementById('game-status').innerHTML = 'Spieler ' + next + ' ist dran';
+        }
+
+        function declareWinner(winner) {
+            let player = winner === 0 ? 'x' : '○';
+            document.getElementById('game-status').innerHTML = 'Spieler ' + player + ' hat gewonnen!';
+            currentPlayer = -1;
+        }
+    </script>
+</head>
+<body>
+<div>
+    <h2 id="game-status">Spieler x ist dran</h2>
+    <svg id="tic-tac-toe-field" height="75" width="75">
+        <line x1="25" y1="1" x2="25" y2="74" stroke="white" stroke-linecap="round"></line>
+        <line x1="50" y1="1" x2="50" y2="77" stroke="white" stroke-linecap="round"></line>
+        <line x1="1" y1="25" x2="74" y2="25" stroke="white" stroke-linecap="round"></line>
+        <line x1="1" y1="50" x2="74" y2="50" stroke="white" stroke-linecap="round"></line>
+
+        <g id="0-0">
+            <rect x="0" y="0" height="25" width="25" fill="transparent" onclick="clicked(0, 0)"></rect>
+        </g>
+        <g id="0-1">
+            <rect x="25" y="0" height="25" width="25" fill="transparent" onclick="clicked(0, 1)"></rect>
+        </g>
+        <g id="0-2">
+            <rect x="50" y="0" height="25" width="25" fill="transparent" onclick="clicked(0, 2)"></rect>
+        </g>
+        <g id="1-0">
+            <rect x="0" y="25" height="25" width="25" fill="transparent" onclick="clicked(1, 0)"></rect>
+        </g>
+        <g id="1-1">
+            <rect x="25" y="25" height="25" width="25" fill="transparent" onclick="clicked(1, 1)"></rect>
+        </g>
+        <g id="1-2">
+            <rect x="50" y="25" height="25" width="25" fill="transparent" onclick="clicked(1, 2)"></rect>
+        </g>
+        <g id="2-0">
+            <rect x="0" y="50" height="25" width="25" fill="transparent" onclick="clicked(2, 0)"></rect>
+        </g>
+        <g id="2-1">
+            <rect x="25" y="50" height="25" width="25" fill="transparent" onclick="clicked(2, 1)"></rect>
+        </g>
+        <g id="2-2">
+            <rect x="50" y="50" height="25" width="25" fill="transparent" onclick="clicked(2, 2)"></rect>
+        </g>
+    </svg>
+</div>
+
+</body>
+</html>
