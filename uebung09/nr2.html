@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9.2 Statistik-Balkendiagramm in SVG</title>
+    <link href="/css/default.css" rel="stylesheet">
+    <style>
+        svg {
+            margin-left: 1rem;
+        }
+
+        .bar:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<h1>Statistik Stromverbrauch in DE</h1>
+<script>
+    let file;
+    let data = [];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    fetch('./assets/Realisierter_Stromverbrauch_202301010000_202311302359_Monat.json')
+        .then(response => file = response.json())
+        .then(file => createDiagram(file));
+
+    function createDiagram(file) {
+        saveData(file);
+        buildBars();
+    }
+
+    function saveData(file) {
+        for (let i = 0; i < Object.keys(file).length; i++) {
+            data.push(file[i]["Gesamt (Netzlast) [MWh] Berechnete Auflösungen"] / 100000);
+        }
+    }
+
+    function buildBars() {
+        for (let i = 0; i < data.length; i++) {
+            const dataPos = Math.round(data[i])
+            let bar = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            bar.setAttribute('x1', '6');
+            bar.setAttribute('y1', i * 20 + i * 10 + 15 + '');
+            bar.setAttribute('x2', '6');
+            bar.setAttribute('y2', i * 20 + i * 10 + 15 + '');
+            bar.setAttribute('stroke', 'blue');
+            bar.setAttribute('stroke-width', '20');
+            bar.setAttribute('opacity', '0.5');
+            bar.innerHTML = `<animate attributeName="x2" from="6" to="${dataPos}" begin="1s" dur="2s" fill="freeze"/>`;
+            bar.classList.add('bar');
+            document.getElementById('diagram').appendChild(bar);
+
+            let monthText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            monthText.innerHTML = months[i];
+            monthText.setAttribute('x', '10');
+            monthText.setAttribute('y', i * 20 + i * 10 + 20 + '');
+            monthText.setAttribute('fill', 'white');
+            document.getElementById('diagram').appendChild(monthText);
+
+            let valueText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            valueText.innerHTML = data[i] * 100000 + ' MWh';
+            valueText.setAttribute('x', dataPos + 10 + '');
+            valueText.setAttribute('y', i * 20 + i * 10 + 20 + '');
+            valueText.setAttribute('fill', 'white');
+            document.getElementById('diagram').appendChild(valueText);
+        }
+    }
+</script>
+<svg id="diagram" height="400px" width="600px">
+    <line x1="3" x2="3" y1="0" y2="330" stroke="white" stroke-width="5"></line>
+    <line x1="0.5" x2="580" y1="330" y2="330" stroke="white" stroke-width="5"></line>
+</svg>
+</body>
+</html>

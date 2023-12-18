@@ -1,0 +1,90 @@
+[
+  {
+    "Datum": "01.01.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 42115367.75,
+    "Residuallast [MWh] Berechnete Auflösungen": 23941189.25,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 1310524.5
+  },
+  {
+    "Datum": "01.02.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 38133598.25,
+    "Residuallast [MWh] Berechnete Auflösungen": 23781954,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 1001122.25
+  },
+  {
+    "Datum": "01.03.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 40875227,
+    "Residuallast [MWh] Berechnete Auflösungen": 22646401.5,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 1369451.75
+  },
+  {
+    "Datum": "01.04.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 36144688.75,
+    "Residuallast [MWh] Berechnete Auflösungen": 20658204,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 1348171.25
+  },
+  {
+    "Datum": "01.05.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 36318209.5,
+    "Residuallast [MWh] Berechnete Auflösungen": 20145865,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 1317937.25
+  },
+  {
+    "Datum": "01.06.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 35479201.25,
+    "Residuallast [MWh] Berechnete Auflösungen": 20680621.5,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 1009426.25
+  },
+  {
+    "Datum": "01.07.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 36264123.5,
+    "Residuallast [MWh] Berechnete Auflösungen": 18480145.5,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 863374
+  },
+  {
+    "Datum": "01.08.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 36301119.5,
+    "Residuallast [MWh] Berechnete Auflösungen": 22845834.75,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 1003669
+  },
+  {
+    "Datum": "01.09.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 35807797.5,
+    "Residuallast [MWh] Berechnete Auflösungen": 22550923,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 1126620.75
+  },
+  {
+    "Datum": "01.10.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 38924280.25,
+    "Residuallast [MWh] Berechnete Auflösungen": 21262632,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 1375338.75
+  },
+  {
+    "Datum": "01.11.2023",
+    "Anfang": "00:00",
+    "Ende": "00:00",
+    "Gesamt (Netzlast) [MWh] Berechnete Auflösungen": 40986836.5,
+    "Residuallast [MWh] Berechnete Auflösungen": 22934873,
+    "Pumpspeicher [MWh] Berechnete Auflösungen": 1102048
+  }
+]
