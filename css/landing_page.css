@@ -13,6 +13,22 @@
     height: fit-content(0);
 }
 
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 0 0 var(--color-primary-100);
+    }
+    100% {
+        box-shadow: 0 0 5px 5px var(--color-primary-100);
+    }
+}
+
+#tasks-grid div:hover {
+    animation-name: glow;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
 #tasks-grid h2 {
     margin: 10px 10px 5px 10px;
 }
