@@ -62,12 +62,16 @@ nav ul li.current {
 #logo {
     display: flex;
     align-items: center;
-    margin-left: 0.5rem;
-    width: 100%;
+    margin-left: 0.2rem;
+    width: max-content;
+    text-decoration: none;
 }
 
-#logo a {
-    font-size: 2rem;;
+#logo-text {
+    font-size: 2rem;
+    color: white;
+    padding-left: 0.5rem;
+    white-space: nowrap;
 }
 
 #menu-button {
@@ -76,7 +80,17 @@ nav ul li.current {
     font-size: 2rem;
 }
 
+@media only screen and (max-width: 900px) {
+    #logo-text {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 800px) {
+    #logo-text {
+        display: none;
+    }
+
     nav ul {
         display: none;
     }
