@@ -1,0 +1,42 @@
+{
+  "01": {
+    "task": "U01",
+    "title": "HTTP, URI und HTML"
+  },
+  "02": {
+    "task": "U02",
+    "title": "Cascading Style Sheets (CSS)"
+  },
+  "03": {
+    "task": "U03",
+    "title": "Responsive Webdesign (RWD)"
+  },
+  "04": {
+    "task": "U04",
+    "title": "JavaScript (JS)"
+  },
+  "05": {
+    "task": "U05",
+    "title": "Document Object Model (DOM)"
+  },
+  "06": {
+    "task": "U06",
+    "title": "ECMAScript (ES)"
+  },
+  "07": {
+    "task": "U07",
+    "title": "Funktionale Programmierung"
+  },
+  "08": {
+    "task": "U08",
+    "title": "Asynchrones JavaScript"
+  },
+  "09": {
+    "task": "U09",
+    "title": "Coming Soon!"
+  },
+  "10": {
+    "task": "U10",
+    "title": "Coming Soon!"
+  }
+}

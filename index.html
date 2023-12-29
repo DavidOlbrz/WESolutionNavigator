@@ -14,7 +14,12 @@
           crossorigin="anonymous" referrerpolicy="no-referrer"
     />
     <script src="https://kit.fontawesome.com/37beb9f2cd.js" crossorigin="anonymous"></script>
+    <script src="/scripts/taskloader.js"></script>
     <script>
+        onload = function () {
+            loadTasks();
+        }
+
         function notAvailable(taskNo) {
             alert(`Übung ${taskNo} ist noch nicht verfügbar!`);
         }
@@ -78,103 +83,6 @@
 </header>
 <h1>Übungen Übersicht</h1>
 
-<div id="tasks-grid">
-    <div>
-        <h2>U01</h2>
-        <span>HTTP, URI und HTML</span>
-        <br>
-        <a href="./uebung01">
-            <button><i class="fa-solid fa-arrow-right"></i> Übung 01 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U02</h2>
-        <span>Cascading Style Sheets (CSS)</span>
-        <br>
-        <a href="./uebung02">
-            <button><i class="fa-solid fa-arrow-right"></i> Übung 02 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U03</h2>
-        <span>Responsive Webdesign (RWD)</span>
-        <br>
-        <a href="./uebung03">
-            <button><i class="fa-solid fa-arrow-right"></i> Übung 03 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U04</h2>
-        <span>JavaScript (JS)</span>
-        <br>
-        <a href="./uebung04">
-            <button><i class="fa-solid fa-arrow-right"></i> Übung 04 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U05</h2>
-        <span>Document Object Model (DOM)</span>
-        <br>
-        <a href="./uebung05">
-            <button><i class="fa-solid fa-arrow-right"></i> Übung 05 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U06</h2>
-        <span>ECMAScript (ES)</span>
-        <br>
-        <a href="./uebung06">
-            <button><i class="fa-solid fa-arrow-right"></i> Übung 06 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U07</h2>
-        <span>Funktionale Programmierung</span>
-        <br>
-        <a href="./uebung07">
-            <button><i class="fa-solid fa-arrow-right"></i> Übung 07 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U08</h2>
-        <span>Asynchrones JavaScript</span>
-        <br>
-        <a href="./uebung08">
-            <button><i class="fa-solid fa-arrow-right"></i> Übung 08 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U09</h2>
-        <span>Coming Soon!</span>
-        <br>
-        <a>
-            <button onclick="notAvailable(9)"><i class="fa-solid fa-arrow-right"></i> Übung 09 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U10</h2>
-        <span>Coming Soon!</span>
-        <br>
-        <a>
-            <button onclick="notAvailable(10)"><i class="fa-solid fa-arrow-right"></i> Übung 10 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U11</h2>
-        <span>Coming Soon!</span>
-        <br>
-        <a>
-            <button onclick="notAvailable(11)"><i class="fa-solid fa-arrow-right"></i> Übung 11 öffnen</button>
-        </a>
-    </div>
-    <div>
-        <h2>U12</h2>
-        <span>Coming Soon!</span>
-        <br>
-        <a>
-            <button onclick="notAvailable(12)"><i class="fa-solid fa-arrow-right"></i> Übung 12 öffnen</button>
-        </a>
-    </div>
-</div>
+<div id="tasks-grid"></div>
 </body>
 </html>
