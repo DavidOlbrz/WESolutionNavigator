@@ -6,27 +6,28 @@ header {
     width: 100%;
 }
 
-nav {
+#header-nav {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     width: 100%;
 }
 
-nav a {
+#header-nav a {
     color: white;
     text-decoration: none;
 }
 
-nav ul {
+#menu-container ul {
     padding: 0;
     margin: 0;
     list-style-type: none;
     display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
-nav ul li {
+#menu-container ul li {
     width: fit-content;
     padding: 10px 1rem;
     margin: 0 0.5rem;
@@ -34,17 +35,12 @@ nav ul li {
     border-radius: 20px;
 }
 
-nav ul li:hover {
+#menu-container ul li:hover {
     border: rgba(0, 0, 0, 1) solid 1px;
 }
 
-nav ul li.current {
+#menu-container ul li.current {
     background: gray;
-}
-
-#menu-container hr {
-    display: none;
-    width: 100%;
 }
 
 #task-select select option {
@@ -91,11 +87,11 @@ nav ul li.current {
         display: none;
     }
 
-    nav ul {
+    #menu-container ul {
         display: none;
     }
 
-    #open-menu-button {
+    #menu-button {
         display: unset;
     }
 
@@ -103,10 +99,17 @@ nav ul li.current {
         position: absolute;
         top: 3rem;
         left: 0;
-        width: fit-content;
+        height: fit-content;
+        width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
         background: var(--color-surface-400);
-        opacity: 0.5;
     }
+
+    #menu-container ul li {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
 }
