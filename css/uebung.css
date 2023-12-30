@@ -1,22 +1,63 @@
+@import "default.css";
+
 .aufgaben_nav {
-    border: black solid 1px;
-    border-radius: 10px;
     width: fit-content;
-    padding: 10px;
 }
 
 .aufgaben_nav h2 {
     margin: 0 0 5px 0;
 }
 
+.aufgaben_nav nav a {
+    color: white;
+    text-decoration: none;
+}
+
+h2 {
+    margin-left: 1rem;
+}
+
+hr {
+    margin: 0.5rem;
+}
+
+.container {
+    background: var(--color-surface-200);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 1rem;
+    height: fit-content;
+}
+
+.container h3, h4 {
+    margin: 0;
+}
+
+.container p {
+    margin: 1rem 0 0;
+}
+
+iframe {
+    border: solid white 0;
+    border-radius: 20px;
+    padding: 10px;
+    background: white;
+}
+
+.code-block {
+    display: none;
+}
+
 #top_button {
     position: fixed;
     right: 10px;
     bottom: 10px;
+    height: 20px;
+    width: 20px;
     padding: 10px;
-    border: black solid 1px;
-    border-radius: 10px;
-    background: gray;
+    border-radius: 20px;
+    background: var(--color-primary-100);
     color: white;
     text-decoration: none;
+    text-align: center;
 }

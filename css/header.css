@@ -49,8 +49,11 @@ header {
 }
 
 #task-select select {
+    margin: 0;
+    padding: 0;
     background: rgba(0, 0, 0, 0);
     font-size: 16px;
+    text-align: center;
     border: none;
     color: white;
 }
