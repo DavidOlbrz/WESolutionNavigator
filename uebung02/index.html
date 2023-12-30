@@ -2,7 +2,17 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Übung 02</title>
+    <title>Übung 02 | Solution-Navigator</title>
+    <link href="/assets/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+          integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css"
+          integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://kit.fontawesome.com/37beb9f2cd.js" crossorigin="anonymous"></script>
     <link href="../css/uebung.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
@@ -12,99 +22,117 @@
         }
     </style>
     <script>hljs.highlightAll();</script>
+    <script src="/scripts/toggleCode.js"></script>
 </head>
 <body>
-<a href="..">[Zurück]</a><br>
 <h1 id="top">Übung 2: Cascading Style Sheets (CSS)</h1>
 
-<div class="aufgaben_nav">
+<div class="aufgaben_nav container">
     <h2>Aufgaben</h2>
-    <nav><a href="#task1">2.1 Zuordnung der Homepage</a></nav>
+    <nav><a href="#task1">2.1 Zuordnung der Homepage <i class="fa-solid fa-star" style="color: gold"
+                                                        title="Klausurrelevant"></i></a></nav>
     <nav><a href="#task2">2.2 CSS-Selektoren und CSS-Farben</a></nav>
     <nav><a href="#task3">2.3 CSS-Positionierung</a></nav>
-    <nav><a href="#task4">2.4 Wireframe mit HTML und CSS</a></nav>
+    <nav><a href="#task4">2.4 Wireframe mit HTML und CSS <i class="fa-solid fa-star" style="color: gold"
+                                                            title="Klausurrelevant"></i></a></nav>
 </div>
 
-<h2 id="task1">2.1 Zuordnung der Homepage</h2>
-Repository des Solution Navigators auf <a href="https://github.com/xTheAgentx/WESolutionNavigator" target="_blank"
-                                          title="Öffnet das Repository in einem neuen Tab">GitHub</a>
+<h2 id="task1">2.1 Zuordnung der Homepage <i class="fa-solid fa-star" style="color: gold" title="Klausurrelevant"></i>
+</h2>
+
+<div class="container">
+    <a href="https://github.com/xTheAgentx/WESolutionNavigator" target="_blank">
+        <button><i class="fa-solid fa-arrow-up-right-from-square"></i> Auf GitHub öffnen</button>
+    </a>
+</div>
+<hr>
 
 <h2 id="task2">2.2 CSS-Selektoren und CSS-Farben</h2>
-<fieldset>
-    <legend>Spezifität der CSS-Selektoren</legend>
-    <table border="1" style="text-align: left">
-        <tr>
-            <th>div div div:focus .inner</th>
-            <td>023</td>
-        </tr>
-        <tr>
-            <th>h1 + div.main</th>
-            <td>012</td>
-        </tr>
-        <tr>
-            <th>div a:link[href*='h-brs']</th>
-            <td>022</td>
-        </tr>
-        <tr>
-            <th>nav > a:hover::before</th>
-            <td>013</td>
-        </tr>
-        <tr>
-            <th>ul#primary-nav li.active</th>
-            <td>112</td>
-        </tr>
-    </table>
-</fieldset>
-<fieldset>
-    <legend>Farbwerte → HSL</legend>
-    <table>
-        <tr>
-            <td style="color: #ffffff">■</td>
-            <td title="HEX">#ffffff</td>
-            <td>→</td>
-            <td style="color: hsl(0, 0%, 100%)">■</td>
-            <td>hsl(0, 0%, 100%)</td>
-        </tr>
-        <tr>
-            <td style="color: #000">■</td>
-            <td title="HEX">#000</td>
-            <td>→</td>
-            <td style="color: hsl(0, 0%, 0%)">■</td>
-            <td>hsl(0, 0%, 0%)</td>
-        </tr>
-        <tr>
-            <td style="color: #ab0978">■</td>
-            <td title="HEX">#ab0978</td>
-            <td>→</td>
-            <td style="color: hsl(319, 90%, 35%)">■</td>
-            <td>hsl(319, 90%, 35%)</td>
-        </tr>
-        <tr>
-            <td style="color: rgb(127,255,33)">■</td>
-            <td title="RGB">rgb(127,255,33)</td>
-            <td>→</td>
-            <td style="color: hsl(95, 100%, 56%)">■</td>
-            <td>hsl(95, 100%, 56%)</td>
-        </tr>
-        <tr>
-            <td style="color: rgba(255,127,33,0.8)">■</td>
-            <td title="RGBA">rgba(255,127,33,0.8)</td>
-            <td>→</td>
-            <td style="color: hsla(25, 100%, 56%, 0.8)">■</td>
-            <td>hsla(25, 100%, 56%, 0.8)</td>
-        </tr>
-    </table>
-</fieldset>
+
+<div class="container" style="display: flex; justify-content: flex-start; flex-wrap: wrap">
+    <fieldset>
+        <legend>Spezifität der CSS-Selektoren</legend>
+        <table border="1" style="text-align: left">
+            <tr>
+                <th>div div div:focus .inner</th>
+                <td>023</td>
+            </tr>
+            <tr>
+                <th>h1 + div.main</th>
+                <td>012</td>
+            </tr>
+            <tr>
+                <th>div a:link[href*='h-brs']</th>
+                <td>022</td>
+            </tr>
+            <tr>
+                <th>nav > a:hover::before</th>
+                <td>013</td>
+            </tr>
+            <tr>
+                <th>ul#primary-nav li.active</th>
+                <td>112</td>
+            </tr>
+        </table>
+    </fieldset>
+    <fieldset>
+        <legend>Farbwerte → HSL</legend>
+        <table>
+            <tr>
+                <td style="color: #ffffff">■</td>
+                <td title="HEX">#ffffff</td>
+                <td>→</td>
+                <td style="color: hsl(0, 0%, 100%)">■</td>
+                <td>hsl(0, 0%, 100%)</td>
+            </tr>
+            <tr>
+                <td style="color: #000">■</td>
+                <td title="HEX">#000</td>
+                <td>→</td>
+                <td style="color: hsl(0, 0%, 0%)">■</td>
+                <td>hsl(0, 0%, 0%)</td>
+            </tr>
+            <tr>
+                <td style="color: #ab0978">■</td>
+                <td title="HEX">#ab0978</td>
+                <td>→</td>
+                <td style="color: hsl(319, 90%, 35%)">■</td>
+                <td>hsl(319, 90%, 35%)</td>
+            </tr>
+            <tr>
+                <td style="color: rgb(127,255,33)">■</td>
+                <td title="RGB">rgb(127,255,33)</td>
+                <td>→</td>
+                <td style="color: hsl(95, 100%, 56%)">■</td>
+                <td>hsl(95, 100%, 56%)</td>
+            </tr>
+            <tr>
+                <td style="color: rgba(255,127,33,0.8)">■</td>
+                <td title="RGBA">rgba(255,127,33,0.8)</td>
+                <td>→</td>
+                <td style="color: hsla(25, 100%, 56%, 0.8)">■</td>
+                <td>hsla(25, 100%, 56%, 0.8)</td>
+            </tr>
+        </table>
+    </fieldset>
+</div>
+<hr>
 
 <h2 id="task3">2.3 CSS-Positionierung</h2>
-<h3>Sticky Header</h3>
-<a href="nr3_1.html" target="_blank">
-    <button>In neuem Tab öffnen</button>
-</a><br><br>
-<iframe src="nr3_1.html" height="200px" width="400px"></iframe>
-<h4>Source Code</h4>
-<pre>
-    <code>
+
+<div class="container">
+    <h3>Sticky Header</h3>
+    <br>
+    <iframe src="nr3_1.html" height="300px" width="500px"></iframe>
+    <br><br>
+    <a href="nr3_1.html" target="_blank">
+        <button><i class="fa-solid fa-arrow-up-right-from-square"></i> In neuem Tab öffnen</button>
+    </a>
+    <br><br>
+    <button onclick="toggleCode('task3-1-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task3-1-code" class="code-block">
+        <code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="de"&gt;
 &lt;head&gt;
@@ -130,17 +158,32 @@ Repository des Solution Navigators auf <a href="https://github.com/xTheAgentx/WE
 &lt;!-- Platzhalter Text --&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-    </code>
-</pre>
-
-<h3>Bild verstecken</h3>
-<a href="nr3_2.html" target="_blank">
-    <button>In neuem Tab öffnen</button>
-</a><br><br>
-<iframe style="resize: horizontal" src="nr3_2.html" height="500px" width="500px"></iframe>
-<h4>Source Code</h4>
-<pre>
-    <code>
+        </code>
+    </pre>
+</div>
+<div class="container">
+    <h3>Bild verstecken</h3>
+    <br>
+    <iframe id="task3-2-iframe" style="resize: horizontal" src="nr3_2.html" height="500px" width="500px"></iframe>
+    <br>
+    <button onclick="document.getElementById('task3-2-iframe').style.width = '300px'"
+            style="border-radius: 20px 0 0 20px"><i class="fa-solid fa-down-left-and-up-right-to-center"></i> Kleiner
+    </button>
+    <button onclick="document.getElementById('task3-2-iframe').style.width = '500px'" style="border-radius: 0"><i
+            class="fa-solid fa-arrows-rotate"></i> Standard
+    </button>
+    <button onclick="document.getElementById('task3-2-iframe').style.width = '700px'"
+            style="border-radius: 0 20px 20px 0"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Größer
+    </button>
+    <br><br>
+    <a href="nr3_2.html" target="_blank">
+        <button><i class="fa-solid fa-arrow-up-right-from-square"></i> In neuem Tab öffnen</button>
+    </a>
+    <br><br>
+    <button onclick="toggleCode('task3-2-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task3-2-code" class="code-block">
+        <code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
@@ -176,17 +219,31 @@ Repository des Solution Navigators auf <a href="https://github.com/xTheAgentx/WE
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-    </code>
-</pre>
+        </code>
+    </pre>
+</div>
+<hr>
 
-<h2 id="task4">2.4 Wireframe mit HTML und CSS</h2>
-<a href="nr4.html" target="_blank">
-    <button>In neuem Tab öffnen</button>
-</a><br><br>
-<iframe src="nr4.html" width="750px" height="620px" scrolling="no" frameborder="0"></iframe>
-<h3>Source Code</h3>
-<pre>
-    <code>
+<h2 id="task4">2.4 Wireframe mit HTML und CSS <i class="fa-solid fa-star" style="color: gold"
+                                                 title="Klausurrelevant"></i></h2>
+
+<div class="container">
+    <br>
+    <iframe src="nr4.html" width="750px" height="630px" scrolling="no"></iframe>
+    <br><br>
+    <a href="nr4.html" target="_blank">
+        <button><i class="fa-solid fa-arrow-up-right-from-square"></i> In neuem Tab öffnen</button>
+    </a>
+    <br><br>
+    <h4>Größte Schwierigkeit</h4>
+    <p>Die größte Schwierigkeit war, das Layout genau wie vorgegeben hinzubekommen. Als Lösung habe ich die einzelnen
+        Formularelemente in eine Tabelle geschrieben, damit sie wie vorgegeben sich alle an einer geraden Linie rechts
+        von der Mitte aus anordnen.</p>
+    <br>
+    <button onclick="toggleCode('task4-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task4-code" class="code-block">
+        <code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
@@ -341,10 +398,10 @@ Repository des Solution Navigators auf <a href="https://github.com/xTheAgentx/WE
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-    </code>
-</pre>
-<br>
-<a href="..">[Zurück]</a>
-<a id="top_button" href="#top">&#8593;</a>
+        </code>
+    </pre>
+</div>
+
+<a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
 </body>
 </html>

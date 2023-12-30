@@ -39,13 +39,21 @@ hr {
 
 iframe {
     border: solid white 0;
-    border-radius: 20px;
-    padding: 10px;
     background: white;
+    transition: width 1s;
 }
 
 .code-block {
     display: none;
+}
+
+table, tr, td, th {
+    border: solid white 1px;
+    border-collapse: collapse;;
+}
+
+th, td {
+    padding: 10px;
 }
 
 #top_button {
