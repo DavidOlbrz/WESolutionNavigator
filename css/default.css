@@ -54,7 +54,31 @@ button a {
     text-decoration: none;
 }
 
+input {
+    background-color: var(--color-surface-300);
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem;
+    color: white;
+}
+
+input:focus {
+    border: solid white 1px;
+}
+
+select {
+    background-color: var(--color-surface-300);
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem;
+    color: white;
+}
+
 mark {
     background-color: var(--color-primary-300);
     border-radius: 3px;
+}
+
+code {
+    color: #b383f1;
 }
