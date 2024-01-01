@@ -2,12 +2,23 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Übung 4</title>
+    <title>Übung 4 | Solution-Navigator</title>
+    <link href="/assets/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+          integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css"
+          integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://kit.fontawesome.com/37beb9f2cd.js" crossorigin="anonymous"></script>
     <link href="../css/uebung.css" rel="stylesheet">
     <!-- highlight.js for syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
+    <script src="/scripts/toggleCode.js"></script>
     <script>
         // task 1
 
@@ -117,10 +128,9 @@
     </script>
 </head>
 <body>
-<a href="..">[Zurück]</a><br>
 <h1 id="top">Übung 4: JavaScript (JS)</h1>
 
-<div class="aufgaben_nav">
+<div class="aufgaben_nav container">
     <h2>Aufgaben</h2>
     <nav><a href="#task1">4.1 Funktionen</a></nav>
     <nav><a href="#task2">4.2 Objekte</a></nav>
@@ -130,61 +140,69 @@
 
 <h2 id="task1">4.1 Funktionen</h2>
 
-<p>1. Eine Funktion <code>identity()</code>, die ein Argument als Parameter entgegennimmt und dieses als Ergebnis
-    zurückgibt.</p>
-<label for="input_1_1">Input</label>
-<input id="input_1_1" type="text">
-<button onclick="document.getElementById('result_1_1').value = identity(document.getElementById('input_1_1').value)">
-    ► Ausführen
-</button>
-<br>
-<label for="result_1_1">Output</label>
-<input id="result_1_1" type="text" placeholder="Ergebnis erscheint hier" disabled>
-<p>Source Code</p>
-<pre>
-    <code>
+<div class="container">
+    <h4>1. Eine Funktion <code>identity()</code>, die ein Argument als Parameter
+        entgegennimmt und dieses als Ergebnis
+        zurückgibt.</h4>
+    <br>
+    <label for="input_1_1">Input</label>
+    <input id="input_1_1" type="text">
+    <button onclick="document.getElementById('result_1_1').value = identity(document.getElementById('input_1_1').value)">
+        <i class="fa-solid fa-play"></i> Ausführen
+    </button>
+    <br><br>
+    <label for="result_1_1">Output</label>
+    <input id="result_1_1" type="text" placeholder="Ergebnis erscheint hier" disabled>
+    <p style="text-decoration-line: underline">Source Code</p>
+    <pre>
+        <code>
 function identity(arg) {
     return arg;
 }
-    </code>
-</pre>
-
-<p>2. Eine Funktion <code>identity_function()</code>, die ein Argument als Parameter entgegennimmt und eine Funktion
-    zurückgibt, die
-    dieses Argument zurückgibt.</p>
-<label for="input_1_2">Input</label>
-<input id="input_1_2" type="text">
-<button onclick="document.getElementById('result_1_2').value = identity_function(document.getElementById('input_1_2').value)">
-    ► Ausführen
-</button>
-<br>
-<label for="result_1_2">Output</label>
-<input id="result_1_2" type="text" placeholder="Ergebnis erscheint hier" disabled>
-<p>Source Code</p>
-<pre>
-    <code>
+        </code>
+    </pre>
+</div>
+<div class="container">
+    <h4>2. Eine Funktion <code>identity_function()</code>, die ein Argument als Parameter entgegennimmt und eine
+        Funktion
+        zurückgibt, die
+        dieses Argument zurückgibt.</h4>
+    <br>
+    <label for="input_1_2">Input</label>
+    <input id="input_1_2" type="text">
+    <button onclick="document.getElementById('result_1_2').value = identity_function(document.getElementById('input_1_2').value)">
+        <i class="fa-solid fa-play"></i> Ausführen
+    </button>
+    <br><br>
+    <label for="result_1_2">Output</label>
+    <input id="result_1_2" type="text" placeholder="Ergebnis erscheint hier" disabled>
+    <p style="text-decoration-line: underline">Source Code</p>
+    <pre>
+        <code>
 function identity_function(arg) {
     return identity(arg);
 }
-    </code>
-</pre>
-
-<p>3. Zwei binäre Funktionen <code>add</code> und <code>mul</code>, die Summe und Produkt berechnen.</p>
-<label for="input_1_3a">Operand A</label>
-<input id="input_1_3a" type="number">
-<label for="input_1_3b">Operand B</label>
-<input id="input_1_3b" type="number">
-<button onclick="document.getElementById('result_1_3add').value = add(parseInt(document.getElementById('input_1_3a').value), parseInt(document.getElementById('input_1_3b').value));document.getElementById('result_1_3mul').value = mul(parseInt(document.getElementById('input_1_3a').value), parseInt(document.getElementById('input_1_3b').value));">
-    ► Ausführen
-</button>
-<br>
-<label for="result_1_3add">Output <code>add</code></label>
-<input id="result_1_3add" type="number" disabled>
-<label for="result_1_3mul">Output <code>mul</code></label>
-<input id="result_1_3mul" type="number" disabled>
-<p>Source Code</p>
-<pre>
-    <code>
+        </code>
+    </pre>
+</div>
+<div class="container">
+    <h4>3. Zwei binäre Funktionen <code>add</code> und <code>mul</code>, die Summe und Produkt berechnen.</h4>
+    <br>
+    <label for="input_1_3a">Operand A</label>
+    <input id="input_1_3a" type="number">
+    <label for="input_1_3b">Operand B</label>
+    <input id="input_1_3b" type="number">
+    <button onclick="document.getElementById('result_1_3add').value = add(parseInt(document.getElementById('input_1_3a').value), parseInt(document.getElementById('input_1_3b').value));document.getElementById('result_1_3mul').value = mul(parseInt(document.getElementById('input_1_3a').value), parseInt(document.getElementById('input_1_3b').value));">
+        <i class="fa-solid fa-play"></i> Ausführen
+    </button>
+    <br><br>
+    <label for="result_1_3add">Output <code>add</code></label>
+    <input id="result_1_3add" placeholder="Ergebnis erscheint hier" disabled>
+    <label for="result_1_3mul">Output <code>mul</code></label>
+    <input id="result_1_3mul" placeholder="Ergebnis erscheint hier" disabled>
+    <p style="text-decoration-line: underline">Source Code</p>
+    <pre>
+        <code>
 function add(opA, opB) {
     return opA + opB;
 }
@@ -192,57 +210,66 @@ function add(opA, opB) {
 function mul(opA, opB) {
     return opA * opB;
 }
-    </code>
-</pre>
-
-<p>4. Eine Addierer-Funktion <code>addf()</code>, so dass <code>addf(x)(y)</code> genau <code>x + y</code> zurückgibt.
-    (Es haben also zwei Funktionsaufrufe zu
-    erfolgen. <code>addf(x)</code> liefert eine Funktion, die auf <code>y</code> angewandt wird.)</p>
-<label for="input_1_4a">Operand A</label>
-<input id="input_1_4a" type="number">
-<label for="input_1_4b">Operand B</label>
-<input id="input_1_4b" type="number">
-<button onclick="document.getElementById('result_1_4').value = addf(parseInt(document.getElementById('input_1_4a').value))(parseInt(document.getElementById('input_1_4b').value))">
-    ► Ausführen
-</button>
-<br>
-<label for="result_1_4">Output</label>
-<input id="result_1_4" placeholder="Ergebnis erscheint hier">
-<p>Source Code</p>
-<pre>
-    <code>
+        </code>
+    </pre>
+</div>
+<div class="container">
+    <h4>4. Eine Addierer-Funktion <code>addf()</code>, so dass <code>addf(x)(y)</code> genau <code>x + y</code>
+        zurückgibt.
+        (Es haben also zwei Funktionsaufrufe zu
+        erfolgen. <code>addf(x)</code> liefert eine Funktion, die auf <code>y</code> angewandt wird.)</h4>
+    <br>
+    <label for="input_1_4a">Operand A</label>
+    <input id="input_1_4a" type="number">
+    <label for="input_1_4b">Operand B</label>
+    <input id="input_1_4b" type="number">
+    <button onclick="document.getElementById('result_1_4').value = addf(parseInt(document.getElementById('input_1_4a').value))(parseInt(document.getElementById('input_1_4b').value))">
+        <i class="fa-solid fa-play"></i> Ausführen
+    </button>
+    <br><br>
+    <label for="result_1_4">Output</label>
+    <input id="result_1_4" placeholder="Ergebnis erscheint hier">
+    <p style="text-decoration-line: underline">Source Code</p>
+    <pre>
+        <code>
 function addf(x) {
     return function (y) {
         return x + y;
     }
 }
-    </code>
-</pre>
-
-<p>5. Eine Funktion <code>applyf()</code>, die aus einer binären Funktion wie <code>add(x,y)</code> eine Funktion <code>addf</code>
-    berechnet, die mit zwei
-    Aufrufen das gleiche Ergebnis liefert, z.B. <code>addf = applyf(add); addf(x)(y)</code> soll <code>add(x,y)</code>
-    liefern. Entsprechend
-    <code>applyf(mul)(5)(6)</code> soll <code>30</code> liefern, wenn <code>mul</code> die binäre Multiplikation ist.
-</p>
-<label for="input_1_5a">Operand A</label>
-<input id="input_1_5a" type="number">
-<label for="input_1_5b">Operand B</label>
-<input id="input_1_5b" type="number">
-<label for="input_1_5c">Operator</label>
-<select id="input_1_5c">
-    <option value="add">add</option>
-    <option value="mul">mul</option>
-</select>
-<button onclick="document.getElementById('result_1_5').value = applyf(eval(document.getElementById('input_1_5c').value))(parseInt(document.getElementById('input_1_5a').value))(parseInt(document.getElementById('input_1_5b').value))">
-    ► Ausführen
-</button>
-<br>
-<label for="result_1_5">Output</label>
-<input id="result_1_5" type="number" placeholder="Ergebnis erscheint hier">
-<p>Source Code</p>
-<pre>
-    <code>
+        </code>
+    </pre>
+</div>
+<div class="container">
+    <h4>5. Eine Funktion <code>applyf()</code>, die aus einer binären Funktion wie <code>add(x,y)</code> eine Funktion
+        <code>addf</code>
+        berechnet, die mit zwei
+        Aufrufen das gleiche Ergebnis liefert, z.B. <code>addf = applyf(add); addf(x)(y)</code> soll
+        <code>add(x,y)</code>
+        liefern. Entsprechend
+        <code>applyf(mul)(5)(6)</code> soll <code>30</code> liefern, wenn <code>mul</code> die binäre Multiplikation
+        ist.
+    </h4>
+    <br>
+    <label for="input_1_5a">Operand A</label>
+    <input id="input_1_5a" type="number">
+    <label for="input_1_5b">Operand B</label>
+    <input id="input_1_5b" type="number">
+    <br><br>
+    <label for="input_1_5c">Operator</label>
+    <select id="input_1_5c">
+        <option value="add">add</option>
+        <option value="mul">mul</option>
+    </select>
+    <button onclick="document.getElementById('result_1_5').value = applyf(eval(document.getElementById('input_1_5c').value))(parseInt(document.getElementById('input_1_5a').value))(parseInt(document.getElementById('input_1_5b').value))">
+        <i class="fa-solid fa-play"></i> Ausführen
+    </button>
+    <br><br>
+    <label for="result_1_5">Output</label>
+    <input id="result_1_5" placeholder="Ergebnis erscheint hier" disabled>
+    <p style="text-decoration-line: underline">Source Code</p>
+    <pre>
+        <code>
 function applyf(func) {
     return function (x) {
         return function (y) {
@@ -250,17 +277,22 @@ function applyf(func) {
         }
     }
 }
-    </code>
-</pre>
+        </code>
+    </pre>
+</div>
+<hr>
 
 <h2 id="task2">4.2 Objekte</h2>
 
-<p>Schreiben Sie die Prototypen <code>Person</code> und <code>Auto</code> in JavaScript, sodass jede Person weiß, welche
-    Autos sie besitzt.
-    Schreiben Sie eine Funktion <code>conflict()</code>, die feststellt, ob ein Auto von mehr als einer Person besessen
-    wird.</p>
-<pre>
-    <code>
+<div class="container">
+    <h4>Schreiben Sie die Prototypen <code>Person</code> und <code>Auto</code> in JavaScript, sodass jede Person weiß,
+        welche
+        Autos sie besitzt.
+        Schreiben Sie eine Funktion <code>conflict()</code>, die feststellt, ob ein Auto von mehr als einer Person
+        besessen
+        wird.</h4>
+    <pre>
+        <code>
 function Person(name) {
     this.name = name;
     this.cars = []
@@ -284,35 +316,44 @@ Car.prototype.conflict = function () {
     }
     return false;
 };
-    </code>
-</pre>
+        </code>
+    </pre>
+</div>
+<hr>
 
 <h2 id="task3">4.3 Fibonacci</h2>
 
-<p>Schreiben Sie im Browser die <a href="https://de.wikipedia.org/wiki/Fibonacci-Folge">Fibonacci-Funktion</a> in JS und
-    geben Sie die ersten 2000 Fibonacci-Zahlen
-    0,1,1,2,3,5,8,13,... auf der Konsole mit <code>console.log()</code> aus.</p>
-<p>Achten Sie auf Performanz: Berechnen Sie jeden Fibonacci-Wert nur einmal. Speichern Sie zu diesem Zweck jede
-    berechnete Fibonacci-Zahl in einer Tabelle.</p>
-<ol>
-    <li>Was ist die größte Fibonacci-Zahl, die sich noch als <code>Integer</code> sicher speichern lässt (<a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER">Number.MAX_SAFE_INTEGER</a>)?
-        Die wievielte Zahl in der Fibonacci-Folge ist das?
-    </li>
-    <li>Was ist die größte Fibonacci-Zahl, die sich noch als <code>Number</code> speichern lässt (<a
-            href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_VALUE">Number.MAX_VALUE</a>)?
-        Die wievielte Zahl in der Fibonacci-Folge ist das?
-    </li>
-    <li>Wechseln Sie zu <code>BigInt</code>, um alle 2000 Fibonacci-Zahlen korrekt anzuzeigen.</li>
-</ol>
-<p>Ergebnis:</p>
-<ol>
-    <li>5.922018541424292e+304 an der Stelle 1460</li>
-    <li>1.3069892237633987e+308 an der Stelle 1476</li>
-</ol>
-<button onclick="runFibonacci()">Run!</button>
-<pre>
-    <code>
+<div class="container">
+    <h4>Schreiben Sie im Browser die <a href="https://de.wikipedia.org/wiki/Fibonacci-Folge">Fibonacci-Funktion</a> in
+        JS
+        und
+        geben Sie die ersten 2000 Fibonacci-Zahlen
+        0,1,1,2,3,5,8,13,... auf der Konsole mit <code>console.log()</code> aus.</h4>
+    <p>Achten Sie auf Performanz: Berechnen Sie jeden Fibonacci-Wert nur einmal. Speichern Sie zu diesem Zweck jede
+        berechnete Fibonacci-Zahl in einer Tabelle.</p>
+    <ol>
+        <li>Was ist die größte Fibonacci-Zahl, die sich noch als <code>Integer</code> sicher speichern lässt (<a
+                href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER">Number.MAX_SAFE_INTEGER</a>)?
+            Die wievielte Zahl in der Fibonacci-Folge ist das?
+        </li>
+        <li>Was ist die größte Fibonacci-Zahl, die sich noch als <code>Number</code> speichern lässt (<a
+                href="https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_VALUE">Number.MAX_VALUE</a>)?
+            Die wievielte Zahl in der Fibonacci-Folge ist das?
+        </li>
+        <li>Wechseln Sie zu <code>BigInt</code>, um alle 2000 Fibonacci-Zahlen korrekt anzuzeigen.</li>
+    </ol>
+    <h4>Ergebnis:</h4>
+    <ol>
+        <li>5.922018541424292e+304 an der Stelle 1460</li>
+        <li>1.3069892237633987e+308 an der Stelle 1476</li>
+    </ol>
+    <button onclick="runFibonacci()"><i class="fa-solid fa-play"></i> Run!</button>
+    (Output in der Konsole)
+    <br><br>
+    <button onclick="toggleCode('task3-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task3-code" class="code-block">
+        <code>
 function fibonacci(n) {
     if (n === 0) {
         return [];
@@ -326,12 +367,17 @@ function fibonacci(n) {
         return fib;
     }
 }
-    </code>
-</pre>
+        </code>
+    </pre>
+</div>
+<hr>
 
 <h2 id="task4">4.4 TopSort</h2>
 
-<button onclick="testTopSort()">Test</button>
-<a id="top_button" href="#top">&#8593;</a>
+<div class="container">
+    <button onclick="testTopSort()"><i class="fa-solid fa-play"></i> Test</button>
+</div>
+
+<a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
 </body>
 </html>
