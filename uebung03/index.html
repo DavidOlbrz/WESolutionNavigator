@@ -2,17 +2,27 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Übung 3</title>
+    <title>Übung 3 | Solution-Navigator</title>
+    <link href="/assets/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+          integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css"
+          integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://kit.fontawesome.com/37beb9f2cd.js" crossorigin="anonymous"></script>
     <link href="../css/uebung.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
+    <script src="/scripts/toggleCode.js"></script>
 </head>
 <body>
-<a href="..">[Zurück]</a>
 <h1 id="top">Übung 3: Responsive Webdesign (RWD)</h1>
 
-<div class="aufgaben_nav">
+<div class="aufgaben_nav container">
     <h2>Aufgaben</h2>
     <nav><a href="#task1">3.1 Responsiv mit Flexbox und Desktop-First</a></nav>
     <nav><a href="#task2">3.2 Responsiv mit Grid und Mobile-First</a></nav>
@@ -20,13 +30,28 @@
 </div>
 
 <h2 id="task1">3.1 Responsiv mit Flexbox und Desktop-First</h2>
-<a href="nr1.html" target="_blank">
-    <button>In neuem Tab öffnen</button>
-</a><br><br>
-<iframe src="nr1.html" width="700px" height="500px" style="resize: horizontal"></iframe>
-<h3>Source Code</h3>
-<pre>
-    <code>
+
+<div class="container">
+    <br>
+    <iframe id="task1-iframe" src="nr1.html" width="700px" height="500px" style="resize: horizontal"></iframe>
+    <br>
+    <button onclick="document.getElementById('task1-iframe').style.width = '250px'"
+            style="border-radius: 20px 0 0 20px"><i class="fa-solid fa-mobile"></i> Smartphone
+    </button>
+    <button onclick="document.getElementById('task1-iframe').style.width = '550px'" style="border-radius: 0"><i
+            class="fa-solid fa-tablet"></i> Tablet
+    </button>
+    <button onclick="document.getElementById('task1-iframe').style.width = '700px'"
+            style="border-radius: 0 20px 20px 0"><i class="fa-solid fa-desktop"></i> Desktop
+    </button>
+    <br><br>
+    <a href="nr1.html" target="_blank">
+        <button><i class="fa-solid fa-arrow-up-right-from-square"></i> In neuem Tab öffnen</button>
+    </a><br><br>
+    <button onclick="toggleCode('task1-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task1-code" class="code-block">
+        <code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
@@ -101,18 +126,34 @@
 &lt;aside class="right" style="background: magenta"&gt;&lt;/aside&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-    </code>
-</pre>
+        </code>
+    </pre>
+</div>
+<hr>
 
 <h2 id="task2">3.2 Responsiv mit Grid und Mobile-First</h2>
-<a href="nr2.html" target="_blank">
-    <button>In neuem Tab öffnen</button>
-</a><br><br>
-<iframe src="nr2.html" width="299px" height="500px" style="resize: horizontal"></iframe>
-<br>
-<h3>Source Code</h3>
-<pre>
-    <code>
+
+<div class="container">
+    <br>
+    <iframe id="task2-iframe" src="nr2.html" width="250px" height="500px" style="resize: horizontal"></iframe>
+    <br>
+    <button onclick="document.getElementById('task2-iframe').style.width = '250px'"
+            style="border-radius: 20px 0 0 20px"><i class="fa-solid fa-mobile"></i> Smartphone
+    </button>
+    <button onclick="document.getElementById('task2-iframe').style.width = '550px'" style="border-radius: 0"><i
+            class="fa-solid fa-tablet"></i> Tablet
+    </button>
+    <button onclick="document.getElementById('task2-iframe').style.width = '700px'"
+            style="border-radius: 0 20px 20px 0"><i class="fa-solid fa-desktop"></i> Desktop
+    </button>
+    <br><br>
+    <a href="nr2.html" target="_blank">
+        <button><i class="fa-solid fa-arrow-up-right-from-square"></i> In neuem Tab öffnen</button>
+    </a><br><br>
+    <button onclick="toggleCode('task2-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task2-code" class="code-block">
+        <code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
@@ -172,18 +213,34 @@
 &lt;aside class="right" style="background: magenta"&gt;&lt;/aside&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-    </code>
-</pre>
+        </code>
+    </pre>
+</div>
+<hr>
 
 <h2 id="task3">3.3 Wireframe responsive mit Grid</h2>
-<a href="nr3.html" target="_blank">
-    <button>In neuem Tab öffnen</button>
-</a><br><br>
-<iframe src="nr3.html" width="299px" height="500px" style="resize: horizontal"></iframe>
-<br>
-<h3>Source Code</h3>
-<pre>
-    <code>
+
+<div class="container">
+    <br>
+    <iframe id="task3-iframe" src="nr3gridonly.html" width="250px" height="500px" style="resize: horizontal"></iframe>
+    <br>
+    <button onclick="document.getElementById('task3-iframe').style.width = '250px'"
+            style="border-radius: 20px 0 0 20px"><i class="fa-solid fa-mobile"></i> Smartphone
+    </button>
+    <button onclick="document.getElementById('task3-iframe').style.width = '550px'" style="border-radius: 0"><i
+            class="fa-solid fa-tablet"></i> Tablet
+    </button>
+    <button onclick="document.getElementById('task3-iframe').style.width = '750px'"
+            style="border-radius: 0 20px 20px 0"><i class="fa-solid fa-desktop"></i> Desktop
+    </button>
+    <br><br>
+    <a href="nr3.html" target="_blank">
+        <button><i class="fa-solid fa-arrow-up-right-from-square"></i> In neuem Tab öffnen</button>
+    </a><br><br>
+    <button onclick="toggleCode('task3-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task3-code" class="code-block">
+        <code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
@@ -217,13 +274,15 @@
         }
 
         nav {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             align-items: center;
             background: #363636;
             color: white;
             text-align: center;
             height: 100%;
+            width: 60%;
+            margin-left: 20%;
         }
 
         nav &gt; a {
@@ -238,9 +297,6 @@
 
         .image_container {
             grid-area: img;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
             width: 100%;
             height: 100%;
         }
@@ -250,11 +306,13 @@
             border-radius: 10px;
             max-width: 60%;
             height: auto;
+            margin: 0 20% 0 20%;
         }
 
         .description_container {
             grid-area: description;
             text-align: center;
+            padding-top: 2rem;
         }
 
         p {
@@ -262,6 +320,7 @@
         }
 
         button {
+            font-family: "Roboto SemiBold", serif;
             font-size: 20px;
             color: white;
             background: #f88e37;
@@ -272,14 +331,15 @@
 
         footer {
             grid-area: footer;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
+            align-items: baseline;
             background: #011826;
             color: white;
             text-align: center;
             margin-top: 2rem;
+        }
+
+        footer &gt; p {
+            margin-top: 3rem;
         }
 
         footer &gt; button {
@@ -290,7 +350,7 @@
         @media screen and (max-width: 700px) {
             body {
                 grid-template-columns: 1fr;
-                grid-template-rows: 12rem 5rem 1fr 1fr 10rem;
+                grid-template-rows: 12rem 5rem 1fr 1fr 12rem;
                 grid-template-areas:
                     'nav'
                     'h1'
@@ -300,7 +360,8 @@
             }
 
             nav {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 1fr);
             }
 
             nav &gt; a {
@@ -318,7 +379,7 @@
         &lt;a&gt;Free resources&lt;/a&gt;
     &lt;/nav&gt;
 &lt;/header&gt;
-&lt;h1&gt;You dont know JavaScript&lt;/h1&gt;
+&lt;h1&gt;You don't know JavaScript&lt;/h1&gt;
 &lt;div class="image_container"&gt;
     &lt;img src="landing-img.png" alt="You dont know JavaScript Book Cover"&gt;
 &lt;/div&gt;
@@ -337,9 +398,10 @@
 &lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-    </code>
-</pre>
-<a href="..">[Zurück]</a>
-<a id="top_button" href="#top">&#8593;</a>
+        </code>
+    </pre>
+</div>
+
+<a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
 </body>
 </html>
