@@ -1,8 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Übung 09</title>
+    <title>Übung 09 | Solution-Navigator</title>
+    <link href="/assets/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+          integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css"
+          integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://kit.fontawesome.com/37beb9f2cd.js" crossorigin="anonymous"></script>
+    <link href="../css/uebung.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/scripts/toggleCode.js"></script>
     <style>
         @keyframes use-the-platform-double {
             to {
@@ -18,14 +33,314 @@
     </style>
 </head>
 <body>
-<svg id="use-the-platform" height="240px" width="240px">
-    <rect height="100%" width="100%" fill="#cb798d"></rect>
-    <text x="10%" y="25%" font-family="Arial" font-size="300%" fill="white">Use</text>
-    <line x1="10%" y1="30%" x2="90%" y2="30%" stroke="white" stroke-width="3px"></line>
-    <text x="10%" y="55%" font-family="Arial" font-size="300%" fill="white">The</text>
-    <line x1="10%" y1="60%" x2="90%" y2="60%" stroke="white" stroke-width="3px"></line>
-    <text x="10%" y="85%" font-family="Arial" font-size="300%" fill="white">Platform</text>
-    <line x1="10%" y1="90%" x2="90%" y2="90%" stroke="white" stroke-width="3px"></line>
-</svg>
+<h1 id="top">Übung 9: Scalable Vector Graphics (SVG)</h1>
+
+<div class="aufgaben_nav container">
+    <h2>Aufgaben</h2>
+    <nav><a href="#task1">9.1 SVG Grafik von Hand erstellen</a></nav>
+    <nav><a href="#task2">9.2 Statistik-Balkendiagramm in SVG</a></nav>
+    <nav><a href="#task3">9.3 Interaktive SVG Grafik</a></nav>
+</div>
+
+<h2 id="task1">9.1 SVG Grafik von Hand erstellen</h2>
+
+<div class="container">
+    <h4>Codieren Sie eine HTML-Datei mit Inline SVG</h4>
+    <p>Fügen Sie als Hover-Effekt eine CSS-Animation hinzu, die die Größe der SVG-Grafik verdoppelt, wenn man mit dem
+        Cursor über die Grafik geht.</p>
+    <br>
+    <svg id="use-the-platform" height="240px" width="240px">
+        <rect height="100%" width="100%" fill="#cb798d"></rect>
+        <text x="10%" y="25%" font-family="Arial" font-size="300%" fill="white">Use</text>
+        <line x1="10%" y1="30%" x2="90%" y2="30%" stroke="white" stroke-width="3px"></line>
+        <text x="10%" y="55%" font-family="Arial" font-size="300%" fill="white">The</text>
+        <line x1="10%" y1="60%" x2="90%" y2="60%" stroke="white" stroke-width="3px"></line>
+        <text x="10%" y="85%" font-family="Arial" font-size="300%" fill="white">Platform</text>
+        <line x1="10%" y1="90%" x2="90%" y2="90%" stroke="white" stroke-width="3px"></line>
+    </svg>
+    <p style="text-decoration-line: underline">Source Code</p>
+    <pre><code>&lt;svg id="use-the-platform" height="240px" width="240px"&gt;
+    &lt;rect height="100%" width="100%" fill="#cb798d"&gt;&lt;/rect&gt;
+    &lt;text x="10%" y="25%" font-family="Arial" font-size="300%" fill="white"&gt;Use&lt;/text&gt;
+    &lt;line x1="10%" y1="30%" x2="90%" y2="30%" stroke="white" stroke-width="3px"&gt;&lt;/line&gt;
+    &lt;text x="10%" y="55%" font-family="Arial" font-size="300%" fill="white"&gt;The&lt;/text&gt;
+    &lt;line x1="10%" y1="60%" x2="90%" y2="60%" stroke="white" stroke-width="3px"&gt;&lt;/line&gt;
+    &lt;text x="10%" y="85%" font-family="Arial" font-size="300%" fill="white"&gt;Platform&lt;/text&gt;
+    &lt;line x1="10%" y1="90%" x2="90%" y2="90%" stroke="white" stroke-width="3px"&gt;&lt;/line&gt;
+&lt;/svg&gt;</code></pre>
+</div>
+<hr>
+
+<h2 id="task2">9.2 Statistik-Balkendiagramm in SVG</h2>
+
+<div class="container">
+    <p style="margin-top: 0">
+        Implementieren Sie ein eigenes Balkendiagramm mit HTML, Inline SVG, CSS und JavaScript. Geben Sie die Daten für
+        das Balkendiagramm im JSON-Format vor. Nehmen Sie als Beispieldaten <a
+            href="https://www.smard.de/home/downloadcenter/download-marktdaten/" target="_blank">Marktdaten von der
+        Bundesnetzagentur</a>.
+        Animieren Sie die Grafik (siehe z.B. <a href="https://www.highcharts.com/demo/bar-basic" target="_blank">Highchart
+        Bar Chart</a>).
+    </p>
+    <br>
+    <iframe id="task2-iframe" src="nr2.html" width="100%" height="475px"></iframe>
+    <br>
+    <button onclick="document.getElementById('task2-iframe').contentWindow.location.reload()"><i
+            class="fa-solid fa-arrows-rotate"></i> Animation neu starten
+    </button>
+    <br><br>
+    <button onclick="toggleCode('task2-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task2-code" class="code-block">
+        <code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;9.2 Statistik-Balkendiagramm in SVG&lt;/title&gt;
+    &lt;link href="/css/default.css" rel="stylesheet"&gt;
+    &lt;style&gt;
+        svg {
+            margin-left: 1rem;
+        }
+
+        .bar:hover {
+            opacity: 1;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Statistik Stromverbrauch in DE&lt;/h1&gt;
+&lt;script&gt;
+    let file;
+    let data = [];
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+    fetch('./assets/Realisierter_Stromverbrauch_202301010000_202311302359_Monat.json')
+        .then(response =&gt; file = response.json())
+        .then(file =&gt; createDiagram(file));
+
+    function createDiagram(file) {
+        saveData(file);
+        buildBars();
+    }
+
+    function saveData(file) {
+        for (let i = 0; i &lt; Object.keys(file).length; i++) {
+            data.push(file[i]["Gesamt (Netzlast) [MWh] Berechnete Auflösungen"] / 100000);
+        }
+    }
+
+    function buildBars() {
+        for (let i = 0; i &lt; data.length; i++) {
+            const dataPos = Math.round(data[i])
+            let bar = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            bar.setAttribute('x1', '6');
+            bar.setAttribute('y1', i * 20 + i * 10 + 15 + '');
+            bar.setAttribute('x2', '6');
+            bar.setAttribute('y2', i * 20 + i * 10 + 15 + '');
+            bar.setAttribute('stroke', 'blue');
+            bar.setAttribute('stroke-width', '20');
+            bar.setAttribute('opacity', '0.5');
+            bar.innerHTML = `&lt;animate attributeName="x2" from="6" to="${dataPos}" begin="1s" dur="2s" fill="freeze"/&gt;`;
+            bar.classList.add('bar');
+            document.getElementById('diagram').appendChild(bar);
+
+            let monthText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            monthText.innerHTML = months[i];
+            monthText.setAttribute('x', '10');
+            monthText.setAttribute('y', i * 20 + i * 10 + 20 + '');
+            monthText.setAttribute('fill', 'white');
+            document.getElementById('diagram').appendChild(monthText);
+
+            let valueText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            valueText.innerHTML = data[i] * 100000 + ' MWh';
+            valueText.setAttribute('x', dataPos + 10 + '');
+            valueText.setAttribute('y', i * 20 + i * 10 + 20 + '');
+            valueText.setAttribute('fill', 'white');
+            document.getElementById('diagram').appendChild(valueText);
+        }
+    }
+&lt;/script&gt;
+&lt;svg id="diagram" height="400px" width="600px"&gt;
+    &lt;line x1="3" x2="3" y1="0" y2="330" stroke="white" stroke-width="5"&gt;&lt;/line&gt;
+    &lt;line x1="0.5" x2="580" y1="330" y2="330" stroke="white" stroke-width="5"&gt;&lt;/line&gt;
+&lt;/svg&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<hr>
+
+<h2 id="task3">9.3 Interaktive SVG Grafik</h2>
+
+<a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
+
+<div class="container">
+    <h4>Implementieren Sie das Spiel <a href="https://de.wikipedia.org/wiki/Tic-Tac-Toe" target="_blank">Tic-Tac-Toe</a>
+        als HTML-Datei mit Inline SVG, CSS und JS.</h4>
+    <iframe id="task3-iframe" src="nr3.html" width="500px" height="500px"></iframe>
+    <br>
+    <button onclick="document.getElementById('task3-iframe').contentWindow.location.reload()"><i
+            class="fa-solid fa-arrows-rotate"></i> Neu starten
+    </button>
+    <br><br>
+    <button onclick="toggleCode('task3-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task3-code" class="code-block">
+        <code>&lt;!DOCTYPE html&gt;
+&lt;html lang="de"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;9.3 Interaktive SVG Grafik&lt;/title&gt;
+    &lt;link href="/css/default.css" rel="stylesheet"&gt;
+    &lt;style&gt;
+        body {
+            background: var(--color-surface-200);
+        }
+
+        div {
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        #tic-tac-toe-field {
+            transform: scale(5, 5);
+            transform-origin: top center;
+        }
+    &lt;/style&gt;
+    &lt;script&gt;
+        let movesLeft = 9;
+        let currentPlayer = 0;
+        const fields = [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]];
+
+        function clicked(posY, posX) {
+            if (fields[posY][posX] === -1) {
+                fields[posY][posX] = currentPlayer;
+                if (currentPlayer === 0) {
+                    let lineA = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    lineA.setAttribute('x1', posX * 25 + 5 + '');
+                    lineA.setAttribute('y1', posY * 25 + 5 + '');
+                    lineA.setAttribute('x2', posX * 25 + 20 + '');
+                    lineA.setAttribute('y2', posY * 25 + 20 + '');
+                    lineA.setAttribute('stroke', 'blue');
+                    lineA.setAttribute('stroke-width', '3');
+                    lineA.setAttribute('stroke-linecap', 'round');
+
+                    let lineB = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    lineB.setAttribute('x1', posX * 25 + 20 + '');
+                    lineB.setAttribute('y1', posY * 25 + 5 + '');
+                    lineB.setAttribute('x2', posX * 25 + 5 + '');
+                    lineB.setAttribute('y2', posY * 25 + 20 + '');
+                    lineB.setAttribute('stroke', 'blue');
+                    lineB.setAttribute('stroke-width', '3');
+                    lineB.setAttribute('stroke-linecap', 'round');
+
+                    document.getElementById(posY + '-' + posX).appendChild(lineA);
+                    document.getElementById(posY + '-' + posX).appendChild(lineB);
+
+                    movesLeft--;
+                    checkWinner(1);
+                } else if (currentPlayer === 1) {
+                    let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    circle.setAttribute('cx', posX * 25 + 13 + '');
+                    circle.setAttribute('cy', posY * 25 + 13 + '');
+                    circle.setAttribute('r', "8.5");
+                    circle.setAttribute('stroke', 'red');
+                    circle.setAttribute('stroke-width', '3');
+                    circle.setAttribute('fill', 'transparent');
+
+                    document.getElementById(posY + '-' + posX).appendChild(circle);
+
+                    movesLeft--;
+                    checkWinner(0);
+                }
+            }
+        }
+
+        function checkWinner(nextPlayer) {
+            for (let i = 0; i &lt; 3; i++) {
+                if (fields[i][0] === fields[i][1] && fields[i][1] === fields[i][2] && fields[i][0] !== -1 && fields[i][1] !== -1 && fields[i][2] !== -1) {
+                    declareWinner(fields[i][0]);
+                    return null;
+                }
+                if (fields[0][i] === fields[1][i] && fields[1][i] === fields[2][i] && fields[0][i] !== -1 && fields[1][i] !== -1 && fields[2][i] !== -1) {
+                    declareWinner(fields[0][i]);
+                    return null;
+                }
+            }
+
+            if (fields[0][0] === fields[1][1] && fields[1][1] === fields[2][2] && fields[0][0] !== -1 && fields[1][1] !== -1 && fields[2][2] !== -1) {
+                declareWinner(fields[0][0]);
+                return null;
+            }
+            if (fields[0][2] === fields[1][1] && fields[1][1] === fields[2][0] && fields[0][2] !== -1 && fields[1][1] !== -1 && fields[2][0] !== -1) {
+                declareWinner(fields[0][2]);
+                return null;
+            }
+
+            if (movesLeft === 0) {
+                document.getElementById('game-status').innerHTML = 'Es ist unentschieden!';
+                currentPlayer = -1;
+                return null;
+            }
+
+            currentPlayer = nextPlayer;
+            let next = nextPlayer === 0 ? 'x' : '○';
+            document.getElementById('game-status').innerHTML = 'Spieler ' + next + ' ist dran';
+        }
+
+        function declareWinner(winner) {
+            let player = winner === 0 ? 'x' : '○';
+            document.getElementById('game-status').innerHTML = 'Spieler ' + player + ' hat gewonnen!';
+            currentPlayer = -1;
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div&gt;
+    &lt;h2 id="game-status"&gt;Spieler x ist dran&lt;/h2&gt;
+    &lt;svg id="tic-tac-toe-field" height="75" width="75"&gt;
+        &lt;line x1="25" y1="1" x2="25" y2="74" stroke="white" stroke-linecap="round"&gt;&lt;/line&gt;
+        &lt;line x1="50" y1="1" x2="50" y2="77" stroke="white" stroke-linecap="round"&gt;&lt;/line&gt;
+        &lt;line x1="1" y1="25" x2="74" y2="25" stroke="white" stroke-linecap="round"&gt;&lt;/line&gt;
+        &lt;line x1="1" y1="50" x2="74" y2="50" stroke="white" stroke-linecap="round"&gt;&lt;/line&gt;
+
+        &lt;g id="0-0"&gt;
+            &lt;rect x="0" y="0" height="25" width="25" fill="transparent" onclick="clicked(0, 0)"&gt;&lt;/rect&gt;
+        &lt;/g&gt;
+        &lt;g id="0-1"&gt;
+            &lt;rect x="25" y="0" height="25" width="25" fill="transparent" onclick="clicked(0, 1)"&gt;&lt;/rect&gt;
+        &lt;/g&gt;
+        &lt;g id="0-2"&gt;
+            &lt;rect x="50" y="0" height="25" width="25" fill="transparent" onclick="clicked(0, 2)"&gt;&lt;/rect&gt;
+        &lt;/g&gt;
+        &lt;g id="1-0"&gt;
+            &lt;rect x="0" y="25" height="25" width="25" fill="transparent" onclick="clicked(1, 0)"&gt;&lt;/rect&gt;
+        &lt;/g&gt;
+        &lt;g id="1-1"&gt;
+            &lt;rect x="25" y="25" height="25" width="25" fill="transparent" onclick="clicked(1, 1)"&gt;&lt;/rect&gt;
+        &lt;/g&gt;
+        &lt;g id="1-2"&gt;
+            &lt;rect x="50" y="25" height="25" width="25" fill="transparent" onclick="clicked(1, 2)"&gt;&lt;/rect&gt;
+        &lt;/g&gt;
+        &lt;g id="2-0"&gt;
+            &lt;rect x="0" y="50" height="25" width="25" fill="transparent" onclick="clicked(2, 0)"&gt;&lt;/rect&gt;
+        &lt;/g&gt;
+        &lt;g id="2-1"&gt;
+            &lt;rect x="25" y="50" height="25" width="25" fill="transparent" onclick="clicked(2, 1)"&gt;&lt;/rect&gt;
+        &lt;/g&gt;
+        &lt;g id="2-2"&gt;
+            &lt;rect x="50" y="50" height="25" width="25" fill="transparent" onclick="clicked(2, 2)"&gt;&lt;/rect&gt;
+        &lt;/g&gt;
+    &lt;/svg&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
 </body>
 </html>
