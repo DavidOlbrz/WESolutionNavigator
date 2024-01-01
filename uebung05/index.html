@@ -2,61 +2,79 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Übung 05 | SolutionNavigator</title>
+    <title>Übung 05 | Solution-Navigator</title>
+    <link href="/assets/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+          integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css"
+          integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://kit.fontawesome.com/37beb9f2cd.js" crossorigin="anonymous"></script>
     <link href="../css/uebung.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
+    <script src="/scripts/toggleCode.js"></script>
 </head>
 <body>
-<a href="..">[Zurück]</a>
 <h1 id="top">Übung 5: Document Object Model (DOM)</h1>
 
-<div class="aufgaben_nav">
+<div class="aufgaben_nav container">
     <h2>Aufgaben</h2>
     <nav><a href="#task1">5.1. Performanz-Messungen von DOM-Operationen</a></nav>
-    <nav><a href="#task2">5.2. Rednerliste mit Zeitmessung</a></nav>
+    <nav><a href="#task2">5.2. Rednerliste mit Zeitmessung <i class="fa-solid fa-star" style="color: gold"
+                                                              title="Klausurrelevant"></i></a></nav>
     <nav><a href="#task3">5.3. TopSort als Web-App</a></nav>
 </div>
 
 <h2 id="task1">5.1. Performanz-Messungen von DOM-Operationen</h2>
 
-<p>Implementieren Sie Performanz-Messungen zum Vergleich von</p>
-<ul>
-    <li><code>innerHTML</code>,</li>
-    <li><code>innerText</code>,</li>
-    <li><code>textContent</code> und</li>
-    <li><code>outerHTML</code></li>
-</ul>
-<p>
-    selbstständig in JavaScript durch Nutzung der <a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">DOM-API</a>.
-    Geben Sie die Messergebnisse als Tabelle aus. Verwenden Sie
-    die eingebauten Zeitmessung-Funktionen <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/now"
-                                              target="_blank"><code>performance.now()</code></a>, siehe auch
-    <a href="https://developers.google.com/web/updates/2012/08/When-milliseconds-are-not-enough-performance-now"
-       target="_blank">When-milliseconds-are-not-enough-performance-now</a>. Suchen Sie eine möglichst kurze und
-    elegante
-    Lösung.
-</p>
-<p>
-    Dabei ist zu beachten, dass Browser, um potenzielle Sicherheitsbedrohungen wie <a href="https://spectreattack.com/"
-                                                                                      target="_blank">Meltdown oder
-    Spectre</a>
-    zu minimieren,
-    den zurückgegebenen Wert normalerweise um einen bestimmten Betrag runden. Dies führt zu einer gewissen
-    Ungenauigkeit. Beispielsweise rundet Firefox die zurückgegebene Zeit in Schritten von 1 Millisekunde. Diese
-    Zwangsrundung kann man jedoch wiederum abschalten mittels der Firefox-Einstellung
-    <code>privacy.reduceTimerPrecision</code>,
-    siehe <a
-        href="https://stackoverflow.com/questions/50117537/how-to-get-microsecond-timings-in-javascript-since-spectre-and-meltdown"
-        target="_blank">How to get microsecond timings in JavaScript since Spectre and Meltdown</a>.
-</p>
-<a href="nr1.html" target="_blank">
-    <button>Seite öffnen</button>
-</a>
-<h3>Source code:</h3>
-<pre>
-    <code>
+<div class="container">
+    <p style="margin-top: 0">Implementieren Sie Performanz-Messungen zum Vergleich von</p>
+    <ul>
+        <li><code>innerHTML</code>,</li>
+        <li><code>innerText</code>,</li>
+        <li><code>textContent</code> und</li>
+        <li><code>outerHTML</code></li>
+    </ul>
+    <p>
+        selbstständig in JavaScript durch Nutzung der <a href="https://www.w3schools.com/js/js_htmldom.asp"
+                                                         target="_blank">DOM-API</a>.
+        Geben Sie die Messergebnisse als Tabelle aus. Verwenden Sie
+        die eingebauten Zeitmessung-Funktionen <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/now"
+            target="_blank"><code>performance.now()</code></a>, siehe auch
+        <a href="https://developers.google.com/web/updates/2012/08/When-milliseconds-are-not-enough-performance-now"
+           target="_blank">When-milliseconds-are-not-enough-performance-now</a>. Suchen Sie eine möglichst kurze und
+        elegante
+        Lösung.
+    </p>
+    <p>
+        Dabei ist zu beachten, dass Browser, um potenzielle Sicherheitsbedrohungen wie <a
+            href="https://spectreattack.com/"
+            target="_blank">Meltdown oder
+        Spectre</a>
+        zu minimieren,
+        den zurückgegebenen Wert normalerweise um einen bestimmten Betrag runden. Dies führt zu einer gewissen
+        Ungenauigkeit. Beispielsweise rundet Firefox die zurückgegebene Zeit in Schritten von 1 Millisekunde. Diese
+        Zwangsrundung kann man jedoch wiederum abschalten mittels der Firefox-Einstellung
+        <code>privacy.reduceTimerPrecision</code>,
+        siehe <a
+            href="https://stackoverflow.com/questions/50117537/how-to-get-microsecond-timings-in-javascript-since-spectre-and-meltdown"
+            target="_blank">How to get microsecond timings in JavaScript since Spectre and Meltdown</a>.
+    </p>
+    <br>
+    <a href="nr1.html" target="_blank">
+        <button><i class="fa-solid fa-arrow-up-right-from-square"></i> Seite öffnen</button>
+    </a>
+    <br><br>
+    <button onclick="toggleCode('task1-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task1-code" class="code-block">
+        <code>
 function testPerformance() {
     const item = document.createElement('div');
     document.body.appendChild(item);
@@ -90,31 +108,41 @@ function testPerformance() {
 }
 
 testPerformance();
-    </code>
-</pre>
+        </code>
+    </pre>
+</div>
+<hr>
 
-<h2 id="task2">5.2. Rednerliste mit Zeitmessung</h2>
+<h2 id="task2">5.2. Rednerliste mit Zeitmessung <i class="fa-solid fa-star" style="color: gold"
+                                                   title="Klausurrelevant"></i></h2>
 
-<p>
-    Implementieren Sie die interaktive Anwendung "Rednerliste mit Zeitmessung" selbstständig in JavaScript durch Nutzung
-    der <a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">DOM-API</a> und der <a
-        href="https://www.w3schools.com/js/js_timing.asp" target="_blank">Timer-Funktionen</a>.
-    Neue
-    Redner sollen auf Knopfdruck hinzugefügt werden können. Deren Uhr wird
-    dann sofort automatisch gestartet und alle anderen Uhren angehalten. Bei jedem Redner soll die individuelle,
-    gemessene Redezeit sekundengenau angezeigt werden. Für jeden Redner soll es einen eigenen Start-/Stopp-Button geben.
-    Es soll immer nur eine Uhr laufen. Angezeigt werden sollen die bisherigen Summenzeiten aller Redebeiträge der
-    betreffenden Person. Suchen Sie eine möglichst kurze und elegante Lösung. Achten Sie gleichzeitig auf gute
-    Usability: z.B. wenn die Eingabe mit einem Return beendet wird, soll der Klick auf den Button nicht mehr
-    erforderlich sein.
-</p>
-<iframe id="task2-iframe" src="nr2.html" width="400px" height="300px"></iframe>
-<br>
-<button onclick="document.getElementById('task2-iframe').contentWindow.location.reload()">Rednerliste zurücksetzen
-</button>
-<h3>Source code:</h3>
-<pre>
-    <code>
+<div class="container">
+    <p style="margin-top: 0">
+        Implementieren Sie die interaktive Anwendung "Rednerliste mit Zeitmessung" selbstständig in JavaScript durch
+        Nutzung
+        der <a href="https://www.w3schools.com/js/js_htmldom.asp" target="_blank">DOM-API</a> und der <a
+            href="https://www.w3schools.com/js/js_timing.asp" target="_blank">Timer-Funktionen</a>.
+        Neue
+        Redner sollen auf Knopfdruck hinzugefügt werden können. Deren Uhr wird
+        dann sofort automatisch gestartet und alle anderen Uhren angehalten. Bei jedem Redner soll die individuelle,
+        gemessene Redezeit sekundengenau angezeigt werden. Für jeden Redner soll es einen eigenen Start-/Stopp-Button
+        geben.
+        Es soll immer nur eine Uhr laufen. Angezeigt werden sollen die bisherigen Summenzeiten aller Redebeiträge der
+        betreffenden Person. Suchen Sie eine möglichst kurze und elegante Lösung. Achten Sie gleichzeitig auf gute
+        Usability: z.B. wenn die Eingabe mit einem Return beendet wird, soll der Klick auf den Button nicht mehr
+        erforderlich sein.
+    </p>
+    <br>
+    <iframe id="task2-iframe" src="nr2.html" width="400px" height="300px"></iframe>
+    <br>
+    <button onclick="document.getElementById('task2-iframe').contentWindow.location.reload()"><i
+            class="fa-solid fa-arrows-rotate"></i> Rednerliste zurücksetzen
+    </button>
+    <br><br>
+    <button onclick="toggleCode('task2-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task2-code" class="code-block">
+        <code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="de"&gt;
 &lt;head&gt;
@@ -225,24 +253,33 @@ testPerformance();
 &lt;/ul&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-    </code>
-</pre>
+        </code>
+    </pre>
+</div>
+<hr>
 
 <h2 id="task3">5.3. TopSort als Web-App</h2>
 
-<p>
-    Schreiben Sie eine Weboberfläche, in der man beliebige Beziehungen (Vorrang-Relationen) eingeben kann, für die dann
-    die topologische Sortierung per Knopfdruck auf der Webseite ausgegeben wird.
-</p>
-<p>
-    Für die Eingabe können Sie HTML5-Eingabefelder oder das HTML-Attribut <code>contenteditable</code> verwenden.
-</p>
-<iframe id="task3-iframe" src="nr3.html" width="600px" height="500px"></iframe>
-<br>
-<button onclick="document.getElementById('task3-iframe').contentWindow.location.reload()">Zurücksetzen</button>
-<h3>Source code:</h3>
-<pre>
-    <code>
+<div class="container">
+    <p style="margin-top: 0">
+        Schreiben Sie eine Weboberfläche, in der man beliebige Beziehungen (Vorrang-Relationen) eingeben kann, für die
+        dann
+        die topologische Sortierung per Knopfdruck auf der Webseite ausgegeben wird.
+    </p>
+    <p>
+        Für die Eingabe können Sie HTML5-Eingabefelder oder das HTML-Attribut <code>contenteditable</code> verwenden.
+    </p>
+    <br>
+    <iframe id="task3-iframe" src="nr3.html" width="600px" height="500px"></iframe>
+    <br>
+    <button onclick="document.getElementById('task3-iframe').contentWindow.location.reload()"><i
+            class="fa-solid fa-arrows-rotate"></i> Zurücksetzen
+    </button>
+    <br><br>
+    <button onclick="toggleCode('task3-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task3-code" class="code-block">
+        <code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
@@ -335,7 +372,10 @@ testPerformance();
 &lt;/ol&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-    </code>
-</pre>
+        </code>
+    </pre>
+</div>
+
+<a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
 </body>
 </html>
