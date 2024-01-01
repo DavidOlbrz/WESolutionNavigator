@@ -1,19 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Übung 08</title>
+    <title>Übung 08 | Solution-Navigator</title>
+    <link href="/assets/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+          integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css"
+          integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://kit.fontawesome.com/37beb9f2cd.js" crossorigin="anonymous"></script>
     <link href="../css/uebung.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <script src="scripts/asynchronous.js"></script>
+    <script src="/scripts/toggleCode.js"></script>
 </head>
 <body>
-<a href="..">[Zurück]</a>
-<h1>Übung 8: Asynchrones JavaScript</h1>
+<h1 id="top">Übung 8: Asynchrones JavaScript</h1>
 
-<div class="aufgaben_nav">
+<div class="aufgaben_nav container">
     <h2>Aufgaben</h2>
     <nav><a href="#task1">8.1 Promises</a></nav>
     <nav><a href="#task2">8.2 async/await</a></nav>
@@ -22,20 +32,24 @@
 
 <h2 id="task1">8.1 Promises</h2>
 
-<p>
-    Erstellen Sie auf Ihrem lokalen Server (localhost) zwei Text-Dateien <code>A.txt</code> und <code>B.txt</code> mit
-    ungefähr gleich vielen Zeilen. Laden Sie mit der fetch-API parallel beide Text-Dateien vom Server. Geben Sie auf
-    einer Webseite den Inhalt beider Dateien zeilenweise aus, wobei der Anfang der Zeile aus <code>A.txt</code> und das
-    Ende aus <code>B.txt</code> stammen soll. Die beiden Dateien sollen also zeilenweise konkateniert werden. Erzielen
-    Sie max. Geschwindigkeit durch maximale Parallelität. Achten Sie gleichzeitig auf Korrektheit. Verwenden Sie dabei
-    ausschließlich die Promise-API ohne async/await.
-</p>
-<button onclick="runTask1()">Run script</button>
-(Output in der Konsole)
-<h3>Source Code</h3>
-<pre>
-    <code>
-const fileA = 'assets/A.txt';
+<div class="container">
+    <p style="margin-top: 0">
+        Erstellen Sie auf Ihrem lokalen Server (localhost) zwei Text-Dateien <code>A.txt</code> und <code>B.txt</code>
+        mit
+        ungefähr gleich vielen Zeilen. Laden Sie mit der fetch-API parallel beide Text-Dateien vom Server. Geben Sie auf
+        einer Webseite den Inhalt beider Dateien zeilenweise aus, wobei der Anfang der Zeile aus <code>A.txt</code> und
+        das
+        Ende aus <code>B.txt</code> stammen soll. Die beiden Dateien sollen also zeilenweise konkateniert werden.
+        Erzielen
+        Sie max. Geschwindigkeit durch maximale Parallelität. Achten Sie gleichzeitig auf Korrektheit. Verwenden Sie
+        dabei
+        ausschließlich die Promise-API ohne async/await.
+    </p>
+    <br>
+    <button onclick="runTask1()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
+    (Output in der Konsole)
+    <p style="text-decoration-line: underline">Source Code</p>
+    <pre><code>const fileA = 'assets/A.txt';
 const fileB = 'assets/B.txt';
 
 function runTask1() {
@@ -49,21 +63,21 @@ function runTask1() {
                 console.log(`${linesA[i]} , ${linesB[i]}`);
             }
         })
-}
-    </code>
-</pre>
+}</code></pre>
+</div>
+<hr>
 
 <h2 id="task2">8.2 async/await</h2>
 
-<p>
-    Lösen Sie die letzte Aufgabe mit async/await statt Promise.
-</p>
-<button onclick="runTask2()">Run script</button>
-(Output in der Konsole)
-<h3>Source Code</h3>
-<pre>
-    <code>
-const fileA = 'assets/A.txt';
+<div class="container">
+    <p style="margin-top: 0">
+        Lösen Sie die letzte Aufgabe mit async/await statt Promise.
+    </p>
+    <br>
+    <button onclick="runTask2()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
+    (Output in der Konsole)
+    <p style="text-decoration-line: underline">Source Code</p>
+    <pre><code>const fileA = 'assets/A.txt';
 const fileB = 'assets/B.txt';
 
 async function runTask2() {
@@ -77,36 +91,46 @@ async function runTask2() {
     for (let i = 0; i < numLines; i++) {
         console.log(`${linesA[i]} , ${linesB[i]}`);
     }
-}
-    </code>
-</pre>
+}</code></pre>
+</div>
+<hr>
 
 <h2 id="task3">8.3 WWW-Navigator</h2>
 
-<p>
-    Schreiben Sie einen Navigator für die Fachbegriffe des WWW zu den Oberthemen HTML, CSS und JavaScript. Im Hauptmenü
-    sollen diese 3 Oberthemen zur Auswahl stehen. Im Untermenü soll eine zugehörige Liste von Fachbegriffen zum
-    jeweiligen ausgewählten Oberthema stehen. In der Mitte soll eine Dokumentation zum ausgewählten Fachbegriff
-    erscheinen.
-</p>
-<p>
-    Schreiben Sie in HTML und CSS nur den responsiven Rahmen für einen solchen WWW-Navigator. Dabei können Sie auch ein
-    schöneres Layout als das hier gezeigte erstellen. Die Inhalte sollen in einer JSON-Datei extern gelagert werden. Mit
-    der fetch-API soll die JSON-Datei asynchron nicht-blockierend geladen werden, und zwar nur einmal, nicht mehrfach.
-    (d.h. Sparen Sie Internet-Bandbreite.) Sobald die Inhalte angekommen sind, sollen sie im Browser auch sofort
-    angezeigt werden.
-</p>
-<p>
-    Fügen Sie selbst in die JSON-Datei zusätzliche Inhalte zu Themen der Vorlesung als Strings beispielhaft ein. Wenn
-    Sie Inhalte aus fremden Quellen kopieren, so schreiben Sie bitte stets die Quelle als externe Ressource hinzu. Diese
-    soll dann auf der rechten Seite im WWW-Navigator erscheinen.
-</p>
-<a href="nr3.html" target="_blank">
-    <button>In neuem Tab öffnen</button>
-</a>
-<h3>Source Code</h3>
-<pre>
-    <code>
+<div class="container">
+    <p style="margin-top: 0">
+        Schreiben Sie einen Navigator für die Fachbegriffe des WWW zu den Oberthemen HTML, CSS und JavaScript. Im
+        Hauptmenü
+        sollen diese 3 Oberthemen zur Auswahl stehen. Im Untermenü soll eine zugehörige Liste von Fachbegriffen zum
+        jeweiligen ausgewählten Oberthema stehen. In der Mitte soll eine Dokumentation zum ausgewählten Fachbegriff
+        erscheinen.
+    </p>
+    <p>
+        Schreiben Sie in HTML und CSS nur den responsiven Rahmen für einen solchen WWW-Navigator. Dabei können Sie auch
+        ein
+        schöneres Layout als das hier gezeigte erstellen. Die Inhalte sollen in einer JSON-Datei extern gelagert werden.
+        Mit
+        der fetch-API soll die JSON-Datei asynchron nicht-blockierend geladen werden, und zwar nur einmal, nicht
+        mehrfach.
+        (d.h. Sparen Sie Internet-Bandbreite.) Sobald die Inhalte angekommen sind, sollen sie im Browser auch sofort
+        angezeigt werden.
+    </p>
+    <p>
+        Fügen Sie selbst in die JSON-Datei zusätzliche Inhalte zu Themen der Vorlesung als Strings beispielhaft ein.
+        Wenn
+        Sie Inhalte aus fremden Quellen kopieren, so schreiben Sie bitte stets die Quelle als externe Ressource hinzu.
+        Diese
+        soll dann auf der rechten Seite im WWW-Navigator erscheinen.
+    </p>
+    <br>
+    <a href="nr3.html" target="_blank">
+        <button><i class="fa-solid fa-arrow-up-right-from-square"></i> In neuem Tab öffnen</button>
+    </a>
+    <br><br>
+    <button onclick="toggleCode('task3-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task3-code" class="code-block">
+        <code>
 &lt;!DOCTYPE html&gt;
 &lt;html lang="de"&gt;
 &lt;head&gt;
@@ -367,8 +391,9 @@ async function runTask2() {
     &lt;a&gt;About&lt;/a&gt;
 &lt;/footer&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-    </code>
-</pre>
+&lt;/html&gt;</code></pre>
+</div>
+
+<a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
 </body>
 </html>
