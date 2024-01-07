@@ -45,14 +45,7 @@
                     <a href="/index.html">Übersicht</a>
                 </li>
                 <li>
-                    <script>
-                        function jumpToTask(taskNo) {
-                            if (taskNo !== '0') {
-                                const number = taskNo < 10 ? '0' + taskNo : '' + taskNo;
-                                location.href = 'uebung' + number + '/index.html';
-                            }
-                        }
-                    </script>
+                    <script src="/scripts/taskjumper.js"></script>
                     <label id="task-select">
                         <select onchange="jumpToTask(this.value)">
                             <option value="0" selected>Zu Übung springen</option>
