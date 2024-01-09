@@ -23,7 +23,7 @@
 <body>
 <header>
     <script src="/scripts/header.js"></script>
-    <a id="logo" href="/index.html">
+    <a id="logo" href="..">
         <svg height="2.5rem" width="3.5rem">
             <rect x="0" y="0" height="100%" width="100%" fill="none" stroke="white" stroke-width="5"></rect>
             <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="2rem" fill="white">
@@ -37,18 +37,11 @@
         <div id="menu-container">
             <ul>
                 <li>
-                    <a href="/index.html">Übersicht</a>
+                    <a href="..">Übersicht</a>
                 </li>
                 <li class="current">
-                    <script>
-                        function jumpToTask(taskNo) {
-                            if (taskNo !== '0') {
-                                const number = taskNo < 10 ? '0' + taskNo : '' + taskNo;
-                                location.href = 'uebung' + number + '/index.html';
-                            }
-                        }
-                    </script>
-                    <label id="task-select" class="current">
+                    <script src="/scripts/taskjumper.js"></script>
+                    <label id="task-select">
                         <select onchange="jumpToTask(this.value)">
                             <option value="0">Zu Übung springen</option>
                             <option value="1" selected>Übung 01</option>
@@ -67,10 +60,10 @@
                     </label>
                 </li>
                 <li>
-                    <a href="about.html">Über mich</a>
+                    <a href="../about.html">Über mich</a>
                 </li>
                 <li>
-                    <a href="credits.html">Credits</a>
+                    <a href="../credits.html">Credits</a>
                 </li>
             </ul>
         </div>

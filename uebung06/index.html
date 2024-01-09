@@ -5,6 +5,55 @@
     <title>Title</title>
 </head>
 <body>
+<header>
+    <script src="/scripts/header.js"></script>
+    <a id="logo" href="..">
+        <svg height="2.5rem" width="3.5rem">
+            <rect x="0" y="0" height="100%" width="100%" fill="none" stroke="white" stroke-width="5"></rect>
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="2rem" fill="white">
+                SN
+            </text>
+        </svg>
+        <span id="logo-text">Solution Navigator</span>
+    </a>
+    <nav id="header-nav">
+        <i id="menu-button" class="fa-solid fa-bars" onclick="openMenu()"></i>
+        <div id="menu-container">
+            <ul>
+                <li>
+                    <a href="..">Übersicht</a>
+                </li>
+                <li class="current">
+                    <script src="/scripts/taskjumper.js"></script>
+                    <label id="task-select">
+                        <select onchange="jumpToTask(this.value)">
+                            <option value="0">Zu Übung springen</option>
+                            <option value="1">Übung 01</option>
+                            <option value="2">Übung 02</option>
+                            <option value="3">Übung 03</option>
+                            <option value="4">Übung 04</option>
+                            <option value="5">Übung 05</option>
+                            <option value="6" selected>Übung 06</option>
+                            <option value="7">Übung 07</option>
+                            <option value="8">Übung 08</option>
+                            <option value="9">Übung 09</option>
+                            <option value="10">Übung 10</option>
+                            <option value="11">Übung 11</option>
+                            <option value="12">Übung 12</option>
+                        </select>
+                    </label>
+                </li>
+                <li>
+                    <a href="../about.html">Über mich</a>
+                </li>
+                <li>
+                    <a href="../credits.html">Credits</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
 <h1>W.I.P.</h1>
 </body>
 </html>

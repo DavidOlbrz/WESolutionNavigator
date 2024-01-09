@@ -24,7 +24,7 @@
 <body>
 <header>
     <script src="/scripts/header.js"></script>
-    <a id="logo" href="/index.html">
+    <a id="logo" href="">
         <svg height="2.5rem" width="3.5rem">
             <rect x="0" y="0" height="100%" width="100%" fill="none" stroke="white" stroke-width="5"></rect>
             <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="2rem" fill="white">
@@ -38,12 +38,12 @@
         <div id="menu-container">
             <ul>
                 <li class="current">
-                    <a href="/index.html">Übersicht</a>
+                    <a href="">Übersicht</a>
                 </li>
                 <li>
                     <script src="/scripts/taskjumper.js"></script>
                     <label id="task-select">
-                        <select onchange="jumpToTask(this.value)">
+                        <select onchange="jumpToTaskFromHome(this.value)">
                             <option value="0" selected>Zu Übung springen</option>
                             <option value="1">Übung 01</option>
                             <option value="2">Übung 02</option>
