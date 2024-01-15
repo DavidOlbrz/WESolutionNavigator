@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Über mich | Solution-Navigator</title>
+    <link href="/assets/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+          integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css"
+          integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://kit.fontawesome.com/37beb9f2cd.js" crossorigin="anonymous"></script>
+    <link href="css/default.css" rel="stylesheet">
+    <style>
+        #about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--color-surface-200);
+            border-radius: 20px;
+            padding: 10px;
+            margin: 1rem;
+            height: fit-content;
+            width: fit-content;
+        }
+
+        #about-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #about-header span {
+            font-size: 5rem;
+            padding: 1rem;
+        }
+
+        #profile-picture {
+            border-radius: 50%;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #buttons a {
+            margin: 1rem;
+        }
+
+        @media only screen and (max-width: 800px) {
+            #about-header {
+                flex-direction: column;
+            }
+
+            #about-header span {
+                font-size: 3rem;
+            }
+
+            #buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <script src="/scripts/header.js"></script>
+    <a id="logo" href=".">
+        <svg height="2.5rem" width="3.5rem">
+            <rect x="0" y="0" height="100%" width="100%" fill="none" stroke="white" stroke-width="5"></rect>
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="2rem" fill="white">
+                SN
+            </text>
+        </svg>
+        <span id="logo-text">Solution Navigator</span>
+    </a>
+    <nav id="header-nav">
+        <i id="menu-button" class="fa-solid fa-bars" onclick="openMenu()"></i>
+        <div id="menu-container">
+            <ul>
+                <li>
+                    <a href=".">Übersicht</a>
+                </li>
+                <li>
+                    <script src="/scripts/taskjumper.js"></script>
+                    <label id="task-select">
+                        <select onchange="jumpToTaskFromHome(this.value)">
+                            <option value="0" selected>Zu Übung springen</option>
+                            <option value="1">Übung 01</option>
+                            <option value="2">Übung 02</option>
+                            <option value="3">Übung 03</option>
+                            <option value="4">Übung 04</option>
+                            <option value="5">Übung 05</option>
+                            <option value="6">Übung 06</option>
+                            <option value="7">Übung 07</option>
+                            <option value="8">Übung 08</option>
+                            <option value="9">Übung 09</option>
+                            <option value="10">Übung 10</option>
+                            <option value="11">Übung 11</option>
+                            <option value="12">Übung 12</option>
+                        </select>
+                    </label>
+                </li>
+                <li class="current">
+                    <a href="">Über mich</a>
+                </li>
+                <li>
+                    <a href="credits.html">Credits</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<h1>Über mich</h1>
+
+<div style="display: flex; justify-content: center; align-items: center">
+    <div id="about-container">
+        <div id="about-header">
+            <img id="profile-picture"
+                 src="https://media.licdn.com/dms/image/D4E03AQELI6gj5MF4Wg/profile-displayphoto-shrink_200_200/0/1686909497790?e=1710979200&v=beta&t=vj44plYc-jzlFclOM7GKeixccjbelFbdqHUWBPLnzwc"
+                 alt="David Olbertz">
+            <span>David Olbertz</span>
+        </div>
+        <h2>Socials</h2>
+        <div id="buttons">
+            <a href="https://www.linkedin.com/in/david-olbertz/" target="_blank">
+                <button><i class="fa-brands fa-linkedin"></i> LinkedIn</button>
+            </a>
+            <a href="https://www.xing.com/profile/David_Olbertz2" target="_blank">
+                <button><i class="fa-brands fa-square-xing"></i> Xing</button>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
