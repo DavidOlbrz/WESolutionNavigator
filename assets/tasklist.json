@@ -38,5 +38,9 @@
   "10": {
     "task": "U10",
     "title": "TypeScript (TS)"
+  },
+  "11": {
+    "task": "U11",
+    "title": "NodeJS"
   }
 }
