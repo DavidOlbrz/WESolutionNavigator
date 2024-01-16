@@ -424,7 +424,55 @@ function fibonacci(n) {
 <h2 id="task4">4.4 TopSort</h2>
 
 <div class="container">
+    <p style="margin-top: 0">In jedem Projekt fallen Aufgaben (Tasks) an. Zwischen den Aufgaben gibt es paarweise
+        Abhängigkeiten. Z.B. kann Task2 von Task1 abhängen, d.h. erst muss Task1 fertig sein, bevor Task2 starten kann,
+        weil es dessen Ergebnisse benötigt. Tasks können auch unabhängig voneinander sein und parallel ablaufen. In
+        JavaScript können Sie die Abhängigkeiten in Arrays codieren, z.B. kann man bei <code>[["schlafen","studieren"],["essen","studieren"],["studieren","prüfen"]]</code>
+        nicht prüfen, ohne vorher gegessen zu haben. Transitive Abhängigkeiten müssen also berücksichtigt werden.</p>
+    <p>Schreiben Sie in JavaScript eine Funktion <code>topsort()</code>, die eine <a
+            href="https://de.wikipedia.org/wiki/Topologische_Sortierung" target="_blank">topologische Sortierung</a>
+        berechnet. Topologische Sortierung ist eine Form von Sortierung. Sie kennen die Funktion <code>Array.prototype.sort()</code>
+        und wissen, was als
+        Ergebnis erwartet wird, nämlich eine sortiere Liste. Genauso ist das hier. Die Funktion <code>topsort()</code>
+        soll eine
+        sortierte Liste ausgeben, die keine der eingegebenen Abhängigkeiten verletzt.</p>
+    <p>Achten Sie auf Performanz. Berechnen Sie die topologische Sortierung in <a
+            href="https://de.wikipedia.org/wiki/Topologische_Sortierung#Gesamtverhalten" target="_blank">linearer
+        Zeit</a> (Average
+        Case). Testen Sie Ihren Code und verwenden Sie für Ihre Tests <a
+                href="https://developer.mozilla.org/de/docs/Web/API/Console/assert" target="_blank">console.assert</a>.
+    </p>
+    <br>
     <button onclick="testTopSort()"><i class="fa-solid fa-play"></i> Test</button>
+    <br><br>
+    <button onclick="toggleCode('task4-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task4-code" class="code-block">
+        <code>function topsort(dependencies) {
+    const nodes = new Set(dependencies.flat());
+    const edges = new Map(Array.from(nodes, node => [node, []]));
+    for (const [from, to] of dependencies) {
+        edges.get(from).push(to);
+    }
+    const visited = new Set();
+    const sorted = [];
+    const visit = node => {
+        if (visited.has(node)) return;
+        visited.add(node);
+        for (const neighbor of edges.get(node)) {
+            visit(neighbor);
+        }
+        sorted.unshift(node);
+    };
+    for (const node of nodes) {
+        visit(node);
+    }
+    return sorted;
+}
+
+function testTopSort() {
+    console.assert(topsort([["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "prüfen"]]).toString() === "schlafen,essen,studieren,prüfen");
+}</code></pre>
 </div>
 
 <a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
