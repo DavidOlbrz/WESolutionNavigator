@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Übung 06 | Solution-Navigator</title>
+    <link href="/assets/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css"
+          integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css"
+          integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://kit.fontawesome.com/37beb9f2cd.js" crossorigin="anonymous"></script>
+    <link href="../css/uebung.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="/scripts/toggleCode.js"></script>
 </head>
 <body>
 <header>
@@ -54,6 +69,91 @@
     </nav>
 </header>
 
-<h1>W.I.P.</h1>
+<h1>Übung 6: ECMAScript (ES)</h1>
+
+<div class="aufgaben_nav container">
+    <h2>Aufgaben</h2>
+    <nav><a href="#task1">6.1 Klammerpaare</a></nav>
+</div>
+
+<h2 id="task1">6.1 Klammerpaare</h2>
+
+<div class="container">
+    <p style="margin-top: 0">
+        Schreiben Sie eine Webseite, in die man eine Zeichenkette mit beliebigen Buchstaben, Zahlen und Sonderzeichen
+        eingeben kann, die beliebig geschachtelte Klammern <code>[...]</code>, <code>(...)</code> und <code>{...}</code>
+        enthält, sodass sofort geprüft wird, ob alle Klammerpaare korrekt geschachtelt sind. Das Eingabefeld der
+        Zeichenkette soll rot gefärbt werden, wenn es ein Klammerpaar gibt, das falsch geschachtelt ist. Verwenden Sie
+        für Ihre Tests die Funktion <a href="https://developer.mozilla.org/de/docs/Web/API/Console/assert"
+                                       target="_blank">console.assert</a>.
+    </p>
+    <br>
+    <iframe src="nr1.html"></iframe>
+    <br><br>
+    <button onclick="toggleCode('task1-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
+    <pre id="task1-code" class="code-block">
+        <code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;6.1 Klammerpaare&lt;/title&gt;
+    &lt;script&gt;
+        const bracketsLeft = ['(', '{', '['];
+        const bracketsRight = [')', '}', ']'];
+        const bracketSets = {
+            '(': ')',
+            '{': '}',
+            '[': ']'
+        };
+
+        function checkBrackets(input) {
+            const brackets = [];
+
+            for (let i = 0; i &lt; input.length; i++) {
+                const symbol = input[i];
+
+                if (bracketsLeft.includes(symbol)) {
+                    brackets.push(symbol);
+                } else if (bracketsRight.includes(symbol)) {
+                    const lastBracket = brackets.pop();
+
+                    if (bracketSets[lastBracket] !== symbol) {
+                        console.assert(false, markInputError(true));
+                    } else {
+                        markInputError(false);
+                    }
+                }
+            }
+
+
+            if (brackets.length !== 0) {
+                console.assert(false, markInputError(true));
+            } else {
+                markInputError(false);
+            }
+        }
+
+        function markInputError(status) {
+            let inputField = document.getElementById('input');
+            if (status) {
+                inputField.style.backgroundColor = 'rgba(255,0,0,0.5)';
+                return 'There is an error!'
+            } else {
+                inputField.style.backgroundColor = 'unset';
+            }
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;label&gt;
+    Input
+    &lt;input id="input" type="text" onkeyup="checkBrackets(this.value)"&gt;
+&lt;/label&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+
+<a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
 </body>
 </html>
