@@ -261,8 +261,7 @@
 <h2 id="task5">1.5 Lückentext zu HTML</h2>
 
 <div class="container">
-    <pre style="overflow-x: auto">
-<mark>&lt;!DOCTYPE html&gt;</mark>
+    <pre style="overflow-x: auto; margin: 0"><mark>&lt;!DOCTYPE html&gt;</mark>
 <mark>&lt;html&gt;</mark>
     <mark>&lt;head&gt;</mark>
         <mark>&lt;title&gt;</mark>Titel der Webseite<mark>&lt;/title&gt;</mark>
@@ -276,8 +275,7 @@
              <mark>&lt;p&gt;</mark>Dieser Abschnitt wurde auskommentiert.<mark>&lt;/p&gt;</mark>
         <mark>--&gt;</mark>
     <mark>&lt;/body&gt;</mark>
-<mark>&lt;/html&gt;</mark>
-    </pre>
+<mark>&lt;/html&gt;</mark></pre>
 </div>
 <hr>
 
@@ -295,9 +293,7 @@
         <li>&lt;ol&gt;: Startet eine geordnete Liste</li>
         <li>&lt;li&gt;: Ein Element der Liste</li>
     </ul>
-    <pre>
-    <code>
-&lt;!-- Geordnete Liste der Tiefe 3: --&gt;
+    <pre style="margin-bottom: 0"><code>&lt;!-- Geordnete Liste der Tiefe 3: --&gt;
 
 &lt;ol&gt;
     &lt;li&gt;Ebene 1
@@ -309,9 +305,7 @@
         &lt;/li&gt;
       &lt;/ol&gt;
     &lt;/li&gt;
-  &lt;/ol&gt;
-    </code>
-</pre>
+  &lt;/ol&gt;</code></pre>
 </div>
 <div class="container">
     <h3>Wie ist eine HTML-Tabelle aufgebaut?</h3>
@@ -321,9 +315,7 @@
         <li>&lt;th&gt;: Erstellt eine Titel-Zelle</li>
         <li>&lt;td&gt;: Erstellt eine Zelle</li>
     </ul>
-    <pre>
-    <code>
-&lt;!-- Beispieltabelle: --&gt;
+    <pre style="margin-bottom: 0"><code>&lt;!-- Beispieltabelle: --&gt;
 
 &lt;table&gt;
     &lt;tr&gt;
@@ -338,9 +330,7 @@
       &lt;td&gt;Zeile 2.1&lt;/td&gt;
       &lt;td&gt;Zeile 2.2&lt;/td&gt;
     &lt;/tr&gt;
-  &lt;/table&gt;
-    </code>
-</pre>
+  &lt;/table&gt;</code></pre>
 </div>
 <div class="container">
     <h3>Welche Konventionen sollte man bei Pfaden und Dateinamen beachten?</h3>
@@ -379,10 +369,8 @@
         angezeigt
         wird und das Aufzählungszeichen entfernt wird. Dann kann man bei jedem Listenelement einen Link hinterlegen und
         schon hat man ein klassisches Webseitenmenü.</p>
-    <p>Beispiel:</p>
-    <pre>
-    <code>
-&lt;!-- CSS: --&gt;
+    <p style="text-decoration-line: underline">Beispiel:</p>
+    <pre style="margin-bottom: 0"><code>&lt;!-- CSS: --&gt;
 
 ul {
     list-style-type: none;
@@ -405,9 +393,7 @@ li a {
     &lt;li&gt;&lt;a href="/index.html"&gt;Startseite&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="/products.html"&gt;Produkte&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="/contact.html"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-    </code>
-</pre>
+&lt;/ul&gt;</code></pre>
 </div>
 <div class="container">
     <h3>Welche Attribute sollte man bei Bildern wie verwenden?</h3>
@@ -428,12 +414,11 @@ li a {
     <a href="nr7.html" target="_blank">
         <button><i class="fa-solid fa-arrow-up-right-from-square"></i> In neuem Tab öffnen</button>
     </a>
-</div>
-<div class="container">
-    <button style="width: 100%" onclick="toggleCode('task7-code')">Source Code</button>
+    <br><br>
+    <button onclick="toggleCode('task7-code')"><i class="fa-solid fa-code"></i> Source Code</button>
+    <br>
     <pre id="task7-code" class="code-block">
-        <code class="language-html">
-&lt;!DOCTYPE html&gt;
+        <code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en"&gt;
 &lt;head&gt;
     &lt;meta charset="UTF-8"&gt;
@@ -509,9 +494,7 @@ li a {
 &lt;br&gt;
 &lt;hr&gt;
 &lt;/body&gt;
-&lt;/html&gt;
-        </code>
-    </pre>
+&lt;/html&gt;</code></pre>
 </div>
 
 <a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>

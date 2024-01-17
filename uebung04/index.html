@@ -203,13 +203,9 @@
     <label for="result_1_1">Output</label>
     <input id="result_1_1" type="text" placeholder="Ergebnis erscheint hier" disabled>
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre>
-        <code>
-function identity(arg) {
+    <pre style="margin-bottom: 0"><code>function identity(arg) {
     return arg;
-}
-        </code>
-    </pre>
+}</code></pre>
 </div>
 <div class="container">
     <h4>2. Eine Funktion <code>identity_function()</code>, die ein Argument als Parameter entgegennimmt und eine
@@ -226,13 +222,9 @@ function identity(arg) {
     <label for="result_1_2">Output</label>
     <input id="result_1_2" type="text" placeholder="Ergebnis erscheint hier" disabled>
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre>
-        <code>
-function identity_function(arg) {
+    <pre style="margin-bottom: 0"><code>function identity_function(arg) {
     return identity(arg);
-}
-        </code>
-    </pre>
+}</code></pre>
 </div>
 <div class="container">
     <h4>3. Zwei binäre Funktionen <code>add</code> und <code>mul</code>, die Summe und Produkt berechnen.</h4>
@@ -250,17 +242,13 @@ function identity_function(arg) {
     <label for="result_1_3mul">Output <code>mul</code></label>
     <input id="result_1_3mul" placeholder="Ergebnis erscheint hier" disabled>
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre>
-        <code>
-function add(opA, opB) {
+    <pre style="margin-bottom: 0"><code>function add(opA, opB) {
     return opA + opB;
 }
 
 function mul(opA, opB) {
     return opA * opB;
-}
-        </code>
-    </pre>
+}</code></pre>
 </div>
 <div class="container">
     <h4>4. Eine Addierer-Funktion <code>addf()</code>, so dass <code>addf(x)(y)</code> genau <code>x + y</code>
@@ -279,15 +267,11 @@ function mul(opA, opB) {
     <label for="result_1_4">Output</label>
     <input id="result_1_4" placeholder="Ergebnis erscheint hier">
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre>
-        <code>
-function addf(x) {
+    <pre style="margin-bottom: 0"><code>function addf(x) {
     return function (y) {
         return x + y;
     }
-}
-        </code>
-    </pre>
+}</code></pre>
 </div>
 <div class="container">
     <h4>5. Eine Funktion <code>applyf()</code>, die aus einer binären Funktion wie <code>add(x,y)</code> eine Funktion
@@ -317,17 +301,13 @@ function addf(x) {
     <label for="result_1_5">Output</label>
     <input id="result_1_5" placeholder="Ergebnis erscheint hier" disabled>
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre>
-        <code>
-function applyf(func) {
+    <pre style="margin-bottom: 0"><code>function applyf(func) {
     return function (x) {
         return function (y) {
             return func(x, y);
         }
     }
-}
-        </code>
-    </pre>
+}</code></pre>
 </div>
 <hr>
 
@@ -340,9 +320,7 @@ function applyf(func) {
         Schreiben Sie eine Funktion <code>conflict()</code>, die feststellt, ob ein Auto von mehr als einer Person
         besessen
         wird.</h4>
-    <pre>
-        <code>
-function Person(name) {
+    <pre style="margin-bottom: 0"><code>function Person(name) {
     this.name = name;
     this.cars = []
 }
@@ -364,9 +342,7 @@ Car.prototype.conflict = function () {
         }
     }
     return false;
-};
-        </code>
-    </pre>
+};</code></pre>
 </div>
 <hr>
 
@@ -402,8 +378,7 @@ Car.prototype.conflict = function () {
     <button onclick="toggleCode('task3-code')"><i class="fa-solid fa-code"></i> Source Code</button>
     <br>
     <pre id="task3-code" class="code-block">
-        <code>
-function fibonacci(n) {
+        <code>function fibonacci(n) {
     if (n === 0) {
         return [];
     } else if (n === 1) {
@@ -415,9 +390,7 @@ function fibonacci(n) {
         }
         return fib;
     }
-}
-        </code>
-    </pre>
+}</code></pre>
 </div>
 <hr>
 

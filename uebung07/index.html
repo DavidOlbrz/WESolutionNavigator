@@ -96,7 +96,7 @@
         }
     </script>
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>function curry(func, arg1) {
+    <pre style="margin-bottom: 0"><code>function curry(func, arg1) {
     return function (arg2) {
         return func(arg1, arg2);
     };
@@ -148,7 +148,7 @@
     <button onclick="runF02()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
     (Output in der Konsole)
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>// taken from task 4
+    <pre style="margin-bottom: 0"><code>// taken from task 4
 function add(opA, opB) {
     return opA + opB;
 }
@@ -202,7 +202,7 @@ console.log('Inkrementieren mit curry(5): ' + incCurry(5));</code></pre>
     <button onclick="runF03()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
     (Output in der Konsole)
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>function methodize() {
+    <pre style="margin-bottom: 0"><code>function methodize() {
     return function (func) {
         return this + func;
     };
@@ -234,7 +234,7 @@ console.log('Unäre Funktion add (10 + 5): ' + (10).add(5));</code></pre>
     <button onclick="runF04()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
     (Output in der Konsole)
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>function demethodize(func) {
+    <pre style="margin-bottom: 0"><code>function demethodize(func) {
     return function (x, y) {
         return func.bind(Number(x))(y);
     };
@@ -276,7 +276,7 @@ console.log('Wieder-Binäre Funktion add (10 + 5): ' + demethodize(Number.protot
     <button onclick="runF05()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
     (Output in der Konsole)
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>function twice(func) {
+    <pre style="margin-bottom: 0"><code>function twice(func) {
     return function (x) {
         return func(x, x);
     };
@@ -316,7 +316,7 @@ console.log('twice-Funktion mit 5 und mul: ' + square(5));</code></pre>
     <button onclick="runF06()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
     (Output in der Konsole)
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>function composeu(func1, func2) {
+    <pre style="margin-bottom: 0"><code>function composeu(func1, func2) {
     return function (x) {
         return func2(func1(x));
     };
@@ -346,7 +346,7 @@ console.log('Einzelne unäre Funktion aus double & square mit 5: ' + composeu(do
     <button onclick="runF07()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
     (Output in der Konsole)
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>function composeb(func1, func2) {
+    <pre style="margin-bottom: 0"><code>function composeb(func1, func2) {
     return function (a, b, c) {
         return func2(func1(a, b), c);
     };
@@ -389,7 +389,7 @@ console.log('Einzelne Funktion mit add und mul nacheinander (mit 3, 7, 10): ' + 
     <button onclick="runF08()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
     (Output in der Konsole, nur einmal ausführbar!)
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>function once(func) {
+    <pre style="margin-bottom: 0"><code>function once(func) {
     let already_ran = false;
 
     return function (x, y) {
@@ -441,7 +441,7 @@ console.log('Diese Funktion kann add mit 10 und 5 nur einmal ausführen: ' + onc
     <button onclick="runF09()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
     (Output in der Konsole)
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>function counterf(x) {
+    <pre style="margin-bottom: 0"><code>function counterf(x) {
     let number = x;
 
     return {
@@ -505,7 +505,7 @@ console.log('10 um 1 gesenkt ist: ' + counterf(10).dec());</code></pre>
     <button onclick="runF10revoke()">Revoke</button>
     (Error-Output in der Konsole)
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>function revocable(func) {
+    <pre style="margin-bottom: 0"><code>function revocable(func) {
     let revoked = false;
 
     return {
@@ -577,7 +577,7 @@ temp.invoke(8);</code></pre>
     <button onclick="runF11()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
     (Output in der Konsole)
     <p style="text-decoration-line: underline">Source Code</p>
-    <pre><code>function vectorf() {
+    <pre style="margin-bottom: 0"><code>function vectorf() {
     const array = [];
 
     return {
@@ -613,7 +613,7 @@ console.log('Array-Wert an der Position 1 lesen: ' + vector.get(1));</code></pre
                                                         title="Klausurrelevant"></i></h2>
 
 <div class="container">
-    <p>
+    <p style="margin-top: 0">
         Schreiben Sie in JavaScript eine Textanalyse. Ermitteln Sie die häufigsten Begriffe im Text <a
             href="assets/Plagiatsresolution.html" target="_blank">Plagiatsresolution</a>.
         Filtern Sie dabei alle <a href="assets/german_stopwords_plain.txt" target="_blank">Stoppworte</a> und HTML-Tags.
@@ -641,8 +641,9 @@ console.log('Array-Wert an der Position 1 lesen: ' + vector.get(1));</code></pre
         <!-- results will appear here -->
     </ol>
     <button onclick="toggleCode('task2-code')"><i class="fa-solid fa-code"></i> Source Code</button>
-    <br><br>
-    <pre id="task2-code" class="code-block"><code>let text = ''
+    <br>
+    <pre id="task2-code" class="code-block">
+        <code>let text = ''
 let stopWords = ''
 let topWords = [];
 
