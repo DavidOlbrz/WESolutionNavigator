@@ -30,6 +30,90 @@
             animation-name: use-the-platform-double;
             animation-duration: 2s;
         }
+
+        #svg-examples {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #svg-examples h3 {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 1370px) {
+            #svg-examples {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            #svg-examples hr {
+                margin-top: 3rem;
+                width: 95%;
+            }
+
+            #svg-examples h3 {
+                margin-bottom: 3rem;
+                text-align: center;
+            }
+        }
+
+        .svg-transform-examples {
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+        }
+
+        @keyframes transform-example {
+            0% {
+                transform: translate(-25%, 0);
+            }
+            50% {
+                transform: translate(25%, 0);
+            }
+            100% {
+                transform: translate(-25%, 0);
+            }
+        }
+
+        #svg-translate {
+            animation-name: transform-example;
+
+        }
+
+        @keyframes rotate-example {
+            0% {
+                transform: rotate(0);
+            }
+            50% {
+                transform: rotate(90deg);
+            }
+            100% {
+                transform: rotate(0);
+            }
+        }
+
+        #svg-rotate {
+            animation-name: rotate-example;
+        }
+
+        @keyframes scale-example {
+            0% {
+                transform: scale(100%, 100%);
+            }
+            50% {
+                transform: scale(50%, 50%);
+            }
+            100% {
+                transform: scale(100%, 100%);
+            }
+        }
+
+        #svg-scale {
+            animation-name: scale-example;
+        }
     </style>
 </head>
 <body>
@@ -90,6 +174,7 @@
     <nav><a href="#task2">9.2 Statistik-Balkendiagramm in SVG</a></nav>
     <nav><a href="#task3">9.3 Interaktive SVG Grafik <i class="fa-solid fa-star" style="color: gold"
                                                         title="Klausurrelevant"></i></a></nav>
+    <nav><a href="#zusatz">9.Z Demonstration translate, rotate, scale</a></nav>
 </div>
 
 <h2 id="task1">9.1 SVG Grafik von Hand erstellen</h2>
@@ -390,6 +475,35 @@
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+</div>
+<hr>
+
+<h2 id="zusatz">Zusatz: Demonstration translate, rotate, scale</h2>
+
+<div class="container" style="padding-bottom: 3rem">
+    <div id="svg-examples">
+        <div>
+            <h3>translate</h3>
+            <svg id="svg-translate" class="svg-transform-examples" height="200" width="200">
+                <rect height="200" width="200" fill="blue"></rect>
+            </svg>
+        </div>
+        <hr>
+        <div>
+            <h3>rotate</h3>
+            <svg id="svg-rotate" class="svg-transform-examples" height="200" width="200">
+                <rect height="200" width="200" fill="blue"></rect>
+            </svg>
+        </div>
+        <hr>
+        <div>
+            <h3>scale</h3>
+            <svg id="svg-scale" class="svg-transform-examples" height="200" width="200">
+                <rect height="200" width="200" fill="blue"></rect>
+            </svg>
+        </div>
+    </div>
+
 </div>
 
 <a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
