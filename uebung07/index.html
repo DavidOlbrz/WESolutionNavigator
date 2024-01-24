@@ -76,6 +76,7 @@
     <nav><a href="#task1">7.1 Funktionen in JavaScript</a></nav>
     <nav><a href="#task2">7.2 Textanalyse mit filter-map-reduce <i class="fa-solid fa-star" style="color: gold"
                                                                    title="Klausurrelevant"></i></a></nav>
+    <nav><a href="#zusatz">7.Z Spread-Operator</a></nav>
 </div>
 
 <h2 id="task1">7.1 Funktionen in JavaScript</h2>
@@ -712,6 +713,47 @@ function runTextAnalysis() {
 
     return topWords;
 }</code></pre>
+</div>
+<hr>
+
+<h2 id="zusatz">Zusatz: Spread-Operator</h2>
+
+<div class="container">
+    <script src="scripts/spread_example.js"></script>
+    <p style="margin-top: 0">Mit dem spread-Operator können Arrays und Objekte in ihre einzelnen Elemente zerlegt werden
+        und dann z.B. in einem neuen Array kombiniert werden. Er wird mit drei Punkten <code>...</code> vor dem
+        Variablennamen
+        angewendet (Beispiel: <code>...results</code>).</p>
+    <p style="text-decoration-line: underline">Beispiel Array:</p>
+    <pre><code>// Code
+const a = ['a', 'b', 'c'];
+const b = ['d', 'e', 'f'];
+const combined = [...a, ...b];
+console.log(combined);
+
+// Output
+Array(6) ['a', 'b', 'c', 'd', 'e', 'f']</code></pre>
+    <button onclick="spreadArray()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
+    (Output in der Konsole)
+    <p style="text-decoration-line: underline">Beispiel Objekt:</p>
+    <pre><code>// Code
+const name = {
+    firstName: 'David',
+    lastName: 'Olbertz'
+};
+
+const person = {
+    ...name,
+    age: 20,
+    university: 'University of Applied Sciences Bonn'
+};
+
+console.log(person);
+
+// Output
+Object { firstName: "David", lastName: "Olbertz", age: 20, university: "University of Applied Sciences Bonn" }</code></pre>
+    <button onclick="spreadObject()"><i class="fa-solid fa-play"></i> Skript ausführen</button>
+    (Output in der Konsole)
 </div>
 
 <a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
