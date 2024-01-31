@@ -74,6 +74,7 @@
 <div class="aufgaben_nav container">
     <h2>Aufgaben</h2>
     <nav><a href="#task1">6.1 Klammerpaare</a></nav>
+    <nav><a href="#zusatz">6.Z Demonstration JS Module</a></nav>
 </div>
 
 <h2 id="task1">6.1 Klammerpaare</h2>
@@ -152,6 +153,37 @@
 &lt;/label&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+</div>
+<hr>
+
+<h2 id="zusatz">Zusatz: Demonstration JS Module</h2>
+
+<div class="container">
+    <p style="margin-top: 0">Mit <code>export</code> können Funktionen und Variablen für andere Skripte freigegeben
+        werden.</p>
+    <pre><code>// calcFunctions.js
+export function plus(a, b) {
+    return a + b;
+}
+
+export function minus(a, b) {
+    return a - b;
+}</code></pre>
+    <p>Mit <code>import</code> können diese freigegebenen Funktionen im Skript verwendet werden.</p>
+    <pre><code>import {plus, minus} from "./calcFunctions.js";
+
+function calc() {
+    const x = 10;
+    const y = 5;
+
+    const addition = plus(x, y);
+    const subtraction = minus(x, y);
+
+    console.log(`${x} + ${y} = ${addition}\n${x} - ${y} = ${subtraction}`);
+}</code></pre>
+    <p style="text-decoration-line: underline">Output:</p>
+    <pre><code>10 + 5 = 15
+10 - 5 = 5</code></pre>
 </div>
 
 <a id="top_button" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
