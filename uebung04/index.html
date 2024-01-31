@@ -100,30 +100,37 @@
 
         // task 4
 
-        function topsort(dependencies) {
-            const nodes = new Set(dependencies.flat());
-            const edges = new Map(Array.from(nodes, node => [node, []]));
-            for (const [from, to] of dependencies) {
-                edges.get(from).push(to);
+        function compare(a, b) {
+            if (a[0] === b[1]) {
+                return 1;
+            } else if (a[1] === b[0]) {
+                return -1;
+            } else {
+                return 0;
             }
-            const visited = new Set();
-            const sorted = [];
-            const visit = node => {
-                if (visited.has(node)) return;
-                visited.add(node);
-                for (const neighbor of edges.get(node)) {
-                    visit(neighbor);
+        }
+
+        function topSort(input) {
+            let array = input;
+            array.sort(compare);
+            const sorted = new Set;
+            for (let x in array) {
+                sorted.add(array[x][0]);
+                if (x == array.length - 1) {
+                    sorted.add(array[x][1]);
                 }
-                sorted.unshift(node);
-            };
-            for (const node of nodes) {
-                visit(node);
             }
             return sorted;
         }
 
         function testTopSort() {
-            console.assert(topsort([["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "prüfen"]]).toString() === "schlafen,essen,studieren,prüfen");
+            const array = [["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "prüfen"]];
+            console.log(`Input:`);
+            console.log(array);
+            const sorted = topSort(array);
+            console.log(`Output:`);
+            console.log(sorted);
+            console.assert(Array.from(sorted).toString() === "schlafen,essen,studieren,prüfen");
         }
     </script>
 </head>
@@ -417,34 +424,42 @@ Car.prototype.conflict = function () {
     </p>
     <br>
     <button onclick="testTopSort()"><i class="fa-solid fa-play"></i> Test</button>
+    (Output in der Konsole)
     <br><br>
     <button onclick="toggleCode('task4-code')"><i class="fa-solid fa-code"></i> Source Code</button>
     <br>
     <pre id="task4-code" class="code-block">
-        <code>function topsort(dependencies) {
-    const nodes = new Set(dependencies.flat());
-    const edges = new Map(Array.from(nodes, node => [node, []]));
-    for (const [from, to] of dependencies) {
-        edges.get(from).push(to);
+        <code>function compare(a, b) {
+    if (a[0] === b[1]) {
+        return 1;
+    } else if (a[1] === b[0]) {
+        return -1;
+    } else {
+        return 0;
     }
-    const visited = new Set();
-    const sorted = [];
-    const visit = node => {
-        if (visited.has(node)) return;
-        visited.add(node);
-        for (const neighbor of edges.get(node)) {
-            visit(neighbor);
+}
+
+function topSort(input) {
+    let array = input;
+    array.sort(compare);
+    const sorted = new Set;
+    for (let x in array) {
+        sorted.add(array[x][0]);
+        if (x == array.length - 1) {
+            sorted.add(array[x][1]);
         }
-        sorted.unshift(node);
-    };
-    for (const node of nodes) {
-        visit(node);
     }
     return sorted;
 }
 
 function testTopSort() {
-    console.assert(topsort([["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "prüfen"]]).toString() === "schlafen,essen,studieren,prüfen");
+    const array = [["schlafen", "studieren"], ["essen", "studieren"], ["studieren", "prüfen"]];
+    console.log(`Input:`);
+    console.log(array);
+    const sorted = topSort(array);
+    console.log(`Output:`);
+    console.log(sorted);
+    console.assert(Array.from(sorted).toString() === "schlafen,essen,studieren,prüfen");
 }</code></pre>
 </div>
 
